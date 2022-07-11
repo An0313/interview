@@ -3,7 +3,7 @@ const path = require('path')
 const {pages, appConfig} = require('./index')
 
 const pagesJsonPath = path.resolve(__dirname, '../pages.json')
-const pagesObjPath = path.resolve(__dirname, '../constants/pages.ts')
+const pagesObjPath = path.resolve(__dirname, '../const/pages.ts')
 
 fs.writeFile(pagesJsonPath, JSON.stringify(appConfig, null, '  '), e => {
   if (e) console.error(e)

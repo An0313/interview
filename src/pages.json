@@ -1,16 +1,45 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTitleText": "jimeimen",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "disableScroll": false,
+    "backgroundColor": "#ffffff",
+    "backgroundColorTop": "#ffffff",
+    "rpxCalcMaxDeviceWidth": 768,
+    "rpxCalcBaseDeviceWidth": 750,
+    "rpxCalcIncludeWidth": 750,
+    "maxWidth": 768
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/img/tabber_home.png",
+        "selectedIconPath": "static/img/tabber_home_HL.png"
+      },
+      {
+        "pagePath": "pages/search/index",
+        "iconPath": "static/img/tabber_search.png",
+        "selectedIconPath": "static/img/tabber_search_HL.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "static/img/tabber_people.png",
+        "selectedIconPath": "static/img/tabber_people_HL.png"
+      }
+    ]
+  }
 }
