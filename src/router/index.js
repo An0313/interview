@@ -89,21 +89,21 @@ exports.appConfig = {
 		maxWidth: maxWidth
 	},
 	// https://uniapp.dcloud.io/collocation/pages.html#tabbar
-	"tabBar": {
-		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		"list": [{
-			"pagePath": "pages/index/index",
-			"iconPath": "static/img/tabber_home.png",
-			"selectedIconPath": "static/img/tabber_home_HL.png",
-		}, {
-			"pagePath": "pages/search/index",
-			"iconPath": "static/img/tabber_search.png",
-			"selectedIconPath": "static/img/tabber_search_HL.png",
-		}, {
-			"pagePath": "pages/user/index",
-			"iconPath": "static/img/tabber_people.png",
-			"selectedIconPath": "static/img/tabber_people_HL.png",
-		}]
-	}
+	// "tabBar": {
+	// 	"borderStyle": "black",
+	// 	"backgroundColor": "#ffffff",
+	// 	"list": [{
+	// 		"pagePath": "pages/index/index",
+	// 		"iconPath": "static/img/tabber_home.png",
+	// 		"selectedIconPath": "static/img/tabber_home_HL.png",
+	// 	}, {
+	// 		"pagePath": "pages/search/index",
+	// 		"iconPath": "static/img/tabber_search.png",
+	// 		"selectedIconPath": "static/img/tabber_search_HL.png",
+	// 	}, {
+	// 		"pagePath": "pages/user/index",
+	// 		"iconPath": "static/img/tabber_people.png",
+	// 		"selectedIconPath": "static/img/tabber_people_HL.png",
+	// 	}]
+	// }
 }
