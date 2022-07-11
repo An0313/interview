@@ -1,0 +1,12 @@
+node_modules/
+dist/
+**/.idea
+.vscode
+.hbuilderx
+package-lock.json
+yarn.lock
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
