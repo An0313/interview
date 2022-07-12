@@ -86,7 +86,10 @@ exports.appConfig = {
 		rpxCalcMaxDeviceWidth: maxWidth, // rpx 计算所支持的最大设备宽度，单位 px，默认值为 960
 		rpxCalcBaseDeviceWidth: 750, // rpx 计算使用的基准设备宽度，设备实际宽度超出 rpx 计算所支持的最大设备宽度时将按基准宽度计算，单位 px，默认值为 375
 		rpxCalcIncludeWidth: 750, // rpx 计算特殊处理的值，始终按实际的设备宽度计算，单位 rpx，默认值为 750
-		maxWidth: maxWidth
+		maxWidth: maxWidth,
+        usingComponents: {
+            Layout: '/components/Layout/index'
+        }
 	},
 	// https://uniapp.dcloud.io/collocation/pages.html#tabbar
 	// "tabBar": {
@@ -106,4 +109,8 @@ exports.appConfig = {
 	// 		"selectedIconPath": "static/img/tabber_people_HL.png",
 	// 	}]
 	// }
+    //
+    easycom: {
+        autoscan: false,
+    }
 }
