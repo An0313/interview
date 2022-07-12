@@ -9,6 +9,7 @@ const router = [
 		style: {
 			navigationStyle: 'custom',
 			disableScroll: true,
+            navigationBarTitleText: '首页'
 		}
 	},
 ]
@@ -76,7 +77,7 @@ exports.appConfig = {
 	// subPackages: setSubPackages(router),
 	// https://uniapp.dcloud.io/collocation/pages.html#globalstyle
 	globalStyle: {
-		navigationBarTitleText: 'jimeimen',
+		navigationBarTitleText: '面试',
 		navigationBarBackgroundColor: '#ffffff',
 		navigationBarTextStyle: 'black',
 		navigationStyle: 'default',

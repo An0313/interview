@@ -1,6 +1,6 @@
 <template>
   <scroll-view class="layout" scroll-y>
-    <NavTitle />
+    <NavTitle :title="props.title" />
     <view>
       <slot></slot>
     </view>
@@ -8,7 +8,12 @@
 </template>
 
 <script lang="ts" setup>
+import {defineProps} from 'vue'
 
+interface PropsType {
+  title?: string
+}
+const props = defineProps<PropsType>()
 
 </script>
 
