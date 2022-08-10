@@ -68,5 +68,200 @@ export const problem: iProblemItem[] = [
       '9、避免频繁读取会引发回流 / 重绘的属性，如果确实需要多次使用，就用一个变量缓存起来。',
       '10、对具有复杂动画的元素使用绝对定位，使它脱离文档流，否则会引起父元素及后续元素频繁回流。'
     ]
+  },
+  {
+    id: 4,
+    title: '本地存储与cookie存储区别？',
+    tags: [tagMnum.js],
+    answer: [
+      '1、 cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。',
+      '2、 cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。存储大小限制也不同，cookie数据不能超过4k，同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如会话标识。sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。',
+      '3、 数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。',
+      '4、 作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。Web Storage 支持事件通知机制，可以将数据更新的通知发送给监听者。Web Storage 的 api 接口使用更方便。'
+    ]
+  },
+  {
+    id: 5,
+    title: '移动端布局的自适应如何做？',
+    tags: [tagMnum.html, tagMnum.css, tagMnum.js],
+    answer: [
+      '<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">',
+      'rem, vw',
+    ]
+  },
+  {
+    id: 6,
+    title: '导入样式时，使用link和@import有什么区别？',
+    tags: [tagMnum.css],
+    answer: [
+      '1、link是HTML标签，@import是css提供的。',
+      '2、link引入的样式页面加载时同时加载，@import引入的样式需等页面加载完成后再加载。',
+      '3、link没有兼容性问题，@import不兼容ie5以下。',
+      '4、link可以通过js操作DOM动态引入样式表改变样式，而 @import不可以。'
+    ]
+  },
+  {
+    id: 7,
+    title: '浏览器内多个标签页之间的通信方式有哪些？',
+    tags: [tagMnum.js],
+    answer: [
+      '1、WebSocket （可跨域）',
+      '2、postMessage（可跨域）',
+      '3、Worker之SharedWorker',
+      '4、Server - Sent Events',
+      '5、localStorage',
+      '6、BroadcastChannel',
+      '7、Cookie'
+    ]
+  },
+  {
+    id: 8,
+    title: 'v-model的原理？',
+    tags: [tagMnum.vue],
+    answer: [
+      'v-model只不过是一个语法糖',
+      '',
+      '<input :value="msg" @input="msg=$event.target.value">',
+      '',
+      "model: { prop: 'value',event: 'input'}",
+      "this.$emit('input', $event.target.value);",
+    ]
+  },
+  {
+    id: 9,
+    title: '怎么给vue定义全局的方法？',
+    tags: [tagMnum.vue],
+    answer: [
+      'vue2',
+      '1、挂载到 Vue 的 prototype上',
+      '2、利用全局混入mixin',
+      '',
+      'vue3',
+      'main.js => app.config.globalProperties.xxx = () => {}'
+    ]
+  },
+  {
+    id: 10,
+    title: 'keep-alive有关的生命周期是哪些？',
+    tags: [tagMnum.vue],
+    answer: [
+      'activated 和 deactivated 两个生命周期函数',
+      '',
+      '当 keep-alive 组件激活时，触发 activated ， keep-alive 组件停用时调用 deactivated'
+    ]
+  },
+  {
+    id: 11,
+    title: '你知道vue中key的原理吗？',
+    tags: [tagMnum.vue],
+    answer: [
+      '便于Diff时更高效的进行节点查询对比。',
+      '',
+      '有key时，通过createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)生成的key与索引映射关系，直接通过新子节点的key查询是否存在于旧子节点序列中。',
+      '无key时，必须遍历旧子节点序列，依次与新子节点对比判断是否为新增节点。',
+    ]
+  },
+  {
+    id: 12,
+    title: '你知道 style 加 scoped 属性的用途和原理吗？',
+    tags: [tagMnum.vue],
+    answer: [
+      '用途：防止全局同名CSS污染',
+      '',
+      '原理：在标签加上 v-data-something 属性，再在选择器时加上对应 [v-data-something] ，即 CSS 带属性选择器，以此完成类似作用域的选择方式',
+    ]
+  },
+  {
+    id: 13,
+    title: '如何在子组件中访问父组件的实例？',
+    tags: [tagMnum.vue],
+    answer: [
+      '1、直接在子组件中通过 this.$parent.event 来调用父组件的方法',
+      '',
+      '2、在子组件里用 $emit 向父组件触发一个事件，父组件监听这个事件',
+      '',
+      '3、父组件把方法传入子组件中，在子组件里直接调用这个方法',
+    ]
+  },
+  {
+    id: 14,
+    title: 'babel-polyfill 主要是用来做什么的？',
+    tags: [tagMnum.vue],
+    answer: [
+      'Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的API，比如 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise 等全局对象，以及一些定义在全局对象上的方法（比如 Object.assign ）都不会转码。',
+      '',
+      '举例来说，ES6在Array对象上新增了 Array.from 方法。Babel 就不会转码这个方法。如果想让这个方法运行，必须使用 babel-polyfill，为当前环境提供一个垫片。',
+      '',
+      'Babel 默认不转码的API非常多，详细清单可以查看babel-plugin-transform-runtime模块的definitions.js文件。',
+    ]
+  },
+  {
+    id: 15,
+    title: '说说你对 vue 错误处理的了解？',
+    tags: [tagMnum.vue],
+    answer: [
+      '分为 errorCaptured 与errorHandler。',
+      '',
+      'errorCaptured 是组件内部钩子，可捕捉本组件与子孙组件抛出的错误，接收 error、vm、info 三个参数，return false后可以阻止错误继续向上抛出。',
+      '',
+      'errorHandler 为全局钩子，使用 Vue.config.errorHandler 配置，接收参数与 errorCaptured 一致，2.6后可捕捉 v-on 与 promise 链的错误，可用于统一错误处理与错误兜底。',
+    ]
+  },
+  {
+    id: 16,
+    title: '事件 $event，使用 e.target 和 e.currentTarget 有什么区别？',
+    tags: [tagMnum.vue],
+    answer: [
+      'event.currentTarget 指向事件所绑定的元素',
+      '',
+      'event.target 始终指向事件发生时的元素。',
+    ]
+  },
+  {
+    id: 17,
+    title: 'vue 文件中 style 是必须的吗？那 script 是必须的吗？',
+    tags: [tagMnum.vue],
+    answer: [
+      '1、如果没有 render 函数，那么 template 是必须要有的，否则报错',
+      '',
+      '2、如果有 render 函数，那么可以没有 template, style，但是要有 script',
+      '',
+      '3、可以只有 <template>，而 script、style 是非必须的'
+    ]
+  },
+  {
+    id: 18,
+    title: 'vue怎么实现强制刷新组件？',
+    tags: [tagMnum.vue],
+    answer: [
+      '1、v-if',
+      '2、this.$forceUpdate()',
+      '3、更改 key'
+    ]
+  },
+  {
+    id: 19,
+    title: 'vue 自定义事件中父组件怎么接收子组件的多个参数？',
+    tags: [tagMnum.vue],
+    answer: [
+      'this.$emit("eventName",data)',
+      'data为一个对象'
+    ]
+  },
+  {
+    id: 20,
+    title: '$attrs 和 $listeners的使用场景有哪些？',
+    tags: [tagMnum.vue],
+    answer: [
+      '多级组件嵌套需要传递数据时，通常使用的方法是通过vuex。如果为了传递数据而无中间层处理，则可以使用Vue中提供的$attrs和$listeners'
+    ]
+  },
+  {
+    id: 21,
+    title: '说说你对vue的表单修饰符.lazy的理解',
+    tags: [tagMnum.vue],
+    answer: [
+      'v-model 默认的触发条件是 input 事件, 加了 .lazy 修饰符之后, v-model 会在 change 事件触发的时候去监听'
+    ]
   }
 ]
