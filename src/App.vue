@@ -17,7 +17,7 @@ page {
   min-height: 100vh;
 }
 .layout {
-  &, view {
+  &, view, uni-view {
     box-sizing: border-box;
   }
 }

@@ -6,10 +6,16 @@
         "navigationStyle": "custom",
         "disableScroll": true
       }
+    },
+    {
+      "path": "pages/list/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {
-    "navigationBarTitleText": "jimeimen",
+    "navigationBarTitleText": "面试",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
     "navigationStyle": "default",
@@ -19,6 +25,12 @@
     "rpxCalcMaxDeviceWidth": 768,
     "rpxCalcBaseDeviceWidth": 750,
     "rpxCalcIncludeWidth": 750,
-    "maxWidth": 768
+    "maxWidth": 768,
+    "usingComponents": {
+      "Layout": "/components/Layout/index"
+    }
+  },
+  "easycom": {
+    "autoscan": false
   }
 }

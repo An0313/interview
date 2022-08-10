@@ -1,3 +1,4 @@
 export default {
-  "home": "/pages/index/index"
+  "home": "/pages/index/index",
+  "list": "/pages/list/index"
 }

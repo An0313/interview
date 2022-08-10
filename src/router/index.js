@@ -9,7 +9,15 @@ const router = [
 		style: {
 			navigationStyle: 'custom',
 			disableScroll: true,
-            navigationBarTitleText: '首页'
+		}
+	},
+	// 面试题列表
+	{
+		path: 'pages/list/index',
+		name: 'list',
+		meta: {},
+		style: {
+			navigationStyle: 'custom',
 		}
 	},
 ]

@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import {defineProps, withDefaults} from 'vue'
+import { withDefaults} from 'vue'
 import {useStore} from 'vuex'
 import {appName} from "@/const";
 import cPagePath from '@/const/pages'
