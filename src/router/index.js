@@ -108,7 +108,7 @@ exports.appConfig = {
 		rpxCalcIncludeWidth: 750, // rpx 计算特殊处理的值，始终按实际的设备宽度计算，单位 rpx，默认值为 750
 		maxWidth: maxWidth,
         usingComponents: {
-            Layout: '/components/Layout/index'
+					Layout: '/components/Layout/Layout'
         }
 	},
 	// https://uniapp.dcloud.io/collocation/pages.html#tabbar
