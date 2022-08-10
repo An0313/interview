@@ -18,6 +18,17 @@ const router = [
 		meta: {},
 		style: {
 			navigationStyle: 'custom',
+			disableScroll: true,
+		}
+	},
+	// 面试题详情
+	{
+		path: 'pages/problemDetail/index',
+		name: 'problemDetail',
+		meta: {},
+		style: {
+			navigationStyle: 'custom',
+			disableScroll: true,
 		}
 	},
 ]

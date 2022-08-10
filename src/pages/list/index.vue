@@ -5,6 +5,7 @@
         class="listItem"
         v-for="(item, index) in problemList"
         :key="item.id"
+        @click="handleOpenDetail(item.id)"
       >
         <view class="title">{{ index + 1 }} {{ item.title }}</view>
         <view class="tags">
@@ -22,11 +23,11 @@ import { ref } from "vue";
 import { onLoad } from "@dcloudio/uni-app";
 import { problem } from "@/const/problem";
 import { tagMnum } from "@/const/tag";
+import Page from "@/const/pages";
 
 const problemList = ref<any[]>([]);
 
 onLoad(({ id }) => {
-  console.log(id);
   const _id = Number(id);
   if (!Number.isInteger(_id)) {
     console.log("无效的id", id);
@@ -36,6 +37,13 @@ onLoad(({ id }) => {
     });
   }
 });
+
+// 打开详情页
+const handleOpenDetail = (id: number) => {
+  uni.navigateTo({
+    url: `${Page.problemDetail}?id=${id}`,
+  });
+};
 </script>
 
 <style lang="scss" scoped>

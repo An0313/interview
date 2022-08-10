@@ -10,7 +10,15 @@
     {
       "path": "pages/list/index",
       "style": {
-        "navigationStyle": "custom"
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
+      "path": "pages/problemDetail/index",
+      "style": {
+        "navigationStyle": "custom",
+        "disableScroll": true
       }
     }
   ],
