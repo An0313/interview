@@ -1,7 +1,12 @@
 <template>
   <Layout>
     <view class="tags">
-      <view class="tagItem" v-for="item in tags" :key="item.id">
+      <view
+        class="tagItem"
+        v-for="item in tags"
+        :key="item.id"
+        @click="handleOpenList(item.id)"
+      >
         <image class="tagIcon" :src="item.icon" />
         <text>{{ item.name }}</text>
       </view>
@@ -10,7 +15,14 @@
 </template>
 
 <script setup lang="ts">
+import Page from "@/const/pages";
 import { tags } from "@/const/tag";
+
+const handleOpenList = (id: number) => {
+  uni.navigateTo({
+    url: `${Page.list}?id=${id}`,
+  });
+};
 </script>
 
 <style lang="scss" scoped>

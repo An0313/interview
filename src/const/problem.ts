@@ -1,6 +1,13 @@
 // 面试题
 import { tagMnum } from './tag'
-export default [
+
+export interface iProblemItem {
+  id: number,
+  title: string,
+  tags: Array<string | number>,
+  answer: string[]
+}
+export const problem: iProblemItem[] = [
   {
     id: 1,
     title: 'H5和小程序有什么相同及不同的地方吗？',
