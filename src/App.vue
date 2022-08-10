@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onLaunch, onShow, onHide} from "@dcloudio/uni-app";
+import { onLaunch, onShow, onHide } from "@dcloudio/uni-app";
 
 onLaunch(() => {
   console.log("App Launch");
@@ -16,9 +16,9 @@ page {
   width: 100vw;
   min-height: 100vh;
 }
-.layout {
-  &, view, uni-view {
-    box-sizing: border-box;
-  }
+
+view,
+scroll-view {
+  box-sizing: border-box;
 }
 </style>
