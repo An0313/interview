@@ -1,25 +1,38 @@
 <template>
-  <scroll-view class="layout" scroll-y>
+  <view class="layout" scroll-y :style="{ paddingBottom: `${bottomLift}px` }">
     <NavTitle :title="props.title" />
-    <view>
+    <view class="content">
       <slot></slot>
     </view>
-  </scroll-view>
+    <!-- <Tabbar v-if="props.showTabbar" /> -->
+  </view>
 </template>
 
 <script lang="ts" setup>
-
+import { useStore } from "vuex";
 interface PropsType {
-  title?: string
+  title?: string;
+  showTabbar?: boolean;
 }
-const props = defineProps<PropsType>()
 
+const { bottomLift } = useStore().state;
+const props = withDefaults(defineProps<PropsType>(), {
+  // title: '',
+  showTabbar: false,
+});
 </script>
 
 <style lang="scss" scoped>
 .layout {
+  display: flex;
   width: 100vw;
   height: 100vh;
+  flex-direction: column;
   overflow: hidden;
+
+  .content {
+    flex: 1;
+    overflow-y: scroll;
+  }
 }
 </style>

@@ -1,16 +1,38 @@
 <template>
-  <view class="navTitle" :style="{
-    height: `${navHeight}px`
-  }">
-    <view class="statusBar" :style="{
-      height: `${statusBarHeight}px`
-    }"/>
-    <view class="titleBar" :style="{
-      height: `${titleHeight}px`,
-      lineHeight: `${titleHeight}px`
-    }">
-      <view class="backBtn" @click="handelBack">
-        <image class="backImg" :src="pagesLength === 1 ? homeIcon : LeftArrowIcon" mode="heightFix"/>
+  <view
+    class="navTitle"
+    :style="{
+      height: `${navHeight}px`,
+    }"
+  >
+    <view
+      class="statusBar"
+      :style="{
+        height: `${statusBarHeight}px`,
+      }"
+    />
+    <view
+      class="titleBar"
+      :style="{
+        height: `${titleHeight}px`,
+        lineHeight: `${titleHeight}px`,
+      }"
+    >
+      <view
+        class="backBtn"
+        @click="handelBack"
+        v-if="
+          currentPagePath !== cPagePath.home &&
+          currentPagePath !== cPagePath.search &&
+          currentPagePath !== cPagePath.company &&
+          currentPagePath !== cPagePath.user
+        "
+      >
+        <image
+          class="backImg"
+          :src="pagesLength === 1 ? homeIcon : LeftArrowIcon"
+          mode="heightFix"
+        />
       </view>
       <view class="title">{{ props.title }}</view>
     </view>
@@ -18,41 +40,33 @@
 </template>
 
 <script lang="ts" setup>
-import { withDefaults} from 'vue'
-import {useStore} from 'vuex'
-import {appName} from "@/const";
-import cPagePath from '@/const/pages'
-import homeIcon from '@/static/img/home'
-import LeftArrowIcon from '@/static/img/left-arrow'
-
-
-
-
+import { useStore } from "vuex";
+import { appName } from "@/const";
+import homeIcon from "@/static/img/home";
+import LeftArrowIcon from "@/static/img/left-arrow";
 
 interface PropsType {
-  title?: string
+  title?: string;
 }
 
 const props = withDefaults(defineProps<PropsType>(), {
-  title: appName
+  title: appName,
 });
 
-const pages = getCurrentPages()
-const pagesLength = pages.length
-const currentPagePath = pages[pagesLength - 1].route
+const pages = getCurrentPages();
+const pagesLength = pages.length;
+const currentPagePath = `/${pages[pagesLength - 1].route}`;
 
-const store = useStore()
-const {
-  statusBarHeight,
-  navHeight,
-  titleHeight
-} = store.state.navInfo
+const store = useStore();
+const { statusBarHeight, navHeight, titleHeight } = store.state.navInfo;
+const cPagePath = store.state.page
 
 // 返回上一页
 const handelBack = () => {
-  pagesLength === 1 ? uni.switchTab({url: cPagePath.home}) :
-      uni.navigateBack()
-}
+  pagesLength === 1
+    ? uni.switchTab({ url: cPagePath.home })
+    : uni.navigateBack();
+};
 </script>
 
 <style lang="scss" scoped>
@@ -60,6 +74,7 @@ const handelBack = () => {
   $navBg: #fff;
   width: 100%;
   background-color: $navBg;
+  border-bottom: 1rpx solid #eee;
   overflow: hidden;
 
   .statusBar {

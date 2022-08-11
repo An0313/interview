@@ -1,11 +1,14 @@
 <template>
-  <Layout>
+  <Layout showTabbar>
+    // #ifdef MP-WEIXIN
+    <ad unit-id="adunit-c05ae012df7980d9"></ad>
+    // #endif
     <view class="tags">
       <view
         class="tagItem"
-        v-for="item in tags"
+        v-for="(item, index) in tags"
         :key="item.id"
-        @click="handleOpenList(item.id)"
+        @click="handleOpenList(index)"
       >
         <image class="tagIcon" :src="item.icon" />
         <text>{{ item.name }}</text>
@@ -15,12 +18,14 @@
 </template>
 
 <script setup lang="ts">
-import Page from "@/const/pages";
-import { tags } from "@/const/tag";
+import { useStore } from "vuex";
 
-const handleOpenList = (id: number) => {
+const store = useStore();
+const { page: Page, problemTag: tags } = store.state;
+const handleOpenList = (i: number) => {
+  const { id, name } = tags[i];
   uni.navigateTo({
-    url: `${Page.list}?id=${id}`,
+    url: `${Page.list}?id=${id}&name=${name}`,
   });
 };
 </script>
@@ -42,6 +47,8 @@ const handleOpenList = (id: number) => {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    font-size: 30rpx;
+    color: #333;
     border-bottom: $border;
     border-right: $border;
     overflow: hidden;

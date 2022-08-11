@@ -1,6 +1,9 @@
 <template>
-  <Layout title="'Layout'">
-    <view class="list">
+  <Layout :title="pageTitle">
+    // #ifdef MP-WEIXIN
+    <ad unit-id="adunit-5b18f0c9b3f1ad52"></ad>
+    // #endif
+    <view class="list" v-if="problemList.length">
       <view
         class="listItem"
         v-for="(item, index) in problemList"
@@ -15,26 +18,30 @@
         </view>
       </view>
     </view>
+    <Nodata v-else />
   </Layout>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import { useStore } from "vuex";
 import { onLoad } from "@dcloudio/uni-app";
-import { problem } from "@/const/problem";
-import { tagMnum } from "@/const/tag";
-import Page from "@/const/pages";
+
+const store = useStore();
+const { problem, problemTagMnum: tagMnum, page: Page } = store.state;
 
 const problemList = ref<any[]>([]);
+const pageTitle = ref<string>("");
 
-onLoad(({ id }) => {
+onLoad(({ id, name }) => {
   const _id = Number(id);
   if (!Number.isInteger(_id)) {
     console.log("无效的id", id);
   } else {
-    problemList.value = problem.filter((item) => {
+    problemList.value = problem.filter((item: any) => {
       return item.tags.indexOf(_id) !== -1;
     });
+    pageTitle.value = name || "";
   }
 });
 

@@ -1,5 +1,5 @@
 // 面试题
-import { tagMnum } from './tag'
+import { problemTagMnum as tagMnum } from './problemTag'
 
 export interface iProblemItem {
   id: number,

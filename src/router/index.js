@@ -9,6 +9,41 @@ const router = [
 		style: {
 			navigationStyle: 'custom',
 			disableScroll: true,
+			// #ifdef MP-WEIXIN
+			usingComponents: {
+				MyBannerAd: "/wxcomponents/Ad/index"
+			},
+			// #endif
+		}
+	},
+	// 搜索
+	{
+		path: 'pages/search/index',
+		name: 'search',
+		meta: {},
+		style: {
+			navigationStyle: 'custom',
+			disableScroll: true,
+		}
+	},
+	// 大厂面试题
+	{
+		path: 'pages/company/index',
+		name: 'company',
+		meta: {},
+		style: {
+			navigationStyle: 'custom',
+			disableScroll: true,
+		}
+	},
+	// 我的
+	{
+		path: 'pages/user/index',
+		name: 'user',
+		meta: {},
+		style: {
+			navigationStyle: 'custom',
+			disableScroll: true,
 		}
 	},
 	// 面试题列表
@@ -119,11 +154,18 @@ exports.appConfig = {
 	// 		"pagePath": "pages/index/index",
 	// 		"iconPath": "static/img/tabber_home.png",
 	// 		"selectedIconPath": "static/img/tabber_home_HL.png",
-	// 	}, {
+	// 	},
+	// 	{
 	// 		"pagePath": "pages/search/index",
 	// 		"iconPath": "static/img/tabber_search.png",
 	// 		"selectedIconPath": "static/img/tabber_search_HL.png",
-	// 	}, {
+	// 	},
+	// 	{
+	// 		"pagePath": "pages/search/index",
+	// 		"iconPath": "static/img/tabber_search.png",
+	// 		"selectedIconPath": "static/img/tabber_search_HL.png",
+	// 	},
+	// 	{
 	// 		"pagePath": "pages/user/index",
 	// 		"iconPath": "static/img/tabber_people.png",
 	// 		"selectedIconPath": "static/img/tabber_people_HL.png",
@@ -131,6 +173,6 @@ exports.appConfig = {
 	// }
 	//
 	// easycom: {
-	//     autoscan: false,
+	// 	autoscan: false,
 	// }
 }

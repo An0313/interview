@@ -6,6 +6,7 @@ import CssIcon from '@/static/img/cssIcon'
 import JsIcon from '@/static/img/jsIcon'
 import TsIcon from '@/static/img/tsIcon'
 import OptimizeIcon from '@/static/img/optimizeIcon'
+import CompanyIcon from '@/static/img/company'
 import WxIcon from '@/static/img/wxIcon'
 
 interface iTagItem {
@@ -17,7 +18,7 @@ interface iTagItem {
 }
 
 // 面试题标签
-const tags: Array<iTagItem> = [
+const problemTag: Array<iTagItem> = [
   {
     id: 5,
     name: 'html',
@@ -74,6 +75,11 @@ const tags: Array<iTagItem> = [
     name: '性能优化',
     key: 'optimize',
     icon: OptimizeIcon
+  }, {
+    id: 9,
+    name: '大厂面试',
+    key: 'company',
+    icon: CompanyIcon
   },
 
 ]
@@ -83,11 +89,11 @@ interface iTagMnum {
 }
 
 // 面试题标签枚举
-const tagMnum: iTagMnum = {}
+const problemTagMnum: iTagMnum = {}
 
-tags.forEach(item => {
-  tagMnum[item.id] = item.name
-  tagMnum[item.key] = item.id
+problemTag.forEach(item => {
+  problemTagMnum[item.id] = item.name
+  problemTagMnum[item.key] = item.id
 })
 
-export { tags, tagMnum }
+export { problemTag, problemTagMnum }
