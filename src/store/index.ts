@@ -1,14 +1,32 @@
-import { createStore } from 'vuex'
-import { getTerminal, getNavInfo } from '@/util'
+import { InjectionKey } from 'vue'
+import { createStore, useStore as baseUseStore, Store } from 'vuex'
+import { getTerminal, getTerminalRes, getNavInfo, getNavInfoRes } from '@/util'
 import moduleA from './modules/moduleA'
-import { problem } from './modules/problem'
-import { problemTag, problemTagMnum } from './modules/problemTag'
+import { problem, iProblemItem } from './modules/problem'
+import { problemTag, iTagItem, problemTagMnum, iTagMnum } from './modules/problemTag'
 import page from './modules/pages'
 import mutations from './mutations'
 
+interface iPage {
+  [key: string]: string
+}
+
+interface iState {
+  readonly systemInfo: UniApp.GetSystemInfoResult
+  readonly navInfo: getNavInfoRes
+  readonly bottomLift: number
+  readonly terminal: getTerminalRes,
+  readonly page: iPage
+  readonly problem: iProblemItem[]
+  readonly problemTag: iTagItem[]
+  readonly problemTagMnum: iTagMnum
+}
+
 const systemInfo = uni.getSystemInfoSync()
 
-const store = createStore({
+export const key: InjectionKey<Store<iState>> = Symbol()
+
+export const store = createStore<iState>({
   state: {
     systemInfo,
     navInfo: getNavInfo(),
@@ -25,4 +43,5 @@ const store = createStore({
   }
 })
 
-export default store
+// 定义自己的 `useStore` 组合式函数
+export const useStore = () => baseUseStore(key)

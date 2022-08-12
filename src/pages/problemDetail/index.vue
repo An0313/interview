@@ -25,9 +25,9 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useStore } from "vuex";
-import { onLoad } from "@dcloudio/uni-app";
+import { useStore } from "@/store";
 import { iProblemItem } from "@/store/modules/problem";
+import { onLoad } from "@dcloudio/uni-app";
 
 const store = useStore();
 const { problem, problemTagMnum: tagMnum } = store.state;
@@ -38,7 +38,7 @@ onLoad(({ id }) => {
   if (!Number.isInteger(_id)) {
     console.log("无效的id", id);
   } else {
-    _problem.value = (problem as iProblemItem[]).find((item) => {
+    _problem.value = problem.find((item) => {
       return item.id === _id;
     });
     if (!_problem.value) console.log("无效的id", id);

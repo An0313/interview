@@ -9,7 +9,7 @@ import OptimizeIcon from '@/static/img/optimizeIcon'
 import CompanyIcon from '@/static/img/company'
 import WxIcon from '@/static/img/wxIcon'
 
-interface iTagItem {
+export interface iTagItem {
   id: number,
   name: string,
   key: string,
@@ -84,7 +84,7 @@ const problemTag: Array<iTagItem> = [
 
 ]
 
-interface iTagMnum {
+export interface iTagMnum {
   [key: string]: string | number
 }
 

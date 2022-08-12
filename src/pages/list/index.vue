@@ -24,13 +24,14 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useStore } from "vuex";
+import { useStore } from "@/store";
 import { onLoad } from "@dcloudio/uni-app";
+import { iProblemItem } from "@/store/modules/problem";
 
 const store = useStore();
 const { problem, problemTagMnum: tagMnum, page: Page } = store.state;
 
-const problemList = ref<any[]>([]);
+const problemList = ref<iProblemItem[]>([]);
 const pageTitle = ref<string>("");
 
 onLoad(({ id, name }) => {
@@ -38,7 +39,7 @@ onLoad(({ id, name }) => {
   if (!Number.isInteger(_id)) {
     console.log("无效的id", id);
   } else {
-    problemList.value = problem.filter((item: any) => {
+    problemList.value = problem.filter((item) => {
       return item.tags.indexOf(_id) !== -1;
     });
     pageTitle.value = name || "";

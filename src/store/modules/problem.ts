@@ -7,6 +7,7 @@ export interface iProblemItem {
   tags: Array<string | number>,
   answer: string[]
 }
+
 export const problem: iProblemItem[] = [
   {
     id: 1,

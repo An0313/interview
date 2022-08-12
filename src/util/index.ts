@@ -38,7 +38,24 @@ export const throttle = function (fn, interval = 2000) {
 }
 
 // 获取客户终端信息
-export const getTerminal = () => {
+export interface getTerminalRes {
+  app: boolean
+  appNvue: boolean
+  h5: boolean
+  h5Wx: boolean
+  mpWeixin: boolean
+  mpAlipay: boolean
+  mpBaidu: boolean
+  mMpToutiao: boolean
+  mpQq: boolean
+  mp360: boolean
+  mpJd: boolean
+  mp: boolean
+  quickappWebview: boolean
+  quickappWebviewUnion: boolean
+  quickappWebviewHuawei: boolean
+}
+export const getTerminal = (): getTerminalRes => {
   const terminal = {
     /**App*/
     app: false,
@@ -146,7 +163,13 @@ export const getTerminal = () => {
 }
 
 // 获取导航栏信息
-export const getNavInfo = () => {
+export interface getNavInfoRes {
+  statusBarHeight: number
+  navHeight: number
+  titleHeight: number
+}
+
+export const getNavInfo = (): getNavInfoRes => {
   const {app, mp} = getTerminal()
 
   const navData = {
