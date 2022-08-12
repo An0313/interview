@@ -9,11 +9,6 @@ const router = [
 		style: {
 			navigationStyle: 'custom',
 			disableScroll: true,
-			// #ifdef MP-WEIXIN
-			usingComponents: {
-				MyBannerAd: "/wxcomponents/Ad/index"
-			},
-			// #endif
 		}
 	},
 	// 搜索

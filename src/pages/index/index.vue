@@ -37,7 +37,6 @@ let interstitialAd: UniApp.InterstitialAdContext | null = null;
 let showInterstitialAdNumber: number = 0;
 
 onLoad(() => {
-  console.log(1);
   if (uni.createInterstitialAd) {
     interstitialAd = uni.createInterstitialAd({
       adUnitId: "adunit-5d354663ce6b74b9",

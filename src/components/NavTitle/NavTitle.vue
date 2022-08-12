@@ -3,14 +3,9 @@
     class="navTitle"
     :style="{
       height: `${navHeight}px`,
+      paddingTop: `${statusBarHeight}px`
     }"
   >
-    <view
-      class="statusBar"
-      :style="{
-        height: `${statusBarHeight}px`,
-      }"
-    />
     <view
       class="titleBar"
       :style="{
@@ -77,10 +72,6 @@ const handelBack = () => {
   border-bottom: 1rpx solid #eee;
   overflow: hidden;
 
-  .statusBar {
-    width: 100%;
-  }
-
   .titleBar {
     position: relative;
 
@@ -91,12 +82,12 @@ const handelBack = () => {
       bottom: 0;
       width: 100rpx;
       height: 100%;
-      padding-left: 30rpx;
+      padding-left: 20rpx;
       background-color: $navBg;
       z-index: 10;
 
       .backImg {
-        height: 60%;
+        height: 65%;
         vertical-align: middle;
       }
     }
@@ -108,7 +99,7 @@ const handelBack = () => {
       width: 100%;
       height: 100%;
       text-align: center;
-      font-size: 28rpx;
+      font-size: 36rpx;
       font-weight: bold;
       color: #333333;
     }

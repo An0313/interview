@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useStore} from 'vuex'
+import { useStore} from '@/store'
 import { onLoad } from "@dcloudio/uni-app";
 import homeIcon from "@/static/img/tabbar/home";
 import homeFillIcon from "@/static/img/tabbar/home-fill";

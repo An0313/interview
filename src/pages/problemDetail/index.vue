@@ -51,6 +51,7 @@ onLoad(({ id }) => {
   padding: 30rpx;
 
   .title {
+    text-align: center;
     font-size: 40rpx;
     font-weight: bold;
   }
