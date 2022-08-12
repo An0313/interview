@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from "vuex";
+import { useStore } from "@/store";
 import { appName } from "@/const";
 import homeIcon from "@/static/img/home";
 import LeftArrowIcon from "@/static/img/left-arrow";

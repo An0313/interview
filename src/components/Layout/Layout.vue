@@ -9,13 +9,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from "vuex";
+import { useStore } from "@/store";
 interface PropsType {
   title?: string;
   showTabbar?: boolean;
 }
-
-const { bottomLift } = useStore().state;
+const store = useStore();
+const { bottomLift } = store.state;
 const props = withDefaults(defineProps<PropsType>(), {
   // title: '',
   showTabbar: false,

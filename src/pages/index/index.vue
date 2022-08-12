@@ -18,16 +18,49 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from "vuex";
+import { onLoad } from "@dcloudio/uni-app";
+import { useStore } from "@/store";
 
 const store = useStore();
 const { page: Page, problemTag: tags } = store.state;
-const handleOpenList = (i: number) => {
+// 打开分类列表页面
+const handleOpenList = (i: number): void => {
   const { id, name } = tags[i];
   uni.navigateTo({
     url: `${Page.list}?id=${id}&name=${name}`,
   });
 };
+
+// #ifdef MP-WEIXIN
+// 插屏广告
+let interstitialAd: UniApp.InterstitialAdContext | null = null;
+let showInterstitialAdNumber: number = 0;
+
+onLoad(() => {
+  console.log(1);
+  if (uni.createInterstitialAd) {
+    interstitialAd = uni.createInterstitialAd({
+      adUnitId: "adunit-5d354663ce6b74b9",
+    });
+    interstitialAd.onLoad(() => {
+      // 插屏广告只显示一次
+      if (showInterstitialAdNumber === 0) {
+        // 在适合的场景显示插屏广告
+        interstitialAd
+          ?.show()
+          .catch((err) => {
+            console.error(err);
+          })
+          .then(() => showInterstitialAdNumber++);
+      }
+    });
+    interstitialAd.onError((err) => {
+      console.log("err", err);
+    });
+    interstitialAd.onClose(() => {});
+  }
+});
+// #endif
 </script>
 
 <style lang="scss" scoped>
