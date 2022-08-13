@@ -587,5 +587,5 @@ export const problem: iProblemItem[] = [
       '(provide / inject)',
       '($attrs / $listeners) '
     ]
-  }
+  },
 ]

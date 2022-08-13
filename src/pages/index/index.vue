@@ -70,7 +70,7 @@ onLoad(() => {
   flex-wrap: wrap;
 
   .tagItem {
-    $size: calc($w / 3);
+    $size: calc($w / 5);
     $border: 1rpx solid #eee;
     display: flex;
     width: $size;
@@ -79,13 +79,13 @@ onLoad(() => {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-size: 30rpx;
+    font-size: 24rpx;
     color: #333;
     border-bottom: $border;
     border-right: $border;
     overflow: hidden;
 
-    &:nth-child(3n) {
+    &:nth-child(5n) {
       border-right: none;
     }
 
