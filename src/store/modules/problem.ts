@@ -11,7 +11,7 @@ export interface iProblemItem {
 export const problem: iProblemItem[] = [
   {
     id: 1,
-    title: 'H5和小程序有什么相同及不同的地方吗',
+    title: 'H5和小程序有什么区别',
     tags: [tagMnum.html, tagMnum.wx],
     answer: [
       '运行环境的不同',
@@ -117,7 +117,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 8,
-    title: 'v-model的原理',
+    title: 'vue v-model 的原理',
     tags: [tagMnum.vue],
     answer: [
       'v-model只不过是一个语法糖',
@@ -130,7 +130,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 9,
-    title: '怎么给vue定义全局的方法',
+    title: '怎么给 vue 定义全局的方法',
     tags: [tagMnum.vue],
     answer: [
       'vue2',
@@ -143,7 +143,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 10,
-    title: 'keep-alive有关的生命周期是哪些',
+    title: 'keep-alive 有关的生命周期是哪些',
     tags: [tagMnum.vue],
     answer: [
       'activated 和 deactivated 两个生命周期函数',
@@ -153,7 +153,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 11,
-    title: '你知道vue中key的原理吗',
+    title: '你知道 vue 中 key 的原理吗',
     tags: [tagMnum.vue],
     answer: [
       '便于Diff时更高效的进行节点查询对比',
@@ -210,7 +210,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 16,
-    title: '事件 $event，使用 e.target 和 e.currentTarget 有什么区别',
+    title: '事件 e.target 和 e.currentTarget 的区别',
     tags: [tagMnum.vue],
     answer: [
       'event.currentTarget 指向事件所绑定的元素',
@@ -220,7 +220,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 17,
-    title: 'vue 文件中 style 是必须的吗？那 script 是必须的吗？',
+    title: 'vue 文件中 style 与 script 是必须的吗？',
     tags: [tagMnum.vue],
     answer: [
       '1、如果没有 render 函数，那么 template 是必须要有的，否则报错',
@@ -242,7 +242,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 19,
-    title: 'vue 自定义事件中父组件怎么接收子组件的多个参数',
+    title: 'vue 自定义事件怎么接收子组件的多个参数',
     tags: [tagMnum.vue],
     answer: [
       'this.$emit("eventName",data)',
@@ -505,7 +505,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 39,
-    title: '动态给 vue 的 data 添加一个新的属性时会发生什么？怎样解决？',
+    title: '动态给 data 加新的属性会发生什么？怎样解决？',
     tags: [tagMnum.vue],
     answer: [
       '如果在实例创建之后添加新的属性到实例上，它不会触发视图更新',
@@ -515,7 +515,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 40,
-    title: 'v-if 和 v-for 的优先级？如果同时出现时，那应该怎么优化？',
+    title: 'v-if 和 v-for 的优先级？同时出现怎么优化？',
     tags: [tagMnum.vue],
     answer: [
       'v-for 优先级高',
@@ -525,7 +525,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 41,
-    title: '为什么 data 属性必须声明为返回一个初始数据的函数',
+    title: 'vue data 什么是函数而不是对象',
     tags: [tagMnum.vue],
     answer: [
       '对象为引用类型，当重用组件时，由于数据对象都指向同一个 data 对象，当在一个组件中修改 data 时，其他重用的组件中的 data 会同时被修改；而使用返回对象的函数，由于每次返回的都是一个新对象（Object的实例），引用地址不同，则不会出现这个问题',
@@ -590,7 +590,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 47,
-    title: 'html 中（head、body、！Doctype）标签的作用是什么',
+    title: 'head、body、!Doctype 标签的作用',
     tags: [tagMnum.html],
     answer: [
       '!DOCTYPE：',
@@ -820,7 +820,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 58,
-    title: 'vue-router 路由有几种模式？说说它们的区别？',
+    title: 'vue-router 有几种模式？有哪些区别？',
     tags: [tagMnum.vue, tagMnum.vueRouter],
     answer: [
       '提供了两种路由模式：hash 模式和 history 模式',

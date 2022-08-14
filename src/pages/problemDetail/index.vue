@@ -1,16 +1,19 @@
 <template>
   <Layout>
-    // #ifdef MP-WEIXIN
-    <ad unit-id="adunit-9babcb790cec62f4"></ad>
-    // #endif
     <view v-if="_problem === undefined"></view>
     <view v-else class="problem">
       <view class="title">{{ _problem?.title }}</view>
       <view class="tags">
-        <view class="tagItem" v-for="tagItem in _problem?.tags" :key="tagItem">{{
-          tagMnum[tagItem]
-        }}</view>
+        <view
+          class="tagItem"
+          v-for="tagItem in _problem?.tags"
+          :key="tagItem"
+          >{{ tagMnum[tagItem] }}</view
+        >
       </view>
+      // #ifdef MP-WEIXIN
+      <ad unit-id="adunit-9babcb790cec62f4"></ad>
+      // #endif
       <view class="answer">
         <view
           class="row"
@@ -52,7 +55,7 @@ onLoad(({ id }) => {
 
   .title {
     text-align: center;
-    font-size: 40rpx;
+    font-size: 38rpx;
     font-weight: bold;
   }
 
