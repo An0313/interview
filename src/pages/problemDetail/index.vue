@@ -33,18 +33,19 @@ import { iProblemItem } from "@/store/modules/problem";
 import { onLoad } from "@dcloudio/uni-app";
 
 const store = useStore();
-const { problem, problemTagMnum: tagMnum } = store.state;
+const { probleSort, problemTagMnum: tagMnum } = store.state;
 const _problem = ref<iProblemItem | undefined>(undefined);
 
-onLoad(({ id }) => {
-  const _id = Number(id);
-  if (!Number.isInteger(_id)) {
-    console.log("无效的id", id);
+onLoad(({ sortId, pId }) => {
+  const _pId = Number(pId);
+  const pList = sortId && probleSort[sortId];
+  if (!Number.isInteger(_pId) || pList === undefined) {
+    console.log("无效的id", _pId, sortId);
   } else {
-    _problem.value = problem.find((item) => {
-      return item.id === _id;
+    _problem.value = (pList as iProblemItem[]).find((item) => {
+      return item.id === _pId;
     });
-    if (!_problem.value) console.log("无效的id", id);
+    if (!_problem.value) console.log("无效的id", _pId);
   }
 });
 </script>
@@ -55,7 +56,7 @@ onLoad(({ id }) => {
 
   .title {
     text-align: center;
-    font-size: 38rpx;
+    font-size: $i-font-size-lg;
     font-weight: bold;
   }
 

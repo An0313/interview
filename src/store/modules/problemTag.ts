@@ -29,40 +29,40 @@ export interface iTagItem extends iBaseTagItem {
 const problemTag: Array<iTagItem> = [
   {
     id: 1,
-    name: 'html',
+    name: 'HTML',
     key: 'html',
     icon: HtmlIcon,
   },
   {
     id: 2,
-    name: 'css',
+    name: 'CSS',
     key: 'css',
     icon: CssIcon,
   },
   {
     id: 3,
-    name: 'js',
+    name: 'JavaScript',
     key: 'js',
     icon: JsIcon,
     children: [
       {
         id: 301,
-        name: 'es6',
+        name: 'ES6',
         key: 'es6',
       }, {
         id: 302,
-        name: 'es7',
+        name: 'ES7',
         key: 'es7'
       }, {
         id: 303,
-        name: 'es8',
-        key: 'ves8'
+        name: 'ES8',
+        key: 'es8'
       }
     ]
   },
   {
     id: 4,
-    name: 'vue',
+    name: 'Vue',
     key: 'vue',
     icon: VueIcon,
     children: [
@@ -83,7 +83,7 @@ const problemTag: Array<iTagItem> = [
   },
   {
     id: 5,
-    name: 'react',
+    name: 'React',
     key: 'react',
     icon: ReactIcon
   },
@@ -95,13 +95,13 @@ const problemTag: Array<iTagItem> = [
   },
   {
     id: 7,
-    name: 'ts',
+    name: 'TypeScript',
     key: 'ts',
     icon: TsIcon
   },
   {
     id: 8,
-    name: 'git',
+    name: 'Git',
     key: 'git',
     icon: GitIcon
   },

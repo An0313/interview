@@ -1,5 +1,5 @@
 // 面试题
-import { problemTagMnum as tagMnum } from './problemTag'
+import { iTagMnum, problemTagMnum as tagMnum } from './problemTag'
 
 export interface iProblemItem {
   id: number,
@@ -880,3 +880,17 @@ export const problem: iProblemItem[] = [
     ]
   },
 ]
+
+export interface iProbleSort {
+  [key: string | number]: iProblemItem[]
+}
+export const probleSort = (() => {
+  const sort: iProbleSort = {}
+  problem.forEach(item => {
+    item.tags.forEach(tag => {
+      if (!sort[tag]) sort[tag] = []
+      sort[tag].push(item)
+    })
+  })
+  return sort
+})()

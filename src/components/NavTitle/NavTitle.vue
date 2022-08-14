@@ -100,7 +100,7 @@ const handelBack = () => {
       height: 100%;
       text-align: center;
       font-size: 36rpx;
-      font-weight: bold;
+      font-weight: 400;
       color: #333333;
     }
   }

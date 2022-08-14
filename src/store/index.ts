@@ -2,7 +2,7 @@ import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store } from 'vuex'
 import { getTerminal, getTerminalRes, getNavInfo, getNavInfoRes } from '@/util'
 import moduleA from './modules/moduleA'
-import { problem, iProblemItem } from './modules/problem'
+import { problem, iProblemItem, probleSort, iProbleSort } from './modules/problem'
 import { problemTag, iTagItem, problemTagMnum, iTagMnum } from './modules/problemTag'
 import page from './modules/pages'
 import mutations from './mutations'
@@ -18,6 +18,7 @@ interface iState {
   readonly terminal: getTerminalRes,
   readonly page: iPage
   readonly problem: iProblemItem[]
+  readonly probleSort: iProbleSort
   readonly problemTag: iTagItem[]
   readonly problemTagMnum: iTagMnum
 }
@@ -34,6 +35,7 @@ export const store = createStore<iState>({
     terminal: getTerminal(),
     page,
     problem,
+    probleSort,
     problemTag,
     problemTagMnum
   },

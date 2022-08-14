@@ -24,45 +24,48 @@ import { onLoad } from "@dcloudio/uni-app";
 import { iProblemItem } from "@/store/modules/problem";
 
 const store = useStore();
-const { problem, page: Page } = store.state;
-
+const { probleSort, page: Page } = store.state;
+// 题目列表
 const problemList = ref<iProblemItem[]>([]);
+// 页面标题
 const pageTitle = ref<string>("");
+// 面试题分类id
+let sortId: null | string = null;
 
 onLoad(({ id, name }) => {
-  const _id = Number(id);
-  if (!Number.isInteger(_id)) {
+  if (!Number.isInteger(Number(id))) {
     console.log("无效的id", id);
   } else {
-    problemList.value = problem.filter((item) => {
-      return item.tags.indexOf(_id) !== -1;
-    });
+    sortId = id as string;
+    problemList.value = probleSort[id as string];
     pageTitle.value = name || "";
   }
 });
 
-// 打开详情页
-const handleOpenDetail = (id: number) => {
+/**
+ * 打开详情页
+ * @param pId 面试题id
+ */
+const handleOpenDetail = (pId: number): void => {
   uni.navigateTo({
-    url: `${Page.problemDetail}?id=${id}`,
+    url: `${Page.problemDetail}?sortId=${sortId}&pId=${pId}`,
   });
 };
 </script>
 
 <style lang="scss" scoped>
 .list {
-
- .listItem {
-    padding: 20rpx 30rpx;
-    font-size: 28rpx;
-    color: #666;
+  .listItem {
+    padding: 30rpx;
+    font-size: $i-font-size-base;
+    color: $i-text-color;
 
     &:nth-child(odd) {
-      background-color: #f1f1f1;
+      background-color: $i-bg-color-grey;;
     }
 
     &:active {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 }

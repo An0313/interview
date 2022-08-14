@@ -3,16 +3,24 @@
     // #ifdef MP-WEIXIN
     <ad unit-id="adunit-c05ae012df7980d9"></ad>
     // #endif
-    <view class="tags">
-      <view
-        class="tagItem"
-        v-for="(item, index) in tags"
-        :key="item.id"
-        @click="handleOpenList(index)"
-      >
-        <image class="tagIcon" :src="item.icon" />
-        <text>{{ item.name }}</text>
-      </view>
+    <view class="indexList">
+      <template v-for="(item, index) in indexList" :key="index">
+        <view class="title">{{ item.title }}</view>
+        <view class="sub">
+          <view
+            class="subItem"
+            v-for="(subItem, subIndex) in item.sub"
+            :key="subIndex"
+            @click="handleOpenList(subItem)"
+          >
+            <image class="icon" :src="subItem.icon" />
+            <view class="info">
+              <view class="name">{{ subItem.name }}</view>
+              <view class="total">共{{ subItem.total }}条</view>
+            </view>
+          </view>
+        </view>
+      </template>
     </view>
   </Layout>
 </template>
@@ -20,15 +28,67 @@
 <script setup lang="ts">
 import { onLoad } from "@dcloudio/uni-app";
 import { useStore } from "@/store";
+import { iTagItem } from "@/store/modules/problemTag";
 import { isDev } from "@/const";
+interface iIndexListItemSub {
+  name: string | number;
+  total: number;
+  icon: string;
+  id: number | string;
+}
+
+interface iIndexListItem {
+  title: string;
+  sub: iIndexListItemSub[];
+}
 
 const store = useStore();
-const { page: Page, problemTag: tags } = store.state;
+const { page: Page, problemTag, problemTagMnum, probleSort } = store.state;
+
+const indexList: iIndexListItem[] = (() =>
+  [
+    {
+      title: "基础",
+      sub: [problemTagMnum.html, problemTagMnum.css, problemTagMnum.js],
+    },
+    {
+      title: "框架",
+      sub: [problemTagMnum.vue, problemTagMnum.react, problemTagMnum.wx],
+    },
+    {
+      title: "工具",
+      sub: [problemTagMnum.git, problemTagMnum.pack],
+    },
+    {
+      title: "其他",
+      sub: [
+        problemTagMnum.ts,
+        problemTagMnum.algorithm,
+        problemTagMnum.optimize,
+        problemTagMnum.designPattern,
+        problemTagMnum.hr,
+        problemTagMnum.company,
+      ],
+    },
+  ].map((item) => {
+    return {
+      title: item.title,
+      sub: item.sub.map((subItem): iIndexListItemSub => {
+        return {
+          id: subItem,
+          icon: (problemTag.find((item) => item.id === subItem) as iTagItem)
+            .icon,
+          name: problemTagMnum[subItem],
+          total: probleSort[subItem]?.length || 0,
+        };
+      }),
+    };
+  }))();
+
 // 打开分类列表页面
-const handleOpenList = (i: number): void => {
-  const { id, name } = tags[i];
+const handleOpenList = (subItem: iIndexListItemSub): void => {
   uni.navigateTo({
-    url: `${Page.list}?id=${id}&name=${name}`,
+    url: `${Page.list}?id=${subItem.id}&name=${subItem.name}`,
   });
 };
 
@@ -64,36 +124,48 @@ onLoad(() => {
 </script>
 
 <style lang="scss" scoped>
-.tags {
-  $w: 750rpx;
-  display: flex;
-  width: $w;
-  flex-wrap: wrap;
+.indexList {
+  $p: 30rpx;
+  .title {
+    padding: 15rpx $p;
+    font-size: $i-font-size-base;
+    color: $i-text-color;
+    background-color: $i-bg-color-grey;
+  }
 
-  .tagItem {
-    $size: calc($w / 5);
-    $border: 1rpx solid #eee;
-    display: flex;
-    width: $size;
-    height: $size;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 24rpx;
-    color: #333;
-    border-bottom: $border;
-    border-right: $border;
-    overflow: hidden;
+  .sub {
+    padding-left: $p;
 
-    &:nth-child(5n) {
-      border-right: none;
-    }
+    .subItem {
+      $h: 120rpx;
+      $lh: 40rpx;
+      display: flex;
+      height: $h;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1rpx solid $i-bg-color-grey;
 
-    .tagIcon {
-      $iconSize: calc($size / 2);
-      width: $iconSize;
-      height: $iconSize;
+      .icon {
+        $size: 2 * $lh;
+        width: $size;
+        height: $size;
+      }
+
+      .info {
+        flex: 1;
+        padding-left: 30rpx;
+        line-height: $lh;
+
+        .name {
+          font-size: $i-font-size-base;
+          color: $i-text-color;
+        }
+
+        .total {
+          font-size: $i-font-size-sm;
+          color: $i-text-color-grey;
+        }
+      }
     }
   }
 }
