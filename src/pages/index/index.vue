@@ -20,6 +20,7 @@
 <script setup lang="ts">
 import { onLoad } from "@dcloudio/uni-app";
 import { useStore } from "@/store";
+import { isDev } from "@/const";
 
 const store = useStore();
 const { page: Page, problemTag: tags } = store.state;
@@ -37,7 +38,7 @@ let interstitialAd: UniApp.InterstitialAdContext | null = null;
 let showInterstitialAdNumber: number = 0;
 
 onLoad(() => {
-  if (uni.createInterstitialAd) {
+  if (uni.createInterstitialAd && !isDev) {
     interstitialAd = uni.createInterstitialAd({
       adUnitId: "adunit-5d354663ce6b74b9",
     });

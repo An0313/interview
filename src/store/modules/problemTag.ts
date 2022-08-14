@@ -69,7 +69,7 @@ const problemTag: Array<iTagItem> = [
       {
         id: 101,
         name: 'vue-router',
-        key: 'vue router',
+        key: 'vueRouter',
       }, {
         id: 102,
         name: 'vuex',
@@ -77,7 +77,7 @@ const problemTag: Array<iTagItem> = [
       }, {
         id: 103,
         name: 'vue-cli',
-        key: 'vue-cli'
+        key: 'vueCli'
       }
     ]
   },
@@ -112,31 +112,31 @@ const problemTag: Array<iTagItem> = [
     icon: WebpackIcon
   },
   {
-    id: 97,
+    id: 10,
     name: '算法',
     key: 'algorithm',
     icon: AlgorithmIcon
   },
   {
-    id: 98,
+    id: 11,
     name: '性能优化',
     key: 'optimize',
     icon: OptimizeIcon
   },
   {
-    id: 99,
+    id: 12,
     name: '设计模式',
     key: 'designPattern',
     icon: DesignPatternIcon
   },
   {
-    id: 100,
+    id: 13,
     name: 'hr面',
     key: 'hr',
     icon: HrIcon
   },
   {
-    id: 101,
+    id: 14,
     name: '大厂面试',
     key: 'company',
     icon: CompanyIcon
@@ -154,6 +154,10 @@ const problemTagMnum: iTagMnum = {}
 problemTag.forEach(item => {
   problemTagMnum[item.id] = item.name
   problemTagMnum[item.key] = item.id
+  item.children?.forEach(_item => {
+    problemTagMnum[_item.id] = _item.name
+    problemTagMnum[_item.key] = _item.id
+  })
 })
 
 export { problemTag, problemTagMnum }

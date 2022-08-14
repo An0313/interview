@@ -10,7 +10,7 @@
         :key="item.id"
         @click="handleOpenDetail(item.id)"
       >
-        <view class="title">{{ index + 1 }}.{{ item.title }}</view>
+        <view class="title">{{ index + 1 }}题：{{ item.title }}</view>
         <view class="tags">
           <view class="tagItem" v-for="tagItem in item.tags" :key="tagItem">{{
             tagMnum[tagItem]
