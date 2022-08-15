@@ -8,7 +8,7 @@
         class="listItem"
         v-for="(item, index) in problemList"
         :key="item.id"
-        @click="handleOpenDetail(item.id)"
+        @click="handleOpenDetail(index)"
       >
         {{ index + 1 }}、{{ item.title }}
       </view>
@@ -44,9 +44,9 @@ onLoad(({ id, name }) => {
  * 打开详情页
  * @param pId 面试题id
  */
-const handleOpenDetail = (pId: number): void => {
+const handleOpenDetail = (index: number): void => {
   uni.navigateTo({
-    url: `${Page.problemDetail}?sortId=${sortId}&pId=${pId}`,
+    url: `${Page.problemDetail}?sortId=${sortId}&index=${index}`,
   });
 };
 </script>

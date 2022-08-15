@@ -32,15 +32,15 @@ const router = [
 	// 	}
 	// },
 	// 我的
-	// {
-	// 	path: 'pages/user/index',
-	// 	name: 'user',
-	// 	meta: {},
-	// 	style: {
-	// 		navigationStyle: 'custom',
-	// 		disableScroll: true,
-	// 	}
-	// },
+	{
+		path: 'pages/user/index',
+		name: 'user',
+		meta: {},
+		style: {
+			navigationStyle: 'custom',
+			disableScroll: true,
+		}
+	},
 	// 面试题列表
 	{
 		path: 'pages/probleList/index',

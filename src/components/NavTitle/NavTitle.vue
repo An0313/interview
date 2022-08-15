@@ -15,7 +15,7 @@
     >
       <view
         class="backBtn"
-        v-if="currentPagePath !== Page.home"
+        v-if="currentPagePath !== Page.home && currentPagePath !== Page.user"
         @click="handelBack"
       >
         <image

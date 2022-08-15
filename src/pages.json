@@ -8,6 +8,13 @@
       }
     },
     {
+      "path": "pages/user/index",
+      "style": {
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
       "path": "pages/probleList/index",
       "style": {
         "navigationStyle": "custom",

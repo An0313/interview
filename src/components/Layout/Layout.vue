@@ -1,10 +1,10 @@
 <template>
   <view class="layout" scroll-y :style="{ paddingBottom: `${bottomLift}px` }">
-    <NavTitle :title="props.title" />
+    <NavTitle v-if="props.showNavBar" :title="props.title" />
     <view class="content">
       <slot></slot>
     </view>
-    <!-- <Tabbar v-if="props.showTabbar" /> -->
+    <Tabbar v-if="props.showTabbar" />
   </view>
 </template>
 
@@ -13,11 +13,13 @@ import { bottomLift } from "@/const";
 
 interface PropsType {
   title?: string;
+  showNavBar?: boolean
   showTabbar?: boolean;
 }
 
 const props = withDefaults(defineProps<PropsType>(), {
   showTabbar: false,
+  showNavBar: true
 });
 </script>
 

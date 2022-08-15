@@ -16,8 +16,8 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useStore} from '@/store'
 import { onLoad } from "@dcloudio/uni-app";
+import Page from '@/const/pages'
 import homeIcon from "@/static/img/tabbar/home";
 import homeFillIcon from "@/static/img/tabbar/home-fill";
 import searchIcon from "@/static/img/tabbar/search";
@@ -27,9 +27,6 @@ import companyFillIcon from "@/static/img/tabbar/company-fill";
 import userIcon from "@/static/img/tabbar/user";
 import userFillIcon from "@/static/img/tabbar/user-fill";
 
-const store = useStore()
-const Page = store.state.page
-
 const tabbar = [
   {
     name: "home",
@@ -37,18 +34,18 @@ const tabbar = [
     icon: homeIcon,
     selectedIcon: homeFillIcon,
   },
-  {
-    name: "search",
-    page: Page.search,
-    icon: searchIcon,
-    selectedIcon: searchFillIcon,
-  },
-  {
-    name: "company",
-    page: Page.company,
-    icon: companyIcon,
-    selectedIcon: companyFillIcon,
-  },
+  // {
+  //   name: "search",
+  //   page: Page.search,
+  //   icon: searchIcon,
+  //   selectedIcon: searchFillIcon,
+  // },
+  // {
+  //   name: "company",
+  //   page: Page.company,
+  //   icon: companyIcon,
+  //   selectedIcon: companyFillIcon,
+  // },
   {
     name: "user",
     page: Page.user,
@@ -93,7 +90,7 @@ const handleOpenPage = (index: number) => {
     font-size: 0;
 
     .tabbarItemIcon {
-      $iconSize: 70rpx;
+      $iconSize: 60rpx;
       width: $iconSize;
       height: $iconSize;
       vertical-align: middle;
