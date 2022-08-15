@@ -31,6 +31,16 @@
           @click="handleChangeProble(currentIndex - 1)"
           >上一题</view
         >
+        // #ifdef MP-WEIXIN
+        <view class="btn share">
+          分享
+          <OpenBtn />
+        </view>
+        <view class="btn feedback">
+          纠错
+          <OpenBtn openType="contact" />
+        </view>
+        // #endif
         <view
           class="btn"
           :class="{ disabled: currentIndex === list.length - 1 }"
@@ -44,20 +54,23 @@
 
 <script lang="ts" setup>
 import { ref, watchEffect } from "vue";
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage } from "@dcloudio/uni-app";
 import { iProblemItem, probleSort } from "@/const/problem";
 import { problemTagMnum } from "@/const/problemTag";
+import Page from '@/const/pages'
 
 const list = ref<iProblemItem[]>([]);
 const currentIndex = ref<number>(0);
-const pageTitle = ref<string>("");
+const pageTitle = ref<string>("加载中");
 const problem = ref<iProblemItem | null>(null);
+let sid = ''
 
 onLoad(({ sortId, index }) => {
   const _index = Number(index);
   const pList = sortId && probleSort[sortId];
   if (Number.isInteger(_index)) currentIndex.value = _index;
   if (pList && pList[_index]) list.value = pList;
+  sid = sortId as string
 });
 
 // 切换面试题
@@ -66,10 +79,19 @@ const handleChangeProble = (val: number) => {
 };
 
 watchEffect(() => {
-  console.log('watchEffect')
   problem.value = list.value[currentIndex.value];
   pageTitle.value = `第${currentIndex.value + 1}题`;
 });
+
+
+// #ifdef MP-WEIXIN
+onShareAppMessage(() => {
+  return {
+    title: problem.value?.title,
+    path: `${Page.problemDetail}?sortId=${sid}&index=${currentIndex.value}`
+  }
+})
+ // #endif
 </script>
 
 <style lang="scss" scoped>
@@ -131,6 +153,14 @@ watchEffect(() => {
 
       &.disabled {
         color: $i-text-color-disable;
+      }
+
+      &.share, &.feedback {
+        position: relative;
+      }
+
+      &:active {
+        opacity: .5;
       }
     }
   }

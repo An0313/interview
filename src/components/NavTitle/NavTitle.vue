@@ -80,7 +80,9 @@ const handelBack = () => {
       z-index: 10;
 
       .backImg {
-        height: 65%;
+        $size: 52rpx;
+        width: $size;
+        height: $size;
         vertical-align: middle;
       }
     }
