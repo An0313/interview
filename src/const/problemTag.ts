@@ -11,7 +11,7 @@ import WxIcon from '@/static/img/wxIcon'
 import GitIcon from '@/static/img/gitIcon'
 import WebpackIcon from '@/static/img/webpackIcon'
 import AlgorithmIcon from '@/static/img/algorithmIcon'
-import DesignPatternIcon from '@/static/img/designPatternIcon'
+import TheoryIcon from '@/static/img/theoryIcon'
 import HrIcon from '@/static/img/hrIcon'
 
 interface iBaseTagItem {
@@ -125,9 +125,9 @@ const problemTag: Array<iTagItem> = [
   },
   {
     id: 12,
-    name: '设计模式',
-    key: 'designPattern',
-    icon: DesignPatternIcon
+    name: '理论概念',
+    key: 'theory',
+    icon: TheoryIcon
   },
   {
     id: 13,

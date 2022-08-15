@@ -3,7 +3,7 @@
     // #ifdef MP-WEIXIN
     <ad unit-id="adunit-5b18f0c9b3f1ad52"></ad>
     // #endif
-    <view class="list" v-if="problemList.length">
+    <view class="list" v-if="problemList?.length">
       <view
         class="listItem"
         v-for="(item, index) in problemList"

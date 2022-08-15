@@ -64,7 +64,7 @@ const indexList: iIndexListItem[] = (() =>
         problemTagMnum.ts,
         problemTagMnum.algorithm,
         problemTagMnum.optimize,
-        problemTagMnum.designPattern,
+        problemTagMnum.theory,
         problemTagMnum.hr,
         problemTagMnum.company,
       ],

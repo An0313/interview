@@ -879,11 +879,412 @@ export const problem: iProblemItem[] = [
       'router.addRoutes',
     ]
   },
+  {
+    id: 62,
+    title: '为什么选择前端',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 63,
+    title: '个人的优缺点',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 64,
+    title: '介绍一下前端的学习经历',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 65,
+    title: '作为前端应该掌握哪些知识',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 66,
+    title: '对未来三年职业的规划',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 67,
+    title: '你一般是通过什么方式学习前端的',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 68,
+    title: '遇到实现不了的功能怎么进行处理',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 69,
+    title: 'webpack和gulp的区别',
+    tags: [tagMnum.pack],
+    answer: [
+      'gulp:',
+      '是工具链、构建工具，可以配合各种插件做js压缩，css压缩，less编译 替代手工实现自动化工作',
+      '',
+      'webpack:',
+      'WebPack是前端模块化方案，侧重模块打包，把开发中的所有资源（图片、js文件、css文件等）都看成模块，通过loader（加载器）和plugins（插件）对资源进行处理，打包成符合生产环境部署的前端资源，它最大的优点就是“模块化”（万物皆模块）',
+      '',
+      '相同点:',
+      '都可以对文件进行合并与压缩（JS、CSS）',
+      '',
+      '不同点:',
+      'gulp是工具链、构建工具',
+      'Gulp严格上讲，它旨在规范前端开发流程，不包括模块化功能',
+      'webpack是文件打包工具',
+      'WebPack更是明显强调模块化开发，而那些文件压缩合并、预处理等功能，只是他附带的功能',
+    ]
+  },
+  {
+    id: 70,
+    title: 'webpack打包流程',
+    tags: [tagMnum.pack],
+    answer: [
+      '1、读取入口文件',
+      '2、分析入口文件，得到其所依赖的文件信息',
+      '3、递归读取每个文件的依赖信息，生成AST树，得到关系依赖图',
+      '4、代码转化，生成ES5代码',
+    ]
+  },
+  {
+    id: 71,
+    title: 'Git的一些常用命令',
+    tags: [tagMnum.git],
+    answer: [
+      'git config',
+      'git init',
+      'git clone',
+      'git add',
+      'git commit',
+      'git diff',
+      'git reset',
+      'git status',
+      'git log',
+      'git branch',
+      'git checkout',
+      'git merge',
+      'git remote',
+      'git push',
+      'git pull',
+      'git stash',
+    ]
+  },
+  {
+    id: 72,
+    title: '微信小程序是单页应用吗',
+    tags: [tagMnum.wx],
+    answer: [
+      '是，通过路由进行页面切换'
+    ]
+  },
+  {
+    id: 73,
+    title: '微信小程序组件的生命周期',
+    tags: [tagMnum.wx],
+    answer: [
+      'created：组件实例刚被创建好，此时还不能调用setData -- 刚被创建出来',
+      'attached：组件完全初始化完毕，进入页面节点树',
+      'ready: 组件视图层布局完成后执行。--渲染完成',
+      'moved: 组件实例被移动到另一个节点树时执行',
+      'detached：离开页面节点树。可以清理一些定时器等工作--  被销毁的时候',
+    ]
+  },
+  {
+    id: 74,
+    title: '微信小程序是是单线程吗',
+    tags: [tagMnum.wx],
+    answer: [
+      '微信小程序是双线程架构，分为逻辑层和渲染层，在进行文件解析的时候不会发生阻塞'
+    ]
+  },
+  {
+    id: 75,
+    title: 'bindtap和catchtap的区别',
+    tags: [tagMnum.wx],
+    answer: [
+      '相同点：首先他们都是作为点击事件函数，就是点击时触发',
+      '',
+      '不同点：bindtap不会阻止冒泡，catchtap是阻止冒泡的'
+    ]
+  },
+  {
+    id: 76,
+    title: '微信小程序的优劣势',
+    tags: [tagMnum.wx],
+    answer: [
+      '优:',
+      '无需下载，通过搜索和扫一扫就可以打开',
+      '良好的用户体验：打开速度快',
+      '开发成本要比App要低',
+      '安卓上可以添加到桌面，与原生App差不多',
+      '为用户提供良好的安全保障',
+      '',
+      '劣:',
+      '无法开发大型的程序',
+      '上线需要审核',
+      '太过依赖微信',
+      '测试环境只有一个（体验版），多分枝开发测试时不方便'
+    ]
+  },
+  {
+    id: 77,
+    title: '虚拟dom是什么',
+    tags: [tagMnum.vue, tagMnum.react, tagMnum.js, tagMnum.theory],
+    answer: [
+      '虚拟 dom 相当于在 js 和真实 dom 中间加了一个缓存，利用 dom diff 算法避免了没有必要的 dom 操作，从而 提高性能'
+    ]
+  },
+  {
+    id: 78,
+    title: 'react组件间通信',
+    tags: [tagMnum.react],
+    answer: [
+      '1、父组件向子组件通讯: 父组件可以向子组件通过传 props 的方式，向子组件进行通讯',
+      '2、子组件向父组件通讯: props + 回调的方式, 父组件向子组件传递props进行通讯',
+      '3、兄弟组件通信: 找到这两个兄弟节点共同的父节点, 结合上面两种方式由父节点转发信息进行通信',
+      '4、跨层级通信: Context设计目的是为了共享那些对于一个组件树而言是“全局”的数据',
+      '5、发布订阅模式: 发布者发布事件，订阅者监听事件并做出反应, 我们可以通过引入event模块进行通信',
+      '6、全局状态管理工具: 借助Redux或者Mobx等全局状态管理工具进行通信'
+    ]
+  },
+  {
+    id: 79,
+    title: 'React hooks的优缺点',
+    tags: [tagMnum.react],
+    answer: [
+      '优:',
+      '1、更容易复用代码',
+      '2、代码量更少',
+      '3、更容易拆分组件',
+      '4、更方便地把UI和状态分离',
+      '5、解决了HOC和Render Props的嵌套问题',
+      '6、解决了类组件的 this 指向容易错误、不同声明周期中的逻辑使得代码难以理解和维护',
+      '',
+      '缺:',
+      '1、额外的学习成本',
+      '2、写法限制增加了重构成本',
+      '3、闭包场景可能会引用到旧的state、props值',
+      '4、内部实现上不直观',
+      '5、状态不同步',
+    ]
+  },
+  {
+    id: 80,
+    title: '设计模式有哪些',
+    tags: [tagMnum.theory],
+    answer: [
+      '设计模式分为三种类型，共23种',
+      '',
+      '创建型模式：单例模式、抽象工厂模式、建造者模式、工厂模式、原型模式',
+      '',
+      '结构型模式：适配器模式、桥接模式、装饰模式、组合模式、外观模式、享元模式、代理模式',
+      '',
+      '行为型模式：模版方法模式、命令模式、迭代器模式、观察者模式、中介者模式、备忘录模式、解释器模式（Interpreter模式）、状态模式、策略模式、职责链模式(责任链模式)、访问者模式'
+    ]
+  },
+  {
+    id: 81,
+    title: '模块化、组件化、工程化',
+    tags: [tagMnum.theory],
+    answer: [
+      '工程化：',
+      '前端工程化是一个高层次的思想，而模块化和组件化是为工程化思想下相对较具体的开发方式，因此可以简单的认为模块化和组件化是工程化的表现形式。工程化是将前端项目当成一项系统工程进行分析、组织和构建从而达到项目结构清晰、分工明确、团队配合默契、开发效率提高的目的',
+      '',
+      '模块化：',
+      '一个模块就是一个实现特定功能的文件，有了模块我们就可以更方便的使用别人的代码，要用什么功能就加载什么模块',
+      'js模块化方案很多有AMD、CommonJS、UMD、ES6 Module等。css模块化开发大多数是在less、sass、stylus等预处理器的import、minxin特性支持下实现',
+      '',
+      '组件化：',
+      '页面上的每个独立的、可视 / 可交互区域视为一个组件',
+      '每个组件对应一个工程目录，组件所需的各种资源都在这个目录下就近维护；由于组件具有独立性，因此组件与组件之间可以自由组合；页面不过是组件的容器，负责组合组件形成功能完整的界面'
+    ]
+  },
+  {
+    id: 82,
+    title: '谈谈对 MVC、MVP、MVVM 模式的理解',
+    tags: [tagMnum.theory],
+    answer: [
+      'MVC',
+      'MVC 除了把应用程序分为 View、Model层，还额外的加了一个 Controller层，它的职责是进行 Model 和 View 之间的协作（路由、输入预处理等）的应由逻辑（application logic）；Model 进行处理业务逻辑',
+      '用户对 View 操作以后，View 捕获到这个操作，会把处理的权利交移给Controller（Pass calls）；Controller 会对来自 View 数据进行预处理、决定调用哪个 Model 的接口；然后由 Model 执行相关的业务逻辑；当Model 变更了以后，会通过观察者模式（Observer Pattern）通知 View；View 通过观察者模式收到 Model 变更的消息以后，会向 Model 请求最新的数据，然后重新更新界面',
+      '',
+      'MVP',
+      '和 MVC 模式一样，用户对 View 的操作都会从 View 交易给 Presenter。Presenter 会执行相应的应用程序逻辑，并且会对 Model 进行相应的操作；而这时候 Model 执行业务逻辑以后，也是通过观察者模式把自己变更的消息传递出去，但是是传给 Presenter 而不是 View。Presenter 获取到 Model变更的消息以后，通过 View 提供的接口更新界面',
+      '',
+      'MVVM',
+      'MVVM 可以看做是一种特殊的 MVP（Passive View）模式，或者说是对 MVP 模式的一种改良',
+      'MVVM 代表的是 Model - View - ViewModel，可以简单把 ViewModel 理解为页面上所显示内容的数据抽象，和 Domain Model 不一样，ViewModel 更适合用来描述 View。 MVVM 的依赖关系和 MVP 依赖关系一致，只不过是把 P 换成了 VM',
+      '',
+      'MVVM的调用关系：',
+      'MVVM 的调用关系和 MVP 一样。但是，在 ViewModel 当中会有一个叫 Binder，或者是 Data - binding engine 的东西。以前全部由 Presenter 负责的 View 和 Model 之间数据同步操作交由给 Binder 处理。你只需要在View 的模板语法当中，指令式声明 View 上的显示的内容是和 Model 的哪一块数据绑定的。当 ViewModel 对进行 Model 更新的时候，Binder 会自动把数据更新到 View 上，当用户对 View 进行操作（例如表单输入），Binder 也会自动把数据更新到 Model 上。这种方式称为：Two - way data - binding，双向数据绑定。可以简单而不恰当地理解为一个模板引擎，但是会根据数据变更实时渲染'
+    ]
+  },
+  {
+    id: 83,
+    title: '跨域是什么？如何解决跨域？',
+    tags: [tagMnum.js],
+    answer: [
+      '跨域是什么?',
+      '请求url的协议、域名、端口三者之间任意一个与当前页面url不同即为跨域',
+      '它是由浏览器的 同源策略 造成的,是浏览器对 JavaScript 实施的安全限制',
+      '',
+      '如何解决跨域？',
+      'nginx的反向代理',
+      'jsonp: 只支持 get 请求',
+      '服务端修改相应头 Access-Control-Allow-Origin',
+      '代理',
+    ]
+  },
+  {
+    id: 84,
+    title: 'GET 和 POST区别',
+    tags: [tagMnum.js],
+    answer: [
+      'GET产生一个TCP数据包；POST产生两个',
+      '通常get用来获取数据，post用来提交数据',
+      'get参数有长度限制',
+      'get请求的数据会附加在url，post是放在请求体中',
+      'get是明文传输，post可以通过抓包工具看到，也相当于是明文',
+      'GET请求会被浏览器主动cache，POST除非手动设置',
+      '',
+      '上面是标准答案但实际，GET和POST本质上没有区别',
+    ]
+  },
+  {
+    id: 85,
+    title: '数组去重',
+    tags: [tagMnum.js, tagMnum.es6],
+    answer: [
+      '1、Array.from(new Set(arr))',
+      '2、双for循环',
+      '3、其他 for + indexOf、 filter + indexOf、 for + includes等等'
+    ]
+  },
+  {
+    id: 86,
+    title: '简单说说 js 中有哪几种内存泄露的情况',
+    tags: [tagMnum.js],
+    answer: [
+      '意外的全局变量',
+      '闭包',
+      '未被清空的定时器',
+      '未被销毁的事件监听',
+      'DOM 引用'
+    ]
+  },
+  {
+    id: 87,
+    title: 'promise和 async await 区别',
+    tags: [tagMnum.js, tagMnum.es6, tagMnum.es7],
+    answer: [
+      'Promise的出现解决了传统callback函数导致的“地域回调”问题，但它的语法导致了它向纵向发展行成了一个回调链，遇到复杂的业务场景，这样的语法显然也是不美观的。而async await代码看起来会简洁些，使得异步代码看起来像同步代码，await的本质是可以提供等同于”同步效果“的等待异步返回能力的语法糖，只有这一句代码执行完，才会执行下一句',
+      '',
+      'async await与Promise一样，是非阻塞的。',
+      'async await是基于Promise实现的，可以说是改良版的Promise，它不能用于普通的回调函数',
+    ]
+  },
+  {
+    id: 88,
+    title: 'promise的理解',
+    tags: [tagMnum.js, tagMnum.es6],
+    answer: [
+      'ES6中的Promise 是异步编程的一种方案',
+      '可以很好地解决回调地狱的问题',
+      '语法简洁。Promise 对象提供了简洁的API，使得控制异步操作更加容易',
+      'promise有三种状态：pending(等待态)，fulfiled(成功态)，rejected(失败态)；状态一旦改变，就不会再变'
+    ]
+  },
+  {
+    id: 89,
+    title: 'call appy bind 作用和区别',
+    tags: [tagMnum.js],
+    answer: [
+      '作用：改变this指向',
+      '区别:',
+      'call 和 apply 会调用函数',
+      'call 和 apply 传递的参数不一样，call 传递参数arg1, arg2...形式 apply 必须数组形式[arg]',
+      'bind 不会调用函数',
+    ]
+  },
+  {
+    id: 90,
+    title: 'new 会发生什么',
+    tags: [tagMnum.js],
+    answer: [
+      '1、创建一个新对象',
+      '2、将新对象的__proto__（原型）指向构造函数的prototype（原型对象）',
+      '3、构造函数绑定新对象的this并执行返回结果',
+      '4、判断返回结果是否为null，如果为null, 返回新对象，否则直接返回执行结果',
+    ]
+  },
+  {
+    id: 91,
+    title: '箭头函数与普通函数的区别',
+    tags: [tagMnum.js, tagMnum.es6],
+    answer: [
+      '语法更加简洁、清晰',
+      '箭头函数没有自己的this',
+      '箭头函数没有 arguments',
+      'call apply bind 无法改变箭头函数中this的指向',
+      '箭头函数不能作为构造函数使用(this)',
+      '箭头函数没有原型prototype',
+    ]
+  },
+  {
+    id: 92,
+    title: '哪些类型能被扩展操作符...扩展',
+    tags: [tagMnum.js, tagMnum.es6],
+    answer: [
+      '数组、对象、字符串',
+    ]
+  },
+  {
+    id: 93,
+    title: '什么是暂时性死区',
+    tags: [tagMnum.js, tagMnum.es6],
+    answer: [
+      '在代码块内，使用let和const命令声明变量之前，该变量都是不可用的，语法上被称为暂时性死区',
+      '',
+      '暂时性死区的本质就是，只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量'
+    ]
+  },
+  {
+    id: 94,
+    title: '防抖和节流？应用场景？',
+    tags: [tagMnum.js],
+    answer: [
+      '防抖和节流：优化高频率执行js代码的一种手段，js中的一些事件如浏览器的resize、scroll，鼠标的mousemove、mouseover，input输入框的keypress等事件在触发时，会不断地调用绑定在事件上的回调函数，极大地浪费资源，降低前端性能。为了优化体验，需要对这类事件进行调用次数的限制',
+      '',
+      '防抖：',
+      '在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时',
+      '应用场景：搜索框搜索输入、窗口大小Resize',
+      '',
+      '节流：',
+      '每隔一段时间，只执行一次函数',
+      '应用场景：滚动加载、高频点击提交'
+    ]
+  },
+  {
+    id: 95,
+    title: '浅拷贝与深拷贝',
+    tags: [tagMnum.js],
+    answer: [
+      '浅拷贝只复制对象的第一层属性、深拷贝可以对对象的属性进行递归复制'
+    ]
+  },
 ]
 
 export interface iProbleSort {
   [key: string | number]: iProblemItem[]
 }
+
 export const probleSort = (() => {
   const sort: iProbleSort = {}
   problem.forEach(item => {
