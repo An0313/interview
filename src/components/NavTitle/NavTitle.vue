@@ -15,13 +15,8 @@
     >
       <view
         class="backBtn"
+        v-if="currentPagePath !== Page.home"
         @click="handelBack"
-        v-if="
-          currentPagePath !== cPagePath.home &&
-          currentPagePath !== cPagePath.search &&
-          currentPagePath !== cPagePath.company &&
-          currentPagePath !== cPagePath.user
-        "
       >
         <image
           class="backImg"
@@ -35,8 +30,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from "@/store";
-import { appName } from "@/const";
+import { navInfo, appName } from "@/const";
+import Page from '@/const/pages'
 import homeIcon from "@/static/img/home";
 import LeftArrowIcon from "@/static/img/left-arrow";
 
@@ -52,14 +47,12 @@ const pages = getCurrentPages();
 const pagesLength = pages.length;
 const currentPagePath = `/${pages[pagesLength - 1].route}`;
 
-const store = useStore();
-const { statusBarHeight, navHeight, titleHeight } = store.state.navInfo;
-const cPagePath = store.state.page
+const { statusBarHeight, navHeight, titleHeight } = navInfo;
 
 // 返回上一页
 const handelBack = () => {
   pagesLength === 1
-    ? uni.switchTab({ url: cPagePath.home })
+    ? uni.reLaunch({ url: Page.home })
     : uni.navigateBack();
 };
 </script>

@@ -8,7 +8,7 @@
           class="tagItem"
           v-for="tagItem in _problem?.tags"
           :key="tagItem"
-          >{{ tagMnum[tagItem] }}</view
+          >{{ problemTagMnum[tagItem] }}</view
         >
       </view>
       // #ifdef MP-WEIXIN
@@ -28,12 +28,10 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useStore } from "@/store";
-import { iProblemItem } from "@/store/modules/problem";
 import { onLoad } from "@dcloudio/uni-app";
+import { iProblemItem, probleSort } from "@/const/problem";
+import { problemTagMnum } from '@/const/problemTag'
 
-const store = useStore();
-const { probleSort, problemTagMnum: tagMnum } = store.state;
 const _problem = ref<iProblemItem | undefined>(undefined);
 
 onLoad(({ sortId, pId }) => {

@@ -8,28 +8,7 @@
       }
     },
     {
-      "path": "pages/search/index",
-      "style": {
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
-    },
-    {
-      "path": "pages/company/index",
-      "style": {
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
-    },
-    {
-      "path": "pages/user/index",
-      "style": {
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
-    },
-    {
-      "path": "pages/list/index",
+      "path": "pages/probleList/index",
       "style": {
         "navigationStyle": "custom",
         "disableScroll": true

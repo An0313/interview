@@ -27,9 +27,11 @@
 
 <script setup lang="ts">
 import { onLoad } from "@dcloudio/uni-app";
-import { useStore } from "@/store";
-import { iTagItem } from "@/store/modules/problemTag";
+import { problemTag, problemTagMnum, iTagItem } from "@/const/problemTag";
+import { probleSort } from "@/const/problem";
+import Page from "@/const/pages";
 import { isDev } from "@/const";
+
 interface iIndexListItemSub {
   name: string | number;
   total: number;
@@ -41,9 +43,6 @@ interface iIndexListItem {
   title: string;
   sub: iIndexListItemSub[];
 }
-
-const store = useStore();
-const { page: Page, problemTag, problemTagMnum, probleSort } = store.state;
 
 const indexList: iIndexListItem[] = (() =>
   [
@@ -88,7 +87,7 @@ const indexList: iIndexListItem[] = (() =>
 // 打开分类列表页面
 const handleOpenList = (subItem: iIndexListItemSub): void => {
   uni.navigateTo({
-    url: `${Page.list}?id=${subItem.id}&name=${subItem.name}`,
+    url: `${Page.probleList}?id=${subItem.id}&name=${subItem.name}`,
   });
 };
 

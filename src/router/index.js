@@ -12,39 +12,39 @@ const router = [
 		}
 	},
 	// 搜索
-	{
-		path: 'pages/search/index',
-		name: 'search',
-		meta: {},
-		style: {
-			navigationStyle: 'custom',
-			disableScroll: true,
-		}
-	},
+	// {
+	// 	path: 'pages/search/index',
+	// 	name: 'search',
+	// 	meta: {},
+	// 	style: {
+	// 		navigationStyle: 'custom',
+	// 		disableScroll: true,
+	// 	}
+	// },
 	// 大厂面试题
-	{
-		path: 'pages/company/index',
-		name: 'company',
-		meta: {},
-		style: {
-			navigationStyle: 'custom',
-			disableScroll: true,
-		}
-	},
+	// {
+	// 	path: 'pages/company/index',
+	// 	name: 'company',
+	// 	meta: {},
+	// 	style: {
+	// 		navigationStyle: 'custom',
+	// 		disableScroll: true,
+	// 	}
+	// },
 	// 我的
-	{
-		path: 'pages/user/index',
-		name: 'user',
-		meta: {},
-		style: {
-			navigationStyle: 'custom',
-			disableScroll: true,
-		}
-	},
+	// {
+	// 	path: 'pages/user/index',
+	// 	name: 'user',
+	// 	meta: {},
+	// 	style: {
+	// 		navigationStyle: 'custom',
+	// 		disableScroll: true,
+	// 	}
+	// },
 	// 面试题列表
 	{
-		path: 'pages/list/index',
-		name: 'list',
+		path: 'pages/probleList/index',
+		name: 'probleList',
 		meta: {},
 		style: {
 			navigationStyle: 'custom',

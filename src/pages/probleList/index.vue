@@ -19,12 +19,10 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useStore } from "@/store";
 import { onLoad } from "@dcloudio/uni-app";
-import { iProblemItem } from "@/store/modules/problem";
+import { iProblemItem, probleSort } from "@/const/problem";
+import Page from '@/const/pages'
 
-const store = useStore();
-const { probleSort, page: Page } = store.state;
 // 题目列表
 const problemList = ref<iProblemItem[]>([]);
 // 页面标题
