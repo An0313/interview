@@ -74,6 +74,14 @@ const problemTag: Array<iTagItem> = [
         id: 303,
         name: 'ES8',
         key: 'es8'
+      }, {
+        id: 304,
+        name: 'ES9',
+        key: 'es9'
+      }, {
+        id: 305,
+        name: 'ES10',
+        key: 'es10'
       }
     ]
   },
@@ -126,7 +134,22 @@ const problemTag: Array<iTagItem> = [
     id: 9,
     name: '打包工具',
     key: 'pack',
-    icon: WebpackIcon
+    icon: WebpackIcon,
+    children: [
+      {
+        id: 901,
+        name: 'webpack',
+        key: 'webpack',
+      }, {
+        id: 902,
+        name: 'gulp',
+        key: 'gulp'
+      }, {
+        id: 903,
+        name: 'vite',
+        key: 'vite'
+      }
+    ]
   },
   {
     id: 10,

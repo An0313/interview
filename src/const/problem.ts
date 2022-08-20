@@ -109,7 +109,7 @@ export const problem: iProblemItem[] = [
       '1、WebSocket （可跨域）',
       '2、postMessage（可跨域）',
       '3、Worker之SharedWorker',
-      '4、Server - Sent Events',
+      '4、Server-Sent Events',
       '5、localStorage',
       '6、BroadcastChannel',
       '7、Cookie'
@@ -268,7 +268,7 @@ export const problem: iProblemItem[] = [
   {
     id: 22,
     title: '怎么修改 vue 打包后生成文件路径',
-    tags: [tagMnum.vue, tagMnum.pack],
+    tags: [tagMnum.vue, tagMnum.pack, tagMnum.webpack, tagMnum.vite],
     answer: [
       'webpack: vue.config.js 中设置 outputDir ',
       '',
@@ -622,7 +622,7 @@ export const problem: iProblemItem[] = [
       '多任务 webworker',
       '全双工通信协议 websocket',
       '历史管理 history',
-      '跨域资源共享(CORS) Access - Control - Allow - Origin',
+      '跨域资源共享(CORS) Access-Control-Allow-Origin',
       '页面可见性改变事件 visibilitychange',
       '跨窗口通信 PostMessage',
       'Form Data 对象',
@@ -744,9 +744,12 @@ export const problem: iProblemItem[] = [
   {
     id: 53,
     title: 'js 数据类型',
-    tags: [tagMnum.js, tagMnum.es6],
+    tags: [tagMnum.js, tagMnum.es6, tagMnum.es10],
     answer: [
-      '',
+      '共有8种',
+      'ES5中有6种：String、Number、Boolean、Null、Undefined、Object',
+      'ES6新增了Symbol',
+      'es10新增了bigInt',
     ]
   },
   {
@@ -924,7 +927,7 @@ export const problem: iProblemItem[] = [
   {
     id: 69,
     title: 'webpack和gulp的区别',
-    tags: [tagMnum.pack],
+    tags: [tagMnum.pack, tagMnum.webpack, tagMnum.gulp],
     answer: [
       'gulp:',
       '是工具链、构建工具，可以配合各种插件做js压缩，css压缩，less编译 替代手工实现自动化工作',
@@ -945,7 +948,7 @@ export const problem: iProblemItem[] = [
   {
     id: 70,
     title: 'webpack打包流程',
-    tags: [tagMnum.pack],
+    tags: [tagMnum.pack, tagMnum.webpack],
     answer: [
       '1、读取入口文件',
       '2、分析入口文件，得到其所依赖的文件信息',
@@ -1120,10 +1123,10 @@ export const problem: iProblemItem[] = [
       '',
       'MVVM',
       'MVVM 可以看做是一种特殊的 MVP（Passive View）模式，或者说是对 MVP 模式的一种改良',
-      'MVVM 代表的是 Model - View - ViewModel，可以简单把 ViewModel 理解为页面上所显示内容的数据抽象，和 Domain Model 不一样，ViewModel 更适合用来描述 View。 MVVM 的依赖关系和 MVP 依赖关系一致，只不过是把 P 换成了 VM',
+      'MVVM 代表的是 Model-View-ViewModel，可以简单把 ViewModel 理解为页面上所显示内容的数据抽象，和 Domain Model 不一样，ViewModel 更适合用来描述 View。 MVVM 的依赖关系和 MVP 依赖关系一致，只不过是把 P 换成了 VM',
       '',
       'MVVM的调用关系：',
-      'MVVM 的调用关系和 MVP 一样。但是，在 ViewModel 当中会有一个叫 Binder，或者是 Data - binding engine 的东西。以前全部由 Presenter 负责的 View 和 Model 之间数据同步操作交由给 Binder 处理。你只需要在View 的模板语法当中，指令式声明 View 上的显示的内容是和 Model 的哪一块数据绑定的。当 ViewModel 对进行 Model 更新的时候，Binder 会自动把数据更新到 View 上，当用户对 View 进行操作（例如表单输入），Binder 也会自动把数据更新到 Model 上。这种方式称为：Two - way data - binding，双向数据绑定。可以简单而不恰当地理解为一个模板引擎，但是会根据数据变更实时渲染'
+      'MVVM 的调用关系和 MVP 一样。但是，在 ViewModel 当中会有一个叫 Binder，或者是 Data-binding engine 的东西。以前全部由 Presenter 负责的 View 和 Model 之间数据同步操作交由给 Binder 处理。你只需要在View 的模板语法当中，指令式声明 View 上的显示的内容是和 Model 的哪一块数据绑定的。当 ViewModel 对进行 Model 更新的时候，Binder 会自动把数据更新到 View 上，当用户对 View 进行操作（例如表单输入），Binder 也会自动把数据更新到 Model 上。这种方式称为：Two-way data-binding，双向数据绑定。可以简单而不恰当地理解为一个模板引擎，但是会根据数据变更实时渲染'
     ]
   },
   {
@@ -1350,13 +1353,278 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 102,
-    title: 'flex是哪些属性的简写呢',
+    title: 'flex是哪些属性的简写',
     tags: [tagMnum.css],
     answer: [
       'flex-grow：项目放大的比例',
       'flex-shrink：项目缩小的比例',
       'flex-basis：项目所占大小',
       '默认值： 0 1 auto'
+    ]
+  },
+  {
+    id: 103,
+    title: '对盒子模型的理解',
+    tags: [tagMnum.css],
+    answer: [
+      '一个盒子由 context,padding,margin,border 组成',
+      '',
+      '标准模式，是浏览器默认的盒子模型',
+      'box-sizing: content-box',
+      '增加padding、border和margin不会影响内容区域的尺寸，但是会增加元素框的总尺寸',
+      '',
+      '怪异模式',
+      'box-sizing: border-box',
+      '增加padding、border和margin会影响内容区域的尺寸，不会增加元素框的总尺寸'
+    ]
+  },
+  {
+    id: 104,
+    title: 'css选择器有哪些',
+    tags: [tagMnum.css],
+    answer: [
+      '常见选择器',
+      'id选择器、类选择器、标签选择器、后代选择器、子选择器、相邻同胞选择器、群组选择器',
+      '',
+      '伪类选择器',
+      ':link、:visited、:active、:hover 、:first-child、:first-of-type、:last-child、:last-of-type、:checked、:disabled、:empty、:enabled、:focus、:in-range、:invalid、:lang(language)、:not(selector)、:nth-child(n)、:nth-last-child(n)、:nth-last-of-type(n)、:nth-of-type(n)、:nly-of-type、:only-child、:optional、:out-of-range、:read-only、:read-write、:required、:root、:target、:valid、',
+      '',
+      '伪元素选择器',
+      '::after、::before、::first-letter、::first-line、::selection',
+      '',
+      '属性选择器',
+      '[attribute]、[attribute=value]、[attribute~=value]、[attribute|=value]、[attribute^=value]、[attribute$=value]、[attribute*=value]',
+    ]
+  },
+  {
+    id: 105,
+    title: 'css选择器优先级',
+    tags: [tagMnum.css],
+    answer: [
+      '!important >内联 > ID选择器 > 类选择器 > 标签选择器',
+    ]
+  },
+  {
+    id: 106,
+    title: '元素不定宽高，如何水平垂直居',
+    tags: [tagMnum.css],
+    answer: [
+      'margin:0 auto',
+      '定位 + transform负值',
+      '定位 + margin负值',
+      'flex布局',
+      'grid网格布局',
+      'table布局 父元素 display:table-cell 子元素 display: inline-block',
+    ]
+  },
+  {
+    id: 107,
+    title: '响应式网站如何开发',
+    tags: [tagMnum.css],
+    answer: [
+      'meta声明viewport',
+      '媒体查询',
+    ]
+  },
+  {
+    id: 108,
+    title: 'CSS提高性能的方法有哪些',
+    tags: [tagMnum.css, tagMnum.optimize],
+    answer: [
+      '加载性能',
+      'css压缩',
+      '内联首屏关键CSS',
+      '异步加载CSS',
+      '减少@import,而建议使用link',
+      '',
+      '选择器性能',
+      '减少css嵌套',
+      'ID选择器前不进行嵌套',
+      '不用css表达式',
+      '避免使用通配符规则',
+      '了解哪些属性是可以通过继承而来的，然后避免对这些属性重复指定规则',
+      '',
+      '渲染性能',
+      '慎重使用高性能属性：浮动，定位',
+      '尽量减少页面的重排和重绘',
+      '属性值为0时，不加单位',
+      '属性值为浮动小数0.***，可以省略小数点之前的0',
+      '标准化各种浏览器前缀，带浏览器前缀的在前。标准属性在后',
+      'css雪碧图',
+      '',
+      '建立公共样式类',
+    ]
+  },
+  {
+    id: 109,
+    title: 'JS基本数据类型和引用数据类型有哪些',
+    tags: [tagMnum.js],
+    answer: [
+      '值类型(基本类型)：',
+      'Number、String、Boolean、Undefined、Null',
+      '',
+      '引用数据类型（对象类型）：',
+      'Object、Array、Function，特殊的对象： RegExp和Date',
+    ]
+  },
+  {
+    id: 110,
+    title: 'JS不同数据类型如何存储',
+    tags: [tagMnum.js],
+    answer: [
+      '基本数据类型：',
+      '直接存储在栈中，占据空间小、大小固定，属于希望被频繁引用的数据',
+      '',
+      '引用数据类型：',
+      '同时存在栈和堆中，占据空间大，大小不固定。在堆中存对象，在栈中存对象指针，指向堆中实体的地址',
+    ]
+  },
+  {
+    id: 111,
+    title: 'typeof 与 instanceof 区别',
+    tags: [tagMnum.js],
+    answer: [
+      'typeof的返回值是一个字符串，用来说明变量的数据类型（null ,Array、Object 结果都是Object）；instanceof的返回值是布尔值，用于判断一个变量是否属于某个对象的实例',
+    ]
+  },
+  {
+    id: 112,
+    title: '说说你对闭包的理解',
+    tags: [tagMnum.js],
+    answer: [
+      '闭包就是可以访问其他函数内部变量的函数，我们通常用它来定义私有化的变量和方法，创建一个闭包最简单的方法就是在一个函数内创建一个函数，它有三个特性是 函数内可以再嵌套函数，内部函数可以访问外部的方法和变量，方法和变量不会被垃圾回收机制回收',
+      '优点',
+      '变量长期在内存中',
+      '可重复的使用变量，不会污染',
+      '',
+      '缺点',
+      '内存消耗大，不能滥用，否则会造成性能问题，解决方法：退出函数时，将局部变量删除',
+
+    ]
+  },
+  {
+    id: 113,
+    title: '闭包使用场景',
+    tags: [tagMnum.js],
+    answer: [
+      '创建私有变量与私有方法',
+      '延长变量的生命周期',
+      '',
+      '常见场景',
+      '防抖与节流',
+    ]
+  },
+  {
+    id: 114,
+    title: '常见的BOM对象你了解哪些',
+    tags: [tagMnum.js],
+    answer: [
+      'window、location、navigator 、screen、history',
+    ]
+  },
+  {
+    id: 115,
+    title: 'js判断一个数组',
+    tags: [tagMnum.js],
+    answer: [
+      'Array.isArray()',
+      'instanceof',
+      'constructor',
+      'Object.prototype.toString.call()',
+    ]
+  },
+  {
+    id: 116,
+    title: '什么是原型和原型链',
+    tags: [tagMnum.js],
+    answer: [
+      '原型',
+      '1.所有引用类型都有一个__proto__(隐式原型)属性，属性值是一个普通的对象',
+      '2.所有函数都有一个prototype(原型)属性，属性值是一个普通的对象',
+      '3.所有引用类型的__proto__属性指向它构造函数的prototype',
+      '',
+      '原型链',
+      '当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的__proto__中查找，这样一层一层向上查找就会形成一个链式结构，我们称为原型链',
+    ]
+  },
+  {
+    id: 117,
+    title: '什么是事件代理',
+    tags: [tagMnum.js],
+    answer: [
+      '事件代理（Event Delegation），又称之为事件委托。是JavaScript中常用绑定事件的常用技巧。顾名思义，“事件代理”即是把原本需要绑定在子元素的响应事件（click、keydown......）委托给父元素，让父元素担当事件监听的职务。事件代理的原理是DOM元素的事件冒泡',
+    ]
+  },
+  {
+    id: 118,
+    title: '冒泡与捕获的区别',
+    tags: [tagMnum.js],
+    answer: [
+      '事件冒泡：一个由里到外，冒泡，向上层延申',
+      '事件捕获：一个由外到里，前往捕获，形成向下趋势'
+    ]
+  },
+  {
+    id: 119,
+    title: '什么是bundle？什么是chunk?什么是module?',
+    tags: [tagMnum.pack, tagMnum.webpack],
+    answer: [
+      'bundle：是由webpack打包出来的文件',
+      'chunk：是一个代码块，一个chunk由多个模块组合而成',
+      'module：是开发中的单个模块'
+    ]
+  },
+  {
+    id: 120,
+    title: '什么是Loader?什么是Plugin?',
+    tags: [tagMnum.pack, tagMnum.webpack],
+    answer: [
+      'Loader：因为webpack本身只理解JavaScript,所以loader用来解析js以外的东西',
+      '主要功能：用于告诉webpack如何处理某一类型的文件，并引入到打包出来的文件中',
+      '',
+      '常用Loader：',
+      '1.file-loader：把文件输出到一个文件夹中，在代码中通过相对URL去引用输出的文件',
+      '2.url-loader：和file-loader类似，但是能在文件很小的情况下以base64的方式把文件内容注入到代码中去',
+      '3.source-map-loader：加载额外的Source Map文件，以方便断点调试image-loader：加载并且压缩图片文件',
+      '4.babel-loader：把ES6转换成ES5css-loader：加载CSS，支持模块化、压缩、文件导入等特性',
+      '5.style-loader：把CSS代码注入到JavaScript中，通过DOM操作去加载CSS。',
+      '6.eslint-loader：通过ESLint检查JavaScript代码',
+      '',
+      'Plugin：中文名称 插件，是一个扩展器，丰富webpack本身，增强功能 ，针对的是在loader结束之后，webpack打包的整个过程，他并不直接操作文件，而是基于事件机制工作，监听webpack打包过程中的某些节点, 在合适的机会通过webpackt提供的API改变输出结果',
+      '',
+      '常用Plugin:',
+      '1.define-plugin：定义环境变量',
+      '2.commons-chunk-plugin：提取公共代码',
+      '3.uglifyjs-webpack-plugin：通过UglifyES压缩ES6代码'
+    ]
+  },
+  {
+    id: 121,
+    title: '如何利用webpack来优化前端性能',
+    tags: [tagMnum.optimize, tagMnum.pack, tagMnum.webpack],
+    answer: [
+      '压缩代码',
+      '利用CDN加速',
+      '删除死代码',
+      '提取公共代码',
+    ]
+  },
+  {
+    id: 122,
+    title: '如何提高webpack的构建速度',
+    tags: [tagMnum.optimize, tagMnum.pack, tagMnum.webpack],
+    answer: [
+      '多入口情况下，使用CommonsChunkPlugin来提取公共代码',
+      '',
+      '通过externals配置来提取常用库',
+      '',
+      '利用DllPlugin和DllReferencePlugin预编译资源模块 通过DllPlugin来对那些我们引用但是绝对不会修改的npm包来进行预编译，再通过DllReferencePlugin将预编译的模块加载进来',
+      '',
+      '使用Happypack实现多线程加速编译',
+      '',
+      '使用webpack-uglify-parallel来 提 升uglifyPlugin的 压 缩 速 度 。原 理 上webpack-uglify-parallel采用了多核并行压缩来提升压缩速度',
+      '',
+      '使用Tree-shaking和Scope Hoisting来剔除多余代码',
     ]
   },
 ]
