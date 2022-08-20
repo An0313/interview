@@ -20,15 +20,16 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { onLoad } from "@dcloudio/uni-app";
 import Page from "@/const/pages";
 import { appName } from "@/const";
 import Tabbar from "./components/Tabbar";
 import Home from "./components/home";
 import User from "./components/user";
-import homeIcon from "@/static/img/tabbar/home";
-import homeFillIcon from "@/static/img/tabbar/home-fill";
-import userIcon from "@/static/img/tabbar/user";
-import userFillIcon from "@/static/img/tabbar/user-fill";
+import homeIcon from "./components/Tabbar/img/home";
+import homeFillIcon from "./components/Tabbar/img/home-fill";
+import userIcon from "./components/Tabbar/img/user";
+import userFillIcon from "./components/Tabbar/img/user-fill";
 
 const selectIndex = ref<number>(0);
 const tabbar = [
@@ -47,6 +48,13 @@ const tabbar = [
     title: "个人中心",
   },
 ];
+
+onLoad(({ index }) => {
+  console.log(index)
+  if (index) {
+    selectIndex.value = Number(index)
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -66,6 +74,7 @@ const tabbar = [
     .pageItem {
       width: 100%;
       overflow: hidden scroll;
+      -webkit-overflow-scrolling: touch
     }
   }
 }

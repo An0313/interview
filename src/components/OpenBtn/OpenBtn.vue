@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 interface iProps {
-  openType?: 'share' | 'contact';
+  openType?: 'share' | 'contact' | 'feedback';
 }
 
 const prosp = withDefaults(defineProps<iProps>(), {

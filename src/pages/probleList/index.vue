@@ -6,6 +6,7 @@
     <view class="list" v-if="problemList?.length">
       <view
         class="listItem"
+        hover-class="listItem-hover"
         v-for="(item, index) in problemList"
         :key="item.id"
         @click="handleOpenDetail(index)"
@@ -62,7 +63,7 @@ const handleOpenDetail = (index: number): void => {
       background-color: $i-bg-color-grey;;
     }
 
-    &:active {
+    &.listItem-hover {
       opacity: 0.5;
     }
   }

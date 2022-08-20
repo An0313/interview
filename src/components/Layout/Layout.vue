@@ -32,6 +32,7 @@ const props = withDefaults(defineProps<PropsType>(), {
   .content {
     flex: 1;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 
     > :deep(view) {
       height: 100%;

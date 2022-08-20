@@ -126,6 +126,7 @@ onLoad(() => {
 <style lang="scss" scoped>
 .indexList {
   $p: 30rpx;
+  
   .title {
     padding: 15rpx $p;
     font-size: $i-font-size-base;

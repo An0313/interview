@@ -23,6 +23,7 @@
       <view class="footer">
         <view
           class="btn"
+          hover-class="btn-hover"
           :class="{ disabled: currentIndex === 0 }"
           @click="handleChangeProble(currentIndex - 1)"
           >上一题</view
@@ -105,6 +106,7 @@ onShareAppMessage(() => {
     padding: 30rpx;
     background-color: $i-bg-color-grey;
     overflow: hidden scroll;
+    -webkit-overflow-scrolling: touch;
 
     .title {
       text-align: center;
@@ -158,7 +160,7 @@ onShareAppMessage(() => {
         position: relative;
       }
 
-      &:active {
+      &.btn-hover {
         opacity: 0.5;
       }
     }
