@@ -1279,6 +1279,86 @@ export const problem: iProblemItem[] = [
       '浅拷贝只复制对象的第一层属性、深拷贝可以对对象的属性进行递归复制'
     ]
   },
+  {
+    id: 96,
+    title: 'css 无继承性的属性有哪些',
+    tags: [tagMnum.css],
+    answer: [
+      'display',
+      'vertical-align',
+      'text-decoration',
+      'text-shadow',
+      'white-space',
+      'unicode-bidi',
+    ]
+  },
+  {
+    id: 97,
+    title: 'css有继承性的属性',
+    tags: [tagMnum.css],
+    answer: [
+      'font',
+      'font-family',
+      'font-weight',
+      'font-size',
+      'font-style',
+      'line-height',
+      'text-align',
+      'direction',
+      'color',
+    ]
+  },
+  {
+    id: 98,
+    title: 'css预处理工具有哪些',
+    tags: [tagMnum.css, tagMnum.less, tagMnum.sass, tagMnum.stylus],
+    answer: [
+      'Less',
+      'Sass: 最早也是最成熟的CSS预处理器',
+      'Stylus: 来自Node.js社区，主要用来给Node项目进行CSS预处理支持，在此社区之内有一定支持者，在广泛的意义上人气还完全不如Sass和Less',
+    ]
+  },
+  {
+    id: 99,
+    title: '说说css mask的用途',
+    tags: [tagMnum.css],
+    answer: [
+      'CSS 属性 mask 允许使用者通过遮罩或者裁切特定区域的图片的方式来隐藏一个元素的部分或者全部可见区域',
+      '',
+      '详见：https://developer.mozilla.org/zh-CN/docs/Web/CSS/mask'
+    ]
+  },
+  {
+    id: 100,
+    title: 'css使一个元素多背景叠加',
+    tags: [tagMnum.css],
+    answer: [
+      'background: background1, ..., backgroundN',
+      '',
+      '图小的要在前面， 图大要在后面不然会遮挡住',
+      '',
+      '详见：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Backgrounds_and_Borders/Using_multiple_backgrounds'
+    ]
+  },
+  {
+    id: 101,
+    title: 'display:flex后，哪些属性会失效呢',
+    tags: [tagMnum.css],
+    answer: [
+      '子元素的float、clear和vertical-align属性将失效'
+    ]
+  },
+  {
+    id: 102,
+    title: 'flex是哪些属性的简写呢',
+    tags: [tagMnum.css],
+    answer: [
+      'flex-grow：项目放大的比例',
+      'flex-shrink：项目缩小的比例',
+      'flex-basis：项目所占大小',
+      '默认值： 0 1 auto'
+    ]
+  },
 ]
 
 export interface iProbleSort {

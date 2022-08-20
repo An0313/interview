@@ -38,6 +38,23 @@ const problemTag: Array<iTagItem> = [
     name: 'CSS',
     key: 'css',
     icon: CssIcon,
+    children: [
+      {
+        id: 201,
+        name: 'Less',
+        key: 'less',
+      },
+      {
+        id: 202,
+        name: 'Sass',
+        key: 'sass',
+      },
+      {
+        id: 203,
+        name: 'Stylus',
+        key: 'stylus',
+      },
+    ]
   },
   {
     id: 3,

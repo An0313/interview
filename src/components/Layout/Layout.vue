@@ -4,7 +4,7 @@
     <view class="content">
       <slot></slot>
     </view>
-    <Tabbar v-if="props.showTabbar" />
+    <slot name="footer"></slot>
   </view>
 </template>
 
@@ -13,13 +13,11 @@ import { bottomLift } from "@/const";
 
 interface PropsType {
   title?: string;
-  showNavBar?: boolean
-  showTabbar?: boolean;
+  showNavBar?: boolean;
 }
 
 const props = withDefaults(defineProps<PropsType>(), {
-  showTabbar: false,
-  showNavBar: true
+  showNavBar: true,
 });
 </script>
 
@@ -34,6 +32,10 @@ const props = withDefaults(defineProps<PropsType>(), {
   .content {
     flex: 1;
     overflow-y: scroll;
+
+    > :deep(view) {
+      height: 100%;
+    }
   }
 }
 </style>

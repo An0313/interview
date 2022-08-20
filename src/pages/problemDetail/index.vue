@@ -5,22 +5,18 @@
       <view class="content">
         <view class="title">{{ problem?.title }}</view>
         <view class="tags">
-          <view
-            class="tagItem"
-            v-for="tagItem in problem?.tags"
-            :key="tagItem"
-            >{{ problemTagMnum[tagItem] }}</view
-          >
+          {{ tags }}
         </view>
         // #ifdef MP-WEIXIN
         <ad unit-id="adunit-9babcb790cec62f4"></ad>
         // #endif
         <view class="answer">
-          <view
+          <text
             class="row"
+            user-select
             v-for="(item, index) in problem?.answer"
             :key="index"
-            >{{ item }}</view
+            >{{ item }}</text
           >
         </view>
       </view>
@@ -57,20 +53,21 @@ import { ref, watchEffect } from "vue";
 import { onLoad, onShareAppMessage } from "@dcloudio/uni-app";
 import { iProblemItem, probleSort } from "@/const/problem";
 import { problemTagMnum } from "@/const/problemTag";
-import Page from '@/const/pages'
+import Page from "@/const/pages";
 
 const list = ref<iProblemItem[]>([]);
 const currentIndex = ref<number>(0);
 const pageTitle = ref<string>("加载中");
 const problem = ref<iProblemItem | null>(null);
-let sid = ''
+const tags = ref<string>("");
+let sid = "";
 
 onLoad(({ sortId, index }) => {
   const _index = Number(index);
   const pList = sortId && probleSort[sortId];
   if (Number.isInteger(_index)) currentIndex.value = _index;
   if (pList && pList[_index]) list.value = pList;
-  sid = sortId as string
+  sid = sortId as string;
 });
 
 // 切换面试题
@@ -79,19 +76,22 @@ const handleChangeProble = (val: number) => {
 };
 
 watchEffect(() => {
-  problem.value = list.value[currentIndex.value];
-  pageTitle.value = `第${currentIndex.value + 1}题`;
+  const p = list.value[currentIndex.value];
+  if (p) {
+    problem.value = p;
+    pageTitle.value = `第${currentIndex.value + 1}题`;
+    tags.value = p.tags.map((item) => problemTagMnum[item]).join(" ・ ");
+  }
 });
-
 
 // #ifdef MP-WEIXIN
 onShareAppMessage(() => {
   return {
     title: problem.value?.title,
-    path: `${Page.problemDetail}?sortId=${sid}&index=${currentIndex.value}`
-  }
-})
- // #endif
+    path: `${Page.problemDetail}?sortId=${sid}&index=${currentIndex.value}`,
+  };
+});
+// #endif
 </script>
 
 <style lang="scss" scoped>
@@ -115,12 +115,9 @@ onShareAppMessage(() => {
     .tags {
       display: flex;
       padding: 10rpx 0;
-
-      .tagItem {
-        padding: 20rpx 10rpx;
-        font-size: 24rpx;
-        color: #777;
-      }
+      justify-content: center;
+      font-size: 24rpx;
+      color: #777;
     }
 
     .answer {
@@ -131,6 +128,7 @@ onShareAppMessage(() => {
       color: #555;
 
       .row {
+        display: block;
         width: 100%;
         min-height: $h;
       }
@@ -155,12 +153,13 @@ onShareAppMessage(() => {
         color: $i-text-color-disable;
       }
 
-      &.share, &.feedback {
+      &.share,
+      &.feedback {
         position: relative;
       }
 
       &:active {
-        opacity: .5;
+        opacity: 0.5;
       }
     }
   }
