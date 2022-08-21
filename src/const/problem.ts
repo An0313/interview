@@ -117,7 +117,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 8,
-    title: 'vue v-model 的原理',
+    title: 'Vue v-model 的原理',
     tags: [tagMnum.vue],
     answer: [
       'v-model只不过是一个语法糖',
@@ -130,14 +130,14 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 9,
-    title: '怎么给 vue 定义全局的方法',
+    title: '怎么给 Vue 定义全局的方法',
     tags: [tagMnum.vue],
     answer: [
-      'vue2',
+      'Vue2',
       '1、挂载到 Vue 的 prototype上',
       '2、利用全局混入mixin',
       '',
-      'vue3',
+      'Vue3',
       'main.js => app.config.globalProperties.xxx = () => {}'
     ]
   },
@@ -153,7 +153,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 11,
-    title: '你知道 vue 中 key 的原理吗',
+    title: '你知道 Vue 中 key 的原理吗',
     tags: [tagMnum.vue],
     answer: [
       '便于Diff时更高效的进行节点查询对比',
@@ -198,7 +198,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 15,
-    title: '说说你对 vue 错误处理的了解',
+    title: '说说你对 Vue 错误处理的了解',
     tags: [tagMnum.vue],
     answer: [
       '分为 errorCaptured 与errorHandler',
@@ -220,7 +220,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 17,
-    title: 'vue 文件中 style 与 script 是必须的吗？',
+    title: 'Vue 文件中 style 与 script 是必须的吗？',
     tags: [tagMnum.vue],
     answer: [
       '1、如果没有 render 函数，那么 template 是必须要有的，否则报错',
@@ -232,7 +232,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 18,
-    title: 'vue怎么实现强制刷新组件',
+    title: 'Vue怎么实现强制刷新组件',
     tags: [tagMnum.vue],
     answer: [
       '1、v-if',
@@ -242,7 +242,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 19,
-    title: 'vue 自定义事件怎么接收子组件的多个参数',
+    title: 'Vue 自定义事件怎么接收子组件的多个参数',
     tags: [tagMnum.vue],
     answer: [
       'this.$emit("eventName",data)',
@@ -259,7 +259,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 21,
-    title: '说说你对 vue 的表单修饰符 .lazy 的理解',
+    title: '说说你对 Vue 的表单修饰符 .lazy 的理解',
     tags: [tagMnum.vue],
     answer: [
       'v-model 默认的触发条件是 input 事件, 加了 .lazy 修饰符之后, v-model 会在 change 事件触发的时候去监听'
@@ -267,7 +267,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 22,
-    title: '怎么修改 vue 打包后生成文件路径',
+    title: '怎么修改 Vue 打包后生成文件路径',
     tags: [tagMnum.vue, tagMnum.pack, tagMnum.webpack, tagMnum.vite],
     answer: [
       'webpack: vue.config.js 中设置 outputDir ',
@@ -277,7 +277,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 23,
-    title: 'vue 中什么是递归组件',
+    title: 'Vue 中什么是递归组件',
     tags: [tagMnum.vue],
     answer: [
       '当前注册一个vue组件定义 name 为 "node-tree" ，在组件 template 内部 <node-tree></node-tree>'
@@ -292,22 +292,22 @@ export const problem: iProblemItem[] = [
       '',
       'this.$refs',
       '',
-      'VUE3：import {ref} from “vue”;'
+      'Vue3：import {ref} from “vue”;'
     ]
   },
   {
     id: 25,
-    title: 'vue 双向绑定原理是什么',
+    title: 'Vue 双向绑定原理是什么',
     tags: [tagMnum.vue],
     answer: [
       'VUE2: 通过 Object.defineProperty 去监听对象的每一个属性，然后在 get , set 方法中通过发布订阅者模式来实现的数据响应，但是存在一定的缺陷，比如只能监听已存在的属性，对于新增删除属性就无能为力了，同时无法监听数组和对象的变化',
       '',
-      'VUE3: 是采用数据劫持结合发布者-订阅者模式的方式，通过 new Proxy() 来劫持各个属性的 setter ， getter ，在数据变动时发布消息给订阅者，触发相应的监听回调'
+      'Vue3: 是采用数据劫持结合发布者-订阅者模式的方式，通过 new Proxy() 来劫持各个属性的 setter ， getter ，在数据变动时发布消息给订阅者，触发相应的监听回调'
     ]
   },
   {
     id: 26,
-    title: '使用 vue 渲染大量数据时应该怎么优化',
+    title: '使用 Vue 渲染大量数据时应该怎么优化',
     tags: [tagMnum.vue, tagMnum.optimize],
     answer: [
       '1、对与一次获取全部数据时可使用 Object.freeze',
@@ -329,7 +329,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 28,
-    title: 'vue 的 is 这个特性主要用在哪些方面',
+    title: 'Vue 的 is 这个特性主要用在哪些方面',
     tags: [tagMnum.vue, tagMnum.optimize],
     answer: [
       '1、解决限制元素',
@@ -344,7 +344,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 29,
-    title: 'vue 的 :class 和 :style 有几种使用方式',
+    title: 'Vue 的 :class 和 :style 有几种使用方式',
     tags: [tagMnum.vue],
     answer: [
       ':class',
@@ -362,7 +362,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 30,
-    title: 'vue 组件中写 name 选项有什么作用',
+    title: 'Vue 组件中写 name 选项有什么作用',
     tags: [tagMnum.vue],
     answer: [
       '项目使用 keep-alive 时，可搭配组件 name 进行缓存过滤',
@@ -384,7 +384,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 32,
-    title: '说说你对 vue 的 extend 的理解',
+    title: '说说你对 Vue 的 extend 的理解',
     tags: [tagMnum.vue],
     answer: [
       '创建、复用组件',
@@ -394,7 +394,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 33,
-    title: 'vue 中常用的指令有哪些',
+    title: 'Vue 中常用的指令有哪些',
     tags: [tagMnum.vue],
     answer: [
       'v-if',
@@ -420,7 +420,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 35,
-    title: 'vue 生命周期总共有几个阶段',
+    title: 'Vue 生命周期总共有几个阶段',
     tags: [tagMnum.vue],
     answer: [
       'beforeCreate：在 new 一个 vue 实例后，只有一些默认的生命周期钩子和默认事件，其他的东西都还没创建',
@@ -442,39 +442,39 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 36,
-    title: 'react 和 vue 的区别',
+    title: 'React 和 Vue 的区别',
     tags: [tagMnum.vue, tagMnum.react],
     answer: [
-      'react 是 facebook 官方维护的，而 vue 是尤雨溪本人维护的。并且在其他周边库，如 react-rouer 和 redux ，是 react 社区在维护的。而 vuex 和 vue-router 都是尤雨溪在维护的',
+      'React 是 facebook 官方维护的，而 vue 是尤雨溪本人维护的。并且在其他周边库，如 react-rouer 和 redux ，是 React 社区在维护的。而 vuex 和 vue-router 都是尤雨溪在维护的',
       '',
       '监听数据变化的实现原理不同',
       '',
-      '模板渲染方式，react 通过 JSX 渲染模板， vue 是通过拓展 HTML 语法进行渲染（本质上都是模版）',
+      '模板渲染方式，React 通过 JSX 渲染模板， Vue 是通过拓展 HTML 语法进行渲染（本质上都是模版）',
       '',
-      'vue 提供了一系列的api， 而react的api 很少',
+      'Vue 提供了一系列的api， 而React的api 很少',
       '',
-      'vue的思想是响应式的，也就是基于是数据可变的，实现了数据的双向绑定，react整体是函数式的思想，是单向数据流，推崇结合immutable来实现数据不可变',
+      'Vue的思想是响应式的，也就是基于是数据可变的，实现了数据的双向绑定，React整体是函数式的思想，是单向数据流，推崇结合immutable来实现数据不可变',
     ]
   },
   {
     id: 37,
-    title: 'react 和 vue 的优缺点',
+    title: 'React 和 Vue 的优缺点',
     tags: [tagMnum.vue, tagMnum.react],
     answer: [
-      'vue 优点：',
-      'vue 比 react 更容易上手',
+      'Vue 优点：',
+      'Vue 比 React 更容易上手',
       '官方文档很清晰',
       '提供了指令，过滤器等，可以非常方便，快捷地操作DOM,因此项目写起来更加简单',
       '',
-      'vue 缺点：',
+      'Vue 缺点：',
       'emmm...',
       '',
-      'react 优点：',
+      'React 优点：',
       '可配置项多（对于大牛是优点）',
-      'react社区更为繁荣',
+      'React社区更为繁荣',
       '扩展更强大',
       '',
-      'react 缺点：',
+      'React 缺点：',
       '学习路线陡，上手较难',
       '',
       '共同的缺点：',
@@ -484,7 +484,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 38,
-    title: 'react 和 vue 的共同点',
+    title: 'React 和 Vue 的共同点',
     tags: [tagMnum.vue, tagMnum.react],
     answer: [
       '都比较轻便',
@@ -525,7 +525,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 41,
-    title: 'vue data 什么是函数而不是对象',
+    title: 'Vue data 什么是函数而不是对象',
     tags: [tagMnum.vue],
     answer: [
       '对象为引用类型，当重用组件时，由于数据对象都指向同一个 data 对象，当在一个组件中修改 data 时，其他重用的组件中的 data 会同时被修改；而使用返回对象的函数，由于每次返回的都是一个新对象（Object的实例），引用地址不同，则不会出现这个问题',
@@ -576,7 +576,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 46,
-    title: 'vue 组件之间的通信都有哪些',
+    title: 'Vue 组件之间的通信都有哪些',
     tags: [tagMnum.vue, tagMnum.optimize],
     answer: [
       'props',
@@ -857,7 +857,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 60,
-    title: 'vue 完整的导航解析流程',
+    title: 'Vue 完整的导航解析流程',
     tags: [tagMnum.vue, tagMnum.vueRouter],
     answer: [
       '1、导航被触发',
@@ -876,7 +876,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 61,
-    title: 'vue 怎样动态加载路由',
+    title: 'Vue 怎样动态加载路由',
     tags: [tagMnum.vue, tagMnum.vueRouter],
     answer: [
       'router.addRoutes',
@@ -1046,7 +1046,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 78,
-    title: 'react组件间通信',
+    title: 'React组件间通信',
     tags: [tagMnum.react],
     answer: [
       '1、父组件向子组件通讯: 父组件可以向子组件通过传 props 的方式，向子组件进行通讯',
@@ -1625,6 +1625,143 @@ export const problem: iProblemItem[] = [
       '使用webpack-uglify-parallel来 提 升uglifyPlugin的 压 缩 速 度 。原 理 上webpack-uglify-parallel采用了多核并行压缩来提升压缩速度',
       '',
       '使用Tree-shaking和Scope Hoisting来剔除多余代码',
+    ]
+  },
+  {
+    id: 123,
+    title: 'Vue3做了那些优化',
+    tags: [tagMnum.vue],
+    answer: [
+      '小',
+      '移除一些不常用的 API',
+      '引入tree-shaking，使打包的整体体积变小了',
+      '',
+      '快',
+      'diff算法优化',
+      '静态提升',
+      '事件监听缓存',
+      'SSR优化',
+      '',
+      '友好',
+      '兼顾Vue2的options API的同时还推出了composition API，大大增加了代码的逻辑组织和代码复用能力',
+      '',
+      'Vue3是基于typeScript编写的，提供了更好的类型检查，能支持复杂的类型推导',
+      '',
+      '数据劫持优化 Object.defineProperty => Proxy',
+    ]
+  },
+  {
+    id: 124,
+    title: 'React生命周期',
+    tags: [tagMnum.react],
+    answer: [
+      '挂载阶段:',
+      '1.constructor() 组件挂载前',
+      '2.componentWillMount: 在调用 render 方法之前调用',
+      '3.componentDidMount(): 组件挂载后立即调用',
+      '',
+      '更新运行阶段:',
+      '4.componentWillReceiveProps: 在接受父组件改变后的props需要重新渲染组件时用到的比较多，外部组件传递频繁的时候会导致效率比较低',
+      '5.shouldComponentUpdate(): 用于控制组件重新渲染的生命周期，state发生变化，组件会进入重新渲染的流程，在这里return false可以阻止组件的更新',
+      '6.render(): render() 方法是 class 组件中唯一必须实现的方法',
+      '7.componentWillUpdate() *: shouldComponentUpdate返回true以后，组件进入重新渲染完成之前进入这个函数',
+      '8.componentDidUpdate(): 每次state改变并重新渲染页面后都会进入这个生命周期',
+      '',
+      '卸载或销毁阶段:',
+      'componentWillUnmount()： 组件卸载和数据的销毁',
+    ]
+  },
+  {
+    id: 125,
+    title: '说说React中的setState执行机制',
+    tags: [tagMnum.react],
+    answer: [
+      'setState第一个参数可以是一个对象，或者是一个函数，而第二个参数是一个回调函数，用于可以实时的获取到更新之后的数据',
+      '',
+      '在使用setState更新数据的时候，setState的更新类型分成：同步更新，异步更新',
+      '',
+      '在组件生命周期或React合成事件中，setState是异步',
+      '',
+      '在setTimeout或者原生dom事件中，setState是同步',
+      '',
+      '对同一个值进行多次 setState， setState 的批量更新策略会对其进行覆盖，取最后一次的执行结果',
+    ]
+  },
+  {
+    id: 126,
+    title: 'React中类组件和函数组件的区别',
+    tags: [tagMnum.react],
+    answer: [
+      '函数组件',
+      '函数组件也称无状态组件，以函数形态存在的组件',
+      '',
+      '类组件',
+      '类组件就是基于 ES6 语法，通过继承 React.component 得到的组件',
+      '',
+      '区别:',
+      '1.类组件有生命周期，函数组件没有',
+      '2.类组件需要继承 Class，函数组件不需要',
+      '3.类组件可以获取实例化this，函数组件不行',
+      '4.类组件内部可以定义并维护state， 函数组件为无状态组件（可以通过hooks实现）',
+      '5.函数组件更轻量与灵活，便于逻辑的拆分复用',
+      '6.函数式组件一般用于比较简单的组件定义，类组件用于复杂的组件定义',
+      '6.ReactDOM.render的过程不同',
+    ]
+  },
+  {
+    id: 127,
+    title: 'React Hooks解决了什么问题',
+    tags: [tagMnum.react],
+    answer: [
+      'Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性',
+      '',
+      '1.难以重用和共享组件中的与状态相关的逻辑',
+      '2.逻辑复杂的组件难以开发与维护，当我们的组件需要处理多个互不相关的 local state 时，每个生命周期函数中可能会包含着各种互不相关的逻辑在里面',
+      '3.组件中的this增加学习成本，类组件在基于现有工具的优化上存在些许问题',
+      '4.由于业务变动，函数组件不得不改为类组件等等',
+    ]
+  },
+  {
+    id: 128,
+    title: 'React性能优化的手段有哪些',
+    tags: [tagMnum.react, tagMnum.optimize],
+    answer: [
+      '避免使用内联函数与匿名函数',
+      '使用内联函数，则每次调用render函数时都会创建一个新的函数实例',
+      '',
+      '懒加载组件',
+      '创建多个包，并在运行时动态加载，减少初始包的大小',
+      '',
+      '事件绑定方式',
+      '在render方法中使用bind和箭头函数，都会生成新的方法实例，要在constructer中使用bind和箭头函数',
+      '',
+      '使用 React Fragments 避免额外标记',
+      '',
+      '合理使用hooks',
+      '',
+      '缓存优化',
+      '',
+      '状态下放，缩小状态影响范围',
+      '个状态只在某部分子树中使用，那么可以将这部分子树提取为组件，并将该状态移动到该组件内部',
+      '',
+      '列表项使用 key 属性',
+    ]
+  },
+  {
+    id: 129,
+    title: '对TypeScript的理解？与JavaScript的区别',
+    tags: [tagMnum.ts, tagMnum.js],
+    answer: [
+      'TypeScript是JavaScript的类型的超集，支持ES6语法，支持面向对象编程的概念，其是一种静态类型检查的语言，提供了类型注解，在代码编译阶段就可以检查出数据类型的错误，TypeScript在编译阶段需要编译成JavaScript来运行',
+      '',
+      'js 脚步语言，ts面向对象编程语言',
+      'js学习难度小，ts相对js学习难度高',
+      'js轻量级解释编辑语言，ts强类型面向对象编程语言',
+      'js更灵活',
+      'js人气更高，很方便地找到大量成熟的开发项目和可用资源',
+      'ts代码质量更好、更清晰',
+      'ts可以在开发人员编写脚本时检测错误',
+      'ts进行重构更变的容易、快捷',
     ]
   },
 ]
