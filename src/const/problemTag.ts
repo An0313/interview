@@ -92,15 +92,15 @@ const problemTag: Array<iTagItem> = [
     icon: VueIcon,
     children: [
       {
-        id: 101,
-        name: 'vue-router',
+        id: 401,
+        name: 'Vue Router',
         key: 'vueRouter',
       }, {
-        id: 102,
+        id: 402,
         name: 'vuex',
         key: 'vuex'
       }, {
-        id: 103,
+        id: 403,
         name: 'vue-cli',
         key: 'vueCli'
       }
@@ -110,7 +110,22 @@ const problemTag: Array<iTagItem> = [
     id: 5,
     name: 'React',
     key: 'react',
-    icon: ReactIcon
+    icon: ReactIcon,
+    children: [
+      {
+        id: 501,
+        name: 'React Router',
+        key: 'reactRouter',
+      // }, {
+      //   id: 102,
+      //   name: 'vuex',
+      //   key: 'vuex'
+      // }, {
+      //   id: 103,
+      //   name: 'vue-cli',
+      //   key: 'vueCli'
+      }
+    ]
   },
   {
     id: 6,
@@ -171,7 +186,7 @@ const problemTag: Array<iTagItem> = [
   },
   {
     id: 13,
-    name: 'hr面',
+    name: 'hr面/Boos面',
     key: 'hr',
     icon: HrIcon
   },

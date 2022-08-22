@@ -914,7 +914,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 67,
-    title: '你一般是通过什么方式学习前端的',
+    title: '通过什么方式提高能力',
     tags: [tagMnum.hr],
     answer: []
   },
@@ -1762,6 +1762,154 @@ export const problem: iProblemItem[] = [
       'ts代码质量更好、更清晰',
       'ts可以在开发人员编写脚本时检测错误',
       'ts进行重构更变的容易、快捷',
+    ]
+  },
+  {
+    id: 130,
+    title: 'React如何获取表单数据',
+    tags: [tagMnum.react],
+    answer: [
+      '1.给文本框value属性绑定state中定义的变量,配合onChange事件修改state',
+      '2.给文本框添加ref,表单提交时或获取ref的value',
+    ]
+  },
+  {
+    id: 131,
+    title: '受控组件和非受控组件',
+    tags: [tagMnum.html, tagMnum.js, tagMnum.vue, tagMnum.react],
+    answer: [
+      '受控组件',
+      '就是受我们控制的组件，由自己维护state',
+      '例如：<Input value={x} onChange={fn}/>',
+      '',
+      '非受控组件',
+      '由DOM自身进行维护，ref获取DOM 进行数据的更新这样就不可控',
+      '<Input defaultValue={x} ref={input}/>',
+    ]
+  },
+  {
+    id: 132,
+    title: 'React路由跳转的方式有哪些',
+    tags: [tagMnum.react, tagMnum.reactRouter],
+    answer: [
+      '声明式导航:',
+      '使用NavLink或者Link跳转',
+      '',
+      '编程式导航跳转: ',
+      'props.history.push(url) ',
+      'props.history.replace(url)',
+      'props.history.go(num)',
+    ]
+  },
+  {
+    id: 133,
+    title: 'React中state和props有什么区别',
+    tags: [tagMnum.react],
+    answer: [
+      '相同：',
+      '两者都是 JavaScript 对象',
+      '两者都是用于保存信息',
+      'props 和 state 都能触发渲染更新',
+      '',
+      '区别：',
+      'props 是外部传递给组件的，而 state 是在组件内被组件自己管理的',
+      'props 在组件内部是不可修改的，但 state 在组件内部可以进行修改',
+    ]
+  },
+  {
+    id: 134,
+    title: 'super()和super(props)的区别',
+    tags: [tagMnum.react],
+    answer: [
+      '在React中，类组件基于ES6，所以在constructor中必须使用 super',
+      '',
+      '在调用super过程，无论是否传入props，React内部都会将porps赋值给组件实例porps属性中',
+      '',
+      '如果只调用了super()，那么this.props在super()和构造函数结束之前仍是undefined',
+    ]
+  },
+  {
+    id: 135,
+    title: '说说你对发布订阅、观察者模式的理解',
+    tags: [tagMnum.theory],
+    answer: [
+      '发布订阅模式',
+      '发布-订阅是一种消息范式，消息的发送者（称为发布者）不会将消息直接发送给特定的接收者（称为订阅者）。而是将发布的消息分为不同的类别，无需了解哪些订阅者（如果有的话）可能存在',
+      '',
+      '观察者模式',
+      '观察者模式定义了对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知，并自动更新观察者模式属于行为型模式，行为型模式关注的是对象之间的通讯，观察者模式就是观察者和被观察者之间的通讯',
+      '',
+      '区别',
+      '1.观察者模式里，只有两个角色——观察者 + 被观察者; 发布订阅模式里面，却不仅仅只有发布者和订阅者两个角色，还有一个经常被我们忽略的-中间人',
+      '2.观察者和被观察者，是松耦合的关系; 发布者和订阅者，则完全不存在耦合',
+      '3.观察者模式，多用于单个应用内部; 发布订阅模式，则更多的是一种跨应用的模式，比如我们常用的消息中间件',
+      '4.观察者模式大多数时候是同步的，比如当事件触发，Subject就会去调用观察者的方法。而发布-订阅模式大多数时候是异步的（使用消息队列）',
+    ]
+  },
+  {
+    id: 136,
+    title: '浏览器的渲染过程',
+    tags: [tagMnum.html, tagMnum.css, tagMnum.theory],
+    answer: [
+      'HTML 经过解析生成 DOM树； CSS经过解析生成　Style Rules。 二者一结合生成了Render Tree。 通过layout计算出DOM要显示的宽高、位置、颜色。 最后渲染在界面上',
+    ]
+  },
+  {
+    id: 137,
+    title: '为什么换工作',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 138,
+    title: '印象最深刻的项目',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 139,
+    title: '你认为什么样的代码是好的',
+    tags: [tagMnum.hr],
+    answer: []
+  },
+  {
+    id: 140,
+    title: '从浏览器地址输入url到显示页面的步骤',
+    tags: [tagMnum.theory],
+    answer: [
+      '1、首先，在浏览器地址栏中输入url',
+      '2、浏览器先查看浏览器缓存 - 系统缓存 - 路由器缓存，如果缓存中有，会直接在屏幕中显示页面内容。若没有，则跳到第三步操作',
+      '3、在发送http请求前，需要域名解析(DNS解析)，解析获取相应的IP地址',
+      '4、浏览器向服务器发起tcp连接，与服务器建立tcp三次握手',
+      '5、握手成功后，浏览器向服务器发送http请求，请求数据包',
+      '6、服务器处理收到的请求，将数据返回至浏览器',
+      '7、浏览器收到HTTP响应。根据情况选择关闭TCP连接或者保留重用',
+      '8、如果得到的资源(静态)可以缓存，进行缓存',
+      '8、读取页面内容，浏览器渲染，解析html源码',
+      '9、生成Dom树、解析css样式、js交互',
+      '10、ajax请求数据',
+    ]
+  },
+  {
+    id: 141,
+    title: 'git发生冲突如何解决',
+    tags: [tagMnum.git],
+    answer: [
+      '本地当前分支上，修改冲突代码--->add--->commit--->push',
+    ]
+  },
+  {
+    id: 142,
+    title: '高阶组件的理解与应用场景',
+    tags: [tagMnum.theory, tagMnum.react],
+    answer: [
+      '高阶函数（Higher-order function），至少满足下列一个条件的函数',
+      '1.接受一个或多个函数作为输入',
+      '2.输出一个函数',
+      '在React中，高阶组件即接受一个或多个组件作为参数并且返回一个组件，本质也就是一个函数，并不是一个组件',
+      '',
+      '应用场景',
+      '通过上面的了解，高阶组件能够提高代码的复用性和灵活性，在实际应用中，常常用于与核心业务无关但又在多个模块使用的功能，如权限控制、日志记录、数据校验、异常处理、统计上报等',
     ]
   },
 ]
