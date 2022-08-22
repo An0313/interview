@@ -55,27 +55,24 @@ import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import { iProblemItem, problem as allProblem } from "@/const/problem";
 import { problemTagMnum } from "@/const/problemTag";
 import Page from "@/const/pages";
-import { getCurrentinstance } from "@/util";
+import { useStore } from "@/store";
 
-const list = ref<iProblemItem[]>([]);
+const store = useStore();
+const list = ref<iProblemItem[]>(store.state.probleList);
 const currentIndex = ref<number>(0);
 const pageTitle = ref<string>("加载中");
 const problem = ref<iProblemItem | null>(null);
 const tags = ref<string>("");
 
-onLoad(({ id }) => {
+onLoad(({ id, index }) => {
   // 分享
   if (id) {
     const _id = Number(id);
     const index = allProblem.findIndex((item) => item.id === _id);
     list.value = allProblem;
     currentIndex.value = index === -1 ? 0 : index;
-  } else {
-    const eventChannel = getCurrentinstance().getOpenerEventChannel();
-    eventChannel.on("getListData", (data: any) => {
-      list.value = data.list;
-      currentIndex.value = data.index;
-    });
+  } else if (index) {
+    currentIndex.value = Number(index);
   }
 });
 
@@ -85,10 +82,11 @@ const handleChangeProble = (val: number) => {
 };
 
 watchEffect(() => {
-  const p = list.value[currentIndex.value];
+  const index = currentIndex.value;
+  const p = list.value[index];
   if (p) {
     problem.value = p;
-    pageTitle.value = `第${currentIndex.value + 1}题`;
+    pageTitle.value = `第${index + 1}题`;
     tags.value = p.tags.map((item) => problemTagMnum[item]).join(" ・ ");
   }
 });

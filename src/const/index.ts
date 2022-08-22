@@ -7,3 +7,6 @@ export const systemInfo = uni.getSystemInfoSync()
 export const bottomLift = systemInfo.screenHeight - (systemInfo.safeArea?.bottom || systemInfo.screenHeight)
 export const navInfo: getNavInfoRes = getNavInfo()
 export const terminal: getTerminalRes = getTerminal()
+export const defaultShare = {
+  title: appName,
+}

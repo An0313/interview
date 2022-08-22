@@ -1,5 +1,6 @@
 <template>
   <view class="home">
+    <SearchBar :list="problem" @search="search" />
     // #ifdef MP-WEIXIN
     <ad unit-id="adunit-c05ae012df7980d9"></ad>
     // #endif
@@ -11,7 +12,7 @@
             class="subItem"
             v-for="(subItem, subIndex) in item.sub"
             :key="subIndex"
-            @click="handleOpenList(subItem)"
+            @click="handleClickItem(subItem)"
           >
             <image class="icon" :src="subItem.icon" />
             <view class="info">
@@ -27,8 +28,10 @@
 
 <script setup lang="ts">
 import { onLoad } from "@dcloudio/uni-app";
+import SearchBar from "../SearchBar/index.vue";
+import { useStore } from "@/store";
 import { problemTag, problemTagMnum, iTagItem } from "@/const/problemTag";
-import { probleSort } from "@/const/problem";
+import { probleSort, problem, iProblemItem } from "@/const/problem";
 import Page from "@/const/pages";
 import { isDev } from "@/const";
 
@@ -43,6 +46,8 @@ interface iIndexListItem {
   title: string;
   sub: iIndexListItemSub[];
 }
+
+const stroe = useStore();
 
 const indexList: iIndexListItem[] = (() =>
   [
@@ -84,10 +89,19 @@ const indexList: iIndexListItem[] = (() =>
     };
   }))();
 
+const search = (value: iProblemItem[]) => {
+  handleOpenList({ name: "搜索", list: value });
+};
+
+const handleClickItem = (subItem: iIndexListItemSub) => {
+  handleOpenList({ name: subItem.name, list: probleSort[subItem.id] });
+};
+
 // 打开分类列表页面
-const handleOpenList = (subItem: iIndexListItemSub): void => {
+const handleOpenList = ({ name, list }: any): void => {
+  stroe.dispatch("setProbleList", list);
   uni.navigateTo({
-    url: `${Page.probleList}?id=${subItem.id}&name=${subItem.name}`,
+    url: `${Page.probleList}?name=${name}`,
   });
 };
 
@@ -126,7 +140,7 @@ onLoad(() => {
 <style lang="scss" scoped>
 .indexList {
   $p: 30rpx;
-  
+
   .title {
     padding: 15rpx $p;
     font-size: $i-font-size-base;

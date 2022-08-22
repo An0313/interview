@@ -9,22 +9,21 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
+import { useStore } from "@/store";
 import { iProblemItem, probleSort } from "@/const/problem";
 import Page from "@/const/pages";
+import { defaultShare } from "@/const";
+
+const stroe = useStore();
 
 // 题目列表
-const problemList = ref<iProblemItem[]>([]);
+const problemList = stroe.state.probleList;
 // 页面标题
 const pageTitle = ref<string>("");
 
-onLoad(({ id, name }) => {
-  if (!Number.isInteger(Number(id))) {
-    console.log("无效的id", id);
-  } else {
-    problemList.value = probleSort[id as string];
-    pageTitle.value = name || "";
-  }
+onLoad(({ name }) => {
+  pageTitle.value = name || "";
 });
 
 /**
@@ -32,17 +31,19 @@ onLoad(({ id, name }) => {
  */
 const handleOpenDetail = (index: number): void => {
   uni.navigateTo({
-    url: `${Page.problemDetail}`,
-    success({ eventChannel: { emit } }) {
-      emit("getListData", {
-        list: problemList.value,
-        index,
-      });
-    },
+    url: `${Page.problemDetail}?index=${index}`,
   });
 };
+
+// #ifdef MP-WEIXIN
+onShareAppMessage(() => {
+  return defaultShare;
+});
+onShareTimeline(() => {
+  return defaultShare;
+});
+// #endif
 </script>
 
 <style lang="scss" scoped>
-
 </style>

@@ -18,7 +18,8 @@ page {
 }
 
 view,
-scroll-view {
+scroll-view,
+label {
   box-sizing: border-box;
 }
 </style>

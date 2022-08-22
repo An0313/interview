@@ -20,9 +20,9 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import Page from "@/const/pages";
-import { appName } from "@/const";
+import { appName, defaultShare } from "@/const";
 import Tabbar from "./components/Tabbar";
 import Home from "./components/home";
 import User from "./components/user";
@@ -49,9 +49,18 @@ const tabbar = [
 
 onLoad(({ index }) => {
   if (index) {
-    selectIndex.value = Number(index)
+    selectIndex.value = Number(index);
   }
 });
+
+// #ifdef MP-WEIXIN
+onShareAppMessage(() => {
+  return defaultShare;
+});
+onShareTimeline(() => {
+  return defaultShare;
+});
+// #endif
 </script>
 
 <style lang="scss" scoped>
@@ -71,7 +80,7 @@ onLoad(({ index }) => {
     .pageItem {
       width: 100%;
       overflow: hidden scroll;
-      -webkit-overflow-scrolling: touch
+      -webkit-overflow-scrolling: touch;
     }
   }
 }

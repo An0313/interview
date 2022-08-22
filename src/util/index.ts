@@ -14,7 +14,6 @@ export const debounce = function (fn, delay) {
       timer = null
     }
     timer = setTimeout(() => {
-      console.log('debounce')
       fn.apply(this, args);
     }, delay)
   }
@@ -170,7 +169,7 @@ export interface getNavInfoRes {
 }
 
 export const getNavInfo = (): getNavInfoRes => {
-  const {app, mp} = getTerminal()
+  const { app, mp } = getTerminal()
 
   const navData = {
     statusBarHeight: 0,
@@ -182,7 +181,7 @@ export const getNavInfo = (): getNavInfoRes => {
     navData.statusBarHeight = (uni.getSystemInfoSync().statusBarHeight as number)
 
     if (mp) {
-      const {top, height} = uni.getMenuButtonBoundingClientRect()
+      const { top, height } = uni.getMenuButtonBoundingClientRect()
       navData.titleHeight = 2 * (top - navData.statusBarHeight) + height
       navData.navHeight = navData.statusBarHeight + navData.titleHeight
     }
@@ -196,4 +195,19 @@ export const getCurrentinstance = () => {
   const pages = getCurrentPages()
   pages[0]
   return pages[pages.length - 1] as any
+}
+
+export const toast = (title: string, fn?: () => any) => {
+  const duration = 1500
+  uni.showToast({
+    title,
+    icon: 'none',
+    duration,
+    position: 'center',
+    success() {
+      if (fn) {
+        setTimeout(fn, debounce)
+      }
+    }
+  })
 }
