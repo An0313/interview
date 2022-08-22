@@ -35,14 +35,12 @@ const selectIndex = ref<number>(0);
 const tabbar = [
   {
     name: "home",
-    page: Page.home,
     icon: homeIcon,
     selectedIcon: homeFillIcon,
     title: appName,
   },
   {
     name: "user",
-    page: Page.user,
     icon: userIcon,
     selectedIcon: userFillIcon,
     title: "个人中心",
@@ -50,7 +48,6 @@ const tabbar = [
 ];
 
 onLoad(({ index }) => {
-  console.log(index)
   if (index) {
     selectIndex.value = Number(index)
   }

@@ -51,24 +51,32 @@
 
 <script lang="ts" setup>
 import { ref, watchEffect } from "vue";
-import { onLoad, onShareAppMessage } from "@dcloudio/uni-app";
-import { iProblemItem, probleSort } from "@/const/problem";
+import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
+import { iProblemItem, problem as allProblem } from "@/const/problem";
 import { problemTagMnum } from "@/const/problemTag";
 import Page from "@/const/pages";
+import { getCurrentinstance } from "@/util";
 
 const list = ref<iProblemItem[]>([]);
 const currentIndex = ref<number>(0);
 const pageTitle = ref<string>("加载中");
 const problem = ref<iProblemItem | null>(null);
 const tags = ref<string>("");
-let sid = "";
 
-onLoad(({ sortId, index }) => {
-  const _index = Number(index);
-  const pList = sortId && probleSort[sortId];
-  if (Number.isInteger(_index)) currentIndex.value = _index;
-  if (pList && pList[_index]) list.value = pList;
-  sid = sortId as string;
+onLoad(({ id }) => {
+  // 分享
+  if (id) {
+    const _id = Number(id);
+    const index = allProblem.findIndex((item) => item.id === _id);
+    list.value = allProblem;
+    currentIndex.value = index === -1 ? 0 : index;
+  } else {
+    const eventChannel = getCurrentinstance().getOpenerEventChannel();
+    eventChannel.on("getListData", (data: any) => {
+      list.value = data.list;
+      currentIndex.value = data.index;
+    });
+  }
 });
 
 // 切换面试题
@@ -89,7 +97,13 @@ watchEffect(() => {
 onShareAppMessage(() => {
   return {
     title: problem.value?.title,
-    path: `${Page.problemDetail}?sortId=${sid}&index=${currentIndex.value}`,
+    path: `${Page.problemDetail}?id=${problem.value?.id}`,
+  };
+});
+onShareTimeline(() => {
+  return {
+    title: problem.value?.title,
+    query: `id=${problem.value?.id}`,
   };
 });
 // #endif

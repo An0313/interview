@@ -190,3 +190,10 @@ export const getNavInfo = (): getNavInfoRes => {
 
   return navData
 }
+
+
+export const getCurrentinstance = () => {
+  const pages = getCurrentPages()
+  pages[0]
+  return pages[pages.length - 1] as any
+}

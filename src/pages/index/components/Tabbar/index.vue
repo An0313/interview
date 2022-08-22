@@ -17,7 +17,6 @@
 <script lang="ts" setup>
 interface iTabbarItem {
   name: string;
-  page: string;
   icon: string;
   selectedIcon: string;
   title: string;

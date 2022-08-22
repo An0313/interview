@@ -3,18 +3,7 @@
     // #ifdef MP-WEIXIN
     <ad unit-id="adunit-5b18f0c9b3f1ad52"></ad>
     // #endif
-    <view class="list" v-if="problemList?.length">
-      <view
-        class="listItem"
-        hover-class="listItem-hover"
-        v-for="(item, index) in problemList"
-        :key="item.id"
-        @click="handleOpenDetail(index)"
-      >
-        {{ index + 1 }}、{{ item.title }}
-      </view>
-    </view>
-    <Nodata v-else />
+    <ProbleList :list="problemList" @clickItem="handleOpenDetail" />
   </Layout>
 </template>
 
@@ -22,20 +11,17 @@
 import { ref } from "vue";
 import { onLoad } from "@dcloudio/uni-app";
 import { iProblemItem, probleSort } from "@/const/problem";
-import Page from '@/const/pages'
+import Page from "@/const/pages";
 
 // 题目列表
 const problemList = ref<iProblemItem[]>([]);
 // 页面标题
 const pageTitle = ref<string>("");
-// 面试题分类id
-let sortId: null | string = null;
 
 onLoad(({ id, name }) => {
   if (!Number.isInteger(Number(id))) {
     console.log("无效的id", id);
   } else {
-    sortId = id as string;
     problemList.value = probleSort[id as string];
     pageTitle.value = name || "";
   }
@@ -43,29 +29,20 @@ onLoad(({ id, name }) => {
 
 /**
  * 打开详情页
- * @param pId 面试题id
  */
 const handleOpenDetail = (index: number): void => {
   uni.navigateTo({
-    url: `${Page.problemDetail}?sortId=${sortId}&index=${index}`,
+    url: `${Page.problemDetail}`,
+    success({ eventChannel: { emit } }) {
+      emit("getListData", {
+        list: problemList.value,
+        index,
+      });
+    },
   });
 };
 </script>
 
 <style lang="scss" scoped>
-.list {
-  .listItem {
-    padding: 30rpx;
-    font-size: $i-font-size-base;
-    color: $i-text-color;
 
-    &:nth-child(odd) {
-      background-color: $i-bg-color-grey;;
-    }
-
-    &.listItem-hover {
-      opacity: 0.5;
-    }
-  }
-}
 </style>
