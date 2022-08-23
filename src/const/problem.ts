@@ -186,8 +186,8 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 14,
-    title: 'babel-polyfill 主要是用来做什么的',
-    tags: [tagMnum.vue],
+    title: 'babel-polyfill主要是用来做什么的',
+    tags: [tagMnum.js],
     answer: [
       'Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的API，比如 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise 等全局对象，以及一些定义在全局对象上的方法（比如 Object.assign ）都不会转码',
       '',
@@ -1316,9 +1316,9 @@ export const problem: iProblemItem[] = [
     title: 'css预处理工具有哪些',
     tags: [tagMnum.css, tagMnum.less, tagMnum.sass, tagMnum.stylus],
     answer: [
-      'Less',
-      'Sass: 最早也是最成熟的CSS预处理器',
-      'Stylus: 来自Node.js社区，主要用来给Node项目进行CSS预处理支持，在此社区之内有一定支持者，在广泛的意义上人气还完全不如Sass和Less',
+      'Less: 可以在浏览器中运行，实现主题定制功能；编程能力弱，不直接支持对象，循环，判断等；',
+      'Sass: 用户多，更容易找到scss的学习资源；可编程能力比较强，支持函数，列表，对象，判断，循环等；安装node-sass会经常失败或者报错，需要使用cnpm或者手工安装',
+      'Stylus: 来自NodeJS社区，所以和NodeJS走得很近，与JavaScript联系非常紧密。还有专门JavaScript API, 人气不高和教程较少',
     ]
   },
   {
@@ -1607,6 +1607,10 @@ export const problem: iProblemItem[] = [
       '利用CDN加速',
       '删除死代码',
       '提取公共代码',
+      '通过image-webpack-loader加载器，对图片进行压缩',
+      '通过purgecss-webpack-plugin插件,移除无用的css',
+      '代码分割和动态import',
+      'IgnorePlugin，忽略moment的locale文件，减少文件尺寸',
     ]
   },
   {
@@ -1622,9 +1626,22 @@ export const problem: iProblemItem[] = [
       '',
       '使用Happypack实现多线程加速编译',
       '',
-      '使用webpack-uglify-parallel来 提 升uglifyPlugin的 压 缩 速 度 。原 理 上webpack-uglify-parallel采用了多核并行压缩来提升压缩速度',
+      '使用webpack-uglify-parallel来提升uglifyPlugin的压缩速度。原理上webpack-uglify-parallel采用了多核并行压缩来提升压缩速度',
       '',
       '使用Tree-shaking和Scope Hoisting来剔除多余代码',
+      '',
+      '静态资源CDN托管',
+      '',
+      '生产关闭sourceMap',
+      '',
+      'nodeModulesTransform，置type: none不去编译node_modules下的依赖文件',
+      '',
+      '并行压缩，通过terser-webpack-plugin插件，设置parallel并行数量',
+      '',
+      '缩小构建范围，通过babel-loader 设置exclude的范围',
+      '',
+      '通过babel-cache/terser-webpack-plugin开启缓存',
+      '',
     ]
   },
   {
@@ -1912,6 +1929,99 @@ export const problem: iProblemItem[] = [
       '通过上面的了解，高阶组件能够提高代码的复用性和灵活性，在实际应用中，常常用于与核心业务无关但又在多个模块使用的功能，如权限控制、日志记录、数据校验、异常处理、统计上报等',
     ]
   },
+  {
+    id: 143,
+    title: '小程序的wxss和css有哪些区别',
+    tags: [tagMnum.wx, tagMnum.css],
+    answer: [
+      'WXSS 具有 CSS 大部分特性。同时为了更适合开发微信小程序，WXSS 对 CSS 进行了扩充以及修改',
+      '1.尺寸单位 rpx',
+      '2.提供了全局的样式和局部样式',
+      '3.WXSS 仅支持部分 CSS 选择器',
+    ]
+  },
+  {
+    id: 144,
+    title: '微信小程序rpx与px如何换算',
+    tags: [tagMnum.wx, tagMnum.css],
+    answer: [
+      'rpx换算px (屏幕宽度/750)',
+      'px换算rpx (750/屏幕宽度)',
+    ]
+  },
+  {
+    id: 145,
+    title: '微信小程序性能如何优化',
+    tags: [tagMnum.wx, tagMnum.optimize],
+    answer: [
+      '加载性能',
+      '1.控制包大小',
+      '2.加载顺序',
+      '3.采用分包加载机制',
+      '4.预加载',
+      '5.和主包之间是无关的，采用独立分包',
+      '6.利用缓存',
+      '7.按需注入',
+      '',
+      '渲染性能优化',
+      '1.避免使用不当setData,',
+      '2.切勿在后台页面进行setData',
+      '3.用户事件使用不当',
+      '4.减少setData次数和数据量',
+    ]
+  },
+  {
+    id: 146,
+    title: '为什么要使用CSS预编译',
+    tags: [tagMnum.css],
+    answer: [
+      'CSS缺点',
+      '1.语法不够强大，比如无法嵌套书写，导致模块化开发中需要书写很多重复的选择器',
+      '2.没有变量和合理的样式复用机制，使得逻辑上相关的属性值必须以字面量的形式重复输出，导致难以维护',
+      '',
+      'CSS预编译优点',
+      '1.可以提供 CSS 缺失的样式层复用机制、减少冗余代码，提高样式代码的可维护性。大大提高了开发效率',
+      '2.增强编程能力；增强可复用性；增强可维护性；更便于解决浏览器兼容性',
+      '',
+      'CSS预编译缺点',
+      '预编译CSS步骤的加入，让我们开发工作流中多了一个环节，调试也变得更麻烦了。更大的问题在于，预编译很容易造成后代选择器的滥用',
+    ]
+  },
+  {
+    id: 147,
+    title: 'Vue Router模式hash和history的实现原理',
+    tags: [tagMnum.vue, tagMnum.vueRouter],
+    answer: [
+      'hash模式实现原理',
+      '基于location.hash来实现的，其实实现原理很简单，location.hash的值就是URL中#后面的内容',
+      '',
+      'history模式的实现原理',
+      'HTML5提供了History API来实现URL的变化',
+      'history.pushState()和history.replaceState()。这两个API可以在不进行刷新的情况下，操作浏览器的历史记录。唯一不同的是，前者是新增一个历史记录，后者是直接替换当前的历史记录'
+    ]
+  },
+  {
+    id: 148,
+    title: 'Vue数据更新页面不更新的情况有哪些',
+    tags: [tagMnum.vue],
+    answer: [
+      '1.不存在于 data 中的 变量',
+      '2.对象的动态添加和删除',
+      '3.数组不能通过索引直接修改或者赋值，也不能修改数组的长度',
+      '4.循环嵌套层级太深',
+      '5.路由参数变化时，页面不更新',
+    ]
+  },
+  {
+    id: 149,
+    title: 'webpack中代码分割的方法',
+    tags: [tagMnum.pack, tagMnum.webpack],
+    answer: [
+      '1.Entry Points：入口文件设置的时候可以配置',
+      '2.CommonsChunkPlugin',
+      '3.Dynamic Imports：动态导入,通过模块的内联函数调用来分割。',
+    ]
+  },
 ]
 
 export interface iProbleSort {
@@ -1928,3 +2038,9 @@ export const probleSort = (() => {
   })
   return sort
 })()
+
+// let i = 0
+// problem.forEach((item, index) => {
+//   if (item.id !== i + 1) console.log(item.id)
+//   i++
+// })

@@ -126,11 +126,10 @@ exports.appConfig = {
 	// subPackages: setSubPackages(router),
 	// https://uniapp.dcloud.io/collocation/pages.html#globalstyle
 	globalStyle: {
-		navigationBarTitleText: '面试',
+		navigationBarTitleText: 'web前端面试题',
 		navigationBarBackgroundColor: '#ffffff',
 		navigationBarTextStyle: 'black',
 		navigationStyle: 'default',
-		disableScroll: false,
 		backgroundColor: '#ffffff',
 		backgroundColorTop: '#ffffff',
 		rpxCalcMaxDeviceWidth: maxWidth, // rpx 计算所支持的最大设备宽度，单位 px，默认值为 960

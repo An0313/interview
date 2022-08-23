@@ -31,8 +31,8 @@ const result = ref<iProblemItem[]>(props.list);
 
 const search = debounce((e: any) => {
   const v = (e.detail.value || "").trim();
-  result.value = props.list.filter((item) => item.title.indexOf(v) > -1);
-}, 500);
+  result.value = props.list.filter((item) => item.title.includes(v));
+}, 200);
 
 const handleSubmit = () => {
   if (result.value.length) {
