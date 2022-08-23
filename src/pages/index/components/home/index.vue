@@ -33,7 +33,7 @@ import { useStore } from "@/store";
 import { problemTag, problemTagMnum, iTagItem } from "@/const/problemTag";
 import { probleSort, problem, iProblemItem } from "@/const/problem";
 import Page from "@/const/pages";
-import { isDev } from "@/const";
+import { isDev } from "@/const/env";
 
 interface iIndexListItemSub {
   name: string | number;

@@ -11,36 +11,6 @@ const router = [
 			disableScroll: true,
 		}
 	},
-	// 搜索
-	// {
-	// 	path: 'pages/search/index',
-	// 	name: 'search',
-	// 	meta: {},
-	// 	style: {
-	// 		navigationStyle: 'custom',
-	// 		disableScroll: true,
-	// 	}
-	// },
-	// 大厂面试题
-	// {
-	// 	path: 'pages/company/index',
-	// 	name: 'company',
-	// 	meta: {},
-	// 	style: {
-	// 		navigationStyle: 'custom',
-	// 		disableScroll: true,
-	// 	}
-	// },
-	// 我的
-	// {
-	// 	path: 'pages/user/index',
-	// 	name: 'user',
-	// 	meta: {},
-	// 	style: {
-	// 		navigationStyle: 'custom',
-	// 		disableScroll: true,
-	// 	}
-	// },
 	// 面试题列表
 	{
 		path: 'pages/probleList/index',
@@ -55,6 +25,16 @@ const router = [
 	{
 		path: 'pages/problemDetail/index',
 		name: 'problemDetail',
+		meta: {},
+		style: {
+			navigationStyle: 'custom',
+			disableScroll: true,
+		}
+	},
+	// 登录
+	{
+		path: 'pages/login/index',
+		name: 'login',
 		meta: {},
 		style: {
 			navigationStyle: 'custom',
@@ -118,7 +98,7 @@ const setPages = (router) => {
 	return pages
 }
 
-const maxWidth = 768
+// const maxWidth = 768
 
 exports.pages = setPages(router)
 exports.appConfig = {
@@ -132,10 +112,10 @@ exports.appConfig = {
 		navigationStyle: 'default',
 		backgroundColor: '#ffffff',
 		backgroundColorTop: '#ffffff',
-		rpxCalcMaxDeviceWidth: maxWidth, // rpx 计算所支持的最大设备宽度，单位 px，默认值为 960
-		rpxCalcBaseDeviceWidth: 750, // rpx 计算使用的基准设备宽度，设备实际宽度超出 rpx 计算所支持的最大设备宽度时将按基准宽度计算，单位 px，默认值为 375
-		rpxCalcIncludeWidth: 750, // rpx 计算特殊处理的值，始终按实际的设备宽度计算，单位 rpx，默认值为 750
-		maxWidth: maxWidth,
+		// rpxCalcMaxDeviceWidth: maxWidth, // rpx 计算所支持的最大设备宽度，单位 px，默认值为 960
+		// rpxCalcBaseDeviceWidth: 750, // rpx 计算使用的基准设备宽度，设备实际宽度超出 rpx 计算所支持的最大设备宽度时将按基准宽度计算，单位 px，默认值为 375
+		// rpxCalcIncludeWidth: 750, // rpx 计算特殊处理的值，始终按实际的设备宽度计算，单位 rpx，默认值为 750
+		// maxWidth: maxWidth,
 		// usingComponents: {
 		// 	Layout: '/components/Layout/Layout'
 		// }

@@ -20,19 +20,21 @@
         "navigationStyle": "custom",
         "disableScroll": true
       }
+    },
+    {
+      "path": "pages/login/index",
+      "style": {
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
     }
   ],
   "globalStyle": {
-    "navigationBarTitleText": "面试",
+    "navigationBarTitleText": "web前端面试题",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
     "navigationStyle": "default",
-    "disableScroll": false,
     "backgroundColor": "#ffffff",
-    "backgroundColorTop": "#ffffff",
-    "rpxCalcMaxDeviceWidth": 768,
-    "rpxCalcBaseDeviceWidth": 750,
-    "rpxCalcIncludeWidth": 750,
-    "maxWidth": 768
+    "backgroundColorTop": "#ffffff"
   }
 }
