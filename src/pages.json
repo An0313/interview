@@ -20,13 +20,6 @@
         "navigationStyle": "custom",
         "disableScroll": true
       }
-    },
-    {
-      "path": "pages/login/index",
-      "style": {
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
     }
   ],
   "globalStyle": {

@@ -2,7 +2,7 @@
     "name" : "mianshiti",
     "appid" : "__UNI__8B01752",
     "description" : "面试题",
-    "versionName" : "1.0.0",
+    "versionName" : "1.0.7",
     "versionCode" : "100",
     "transformPx" : false,
     "app-plus" : {
@@ -49,8 +49,7 @@
             "minified" : true
         },
         "usingComponents" : true,
-        "lazyCodeLoading" : "requiredComponents",
-        "cloudfunctionRoot": "./cloudfunctions"
+        "lazyCodeLoading" : "requiredComponents"
     },
     "mp-alipay" : {
         "usingComponents" : true

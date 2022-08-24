@@ -29,6 +29,9 @@
           >上一题</view
         >
         // #ifdef MP-WEIXIN
+        <view class="btn" hover-class="btn-hover" @click="handleCollect" :class="{collect: isCollect}">
+          {{`${isCollect ? '已': ''}收藏`}}
+        </view>
         <view class="btn share">
           分享
           <OpenBtn />
@@ -58,11 +61,21 @@ import Page from "@/const/pages";
 import { useStore } from "@/store";
 
 const store = useStore();
+// 面试题列表
 const list = ref<iProblemItem[]>(store.state.probleList);
-const currentIndex = ref<number>(0);
-const pageTitle = ref<string>("加载中");
+// 当前面试题
 const problem = ref<iProblemItem | null>(null);
+// 当前查看面试题的index
+const currentIndex = ref<number>(0);
+// 页面标题（当前面试题的title）
+const pageTitle = ref<string>("加载中");
+// 当前面试题的标签
 const tags = ref<string>("");
+
+// 用户收藏的全部面试题
+const collectList = ref(store.state.collectList);
+// 当前查看的面试题是否收藏
+const isCollect = ref<boolean>(false);
 
 onLoad(({ id, index }) => {
   // 分享
@@ -81,6 +94,20 @@ const handleChangeProble = (val: number) => {
   if (list.value[val]) currentIndex.value = val;
 };
 
+// 收藏面试题
+const handleCollect = async () => {
+  const cl = [...collectList.value];
+  const { id } = problem.value as iProblemItem;
+  const _isCollect = isCollect.value;
+
+  _isCollect ? cl.splice(cl.indexOf(id), 1) : cl.push(id)
+  store.dispatch(
+    "setCollectList",
+    cl
+  );
+  isCollect.value = !_isCollect;
+};
+
 watchEffect(() => {
   const index = currentIndex.value;
   const p = list.value[index];
@@ -88,6 +115,7 @@ watchEffect(() => {
     problem.value = p;
     pageTitle.value = `第${index + 1}题`;
     tags.value = p.tags.map((item) => problemTagMnum[item]).join(" ・ ");
+    isCollect.value = collectList.value.includes(p.id);
   }
 });
 
@@ -174,6 +202,10 @@ onShareTimeline(() => {
 
       &.btn-hover {
         opacity: 0.5;
+      }
+
+      &.collect {
+        color: $i-color-warning;
       }
     }
   }

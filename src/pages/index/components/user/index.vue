@@ -2,6 +2,9 @@
   <view class="user">
     <view class="userInfo"></view>
     <view class="list">
+      <view class="item" @click="handleViewCollect"> 我的收藏 </view>
+    </view>
+    <view class="list">
       <view class="item relative">
         联系我们
         <OpenBtn openType="contact"></OpenBtn>
@@ -14,8 +17,20 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {};
+<script lang="ts" setup>
+import { useStore } from "@/store";
+import { problem } from "@/const/problem";
+import Pages from '@/const/pages'
+
+const store = useStore();
+const collectList = store.state.collectList;
+
+const handleViewCollect = () => {
+  store.dispatch('setProbleList', problem.filter(item => collectList.includes(item.id)))
+  uni.navigateTo({
+    url: `${Pages.probleList}?name=我的收藏`
+  })
+};
 </script>
 
 <style lang="scss" scoped>

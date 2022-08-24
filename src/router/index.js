@@ -31,16 +31,6 @@ const router = [
 			disableScroll: true,
 		}
 	},
-	// 登录
-	{
-		path: 'pages/login/index',
-		name: 'login',
-		meta: {},
-		style: {
-			navigationStyle: 'custom',
-			disableScroll: true,
-		}
-	},
 ]
 
 const setMainPackages = (router) => {
