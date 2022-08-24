@@ -2062,7 +2062,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 151,
+    id: 152,
     title: '清除浮动的方式有哪些',
     tags: [tagMnum.css],
     answer: [
@@ -2072,7 +2072,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 152,
+    id: 153,
     title: '如何让chrome浏览器显示小于12px的文字',
     tags: [tagMnum.css],
     answer: [
@@ -2083,7 +2083,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 153,
+    id: 154,
     title: '行内元素/块级元素有哪些',
     tags: [tagMnum.html],
     answer: [
@@ -2097,7 +2097,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 154,
+    id: 155,
     title: 'flex属性有那些请简述',
     tags: [tagMnum.css],
     answer: [
@@ -2119,7 +2119,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 155,
+    id: 156,
     title: '为什么0.1 + 0.2 = 0.30000000000000004',
     tags: [tagMnum.js],
     answer: [
@@ -2130,7 +2130,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 156,
+    id: 157,
     title: '如何解决js计算精度问题',
     tags: [tagMnum.js],
     answer: [
@@ -2142,7 +2142,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 157,
+    id: 158,
     title: '什么叫优雅降级和渐进增强',
     tags: [tagMnum.theory],
     answer: [
@@ -2156,7 +2156,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 158,
+    id: 159,
     title: '什么是柯里化',
     tags: [tagMnum.theory, tagMnum.js],
     answer: [
@@ -2164,7 +2164,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 159,
+    id: 160,
     title: '宏任务和微任务',
     tags: [tagMnum.theory, tagMnum.js],
     answer: [
@@ -2176,7 +2176,7 @@ export const problem: iProblemItem[] = [
     ]
   },
   {
-    id: 160,
+    id: 161,
     title: 'require与import的区别',
     tags: [tagMnum.js, tagMnum.node],
     answer: [
@@ -2210,8 +2210,8 @@ export const probleSort = (() => {
   return sort
 })()
 
-// let i = 0
-// problem.forEach((item, index) => {
-//   if (item.id !== i + 1) console.log(item.id)
-//   i++
-// })
+let i = 0
+problem.forEach((item, index) => {
+  if (item.id !== i + 1) console.log(item.id)
+  i++
+})
