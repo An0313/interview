@@ -2,7 +2,10 @@
   <view class="user">
     <view class="userInfo"></view>
     <view class="list">
-      <view class="item" @click="handleViewCollect"> 我的收藏 </view>
+      <view class="item" @click="handleViewCollect"> 
+        我的收藏
+        <text class="tips">（本地存储）</text>
+      </view>
     </view>
     <view class="list">
       <view class="item relative">
@@ -18,18 +21,22 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
 import { useStore } from "@/store";
 import { problem } from "@/const/problem";
-import Pages from '@/const/pages'
+import Pages from "@/const/pages";
 
 const store = useStore();
-const collectList = store.state.collectList;
+const collectList = computed(() => store.state.collectList);
 
 const handleViewCollect = () => {
-  store.dispatch('setProbleList', problem.filter(item => collectList.includes(item.id)))
+  store.dispatch(
+    "setProbleList",
+    problem.filter((item) => collectList.value.includes(item.id))
+  );
   uni.navigateTo({
-    url: `${Pages.probleList}?name=我的收藏`
-  })
+    url: `${Pages.probleList}?name=我的收藏`,
+  });
 };
 </script>
 
@@ -61,6 +68,11 @@ const handleViewCollect = () => {
 
       &:last-child {
         border: none;
+      }
+
+      .tips {
+        font-size: $i-font-size-sm;
+        color: $i-text-color-grey;
       }
     }
 

@@ -67,6 +67,7 @@ const indexList: iIndexListItem[] = (() =>
       title: "其他",
       sub: [
         problemTagMnum.ts,
+        problemTagMnum.node,
         problemTagMnum.algorithm,
         problemTagMnum.optimize,
         problemTagMnum.theory,

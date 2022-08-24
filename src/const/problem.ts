@@ -329,7 +329,7 @@ export const problem: iProblemItem[] = [
   },
   {
     id: 28,
-    title: 'Vue 的 is 这个特性主要用在哪些方面',
+    title: 'Vue的is这个特性主要用在哪些方面',
     tags: [tagMnum.vue, tagMnum.optimize],
     answer: [
       '1、解决限制元素',
@@ -634,11 +634,11 @@ export const problem: iProblemItem[] = [
     title: '伪类和伪元素',
     tags: [tagMnum.html, tagMnum.css],
     answer: [
-      '伪类：用于已有元素处于某种状态时为其添加对应的样式，这个状态是根据用户行为而动态变化的。',
-      '例如：用户悬停在指定元素时，可以通过: hover 来描述这个元素的状态，虽然它和一般css相似，可以为已有元素添加样式，但是它只有处于 DOM 树无法描述的状态下才能为元素添加样式，所以称为伪类。',
+      '伪类：用于已有元素处于某种状态时为其添加对应的样式，这个状态是根据用户行为而动态变化的',
+      '例如：用户悬停在指定元素时，可以通过: hover 来描述这个元素的状态，虽然它和一般css相似，可以为已有元素添加样式，但是它只有处于 DOM 树无法描述的状态下才能为元素添加样式，所以称为伪类',
       '',
-      '伪元素：用于创建一些不在 DOM 树中的元素，并为其添加样式。',
-      '例如，我们可以通过: before 来在一个元素之前添加一些文本，并为这些文本添加样式，虽然用户可以看见 这些文本，但是它实际上并不在 DOM 文档中。'
+      '伪元素：用于创建一些不在 DOM 树中的元素，并为其添加样式',
+      '例如，我们可以通过: before 来在一个元素之前添加一些文本，并为这些文本添加样式，虽然用户可以看见 这些文本，但是它实际上并不在 DOM 文档中'
     ]
   },
   {
@@ -1189,7 +1189,7 @@ export const problem: iProblemItem[] = [
     answer: [
       'Promise的出现解决了传统callback函数导致的“地域回调”问题，但它的语法导致了它向纵向发展行成了一个回调链，遇到复杂的业务场景，这样的语法显然也是不美观的。而async await代码看起来会简洁些，使得异步代码看起来像同步代码，await的本质是可以提供等同于”同步效果“的等待异步返回能力的语法糖，只有这一句代码执行完，才会执行下一句',
       '',
-      'async await与Promise一样，是非阻塞的。',
+      'async await与Promise一样，是非阻塞的',
       'async await是基于Promise实现的，可以说是改良版的Promise，它不能用于普通的回调函数',
     ]
   },
@@ -1587,7 +1587,7 @@ export const problem: iProblemItem[] = [
       '2.url-loader：和file-loader类似，但是能在文件很小的情况下以base64的方式把文件内容注入到代码中去',
       '3.source-map-loader：加载额外的Source Map文件，以方便断点调试image-loader：加载并且压缩图片文件',
       '4.babel-loader：把ES6转换成ES5css-loader：加载CSS，支持模块化、压缩、文件导入等特性',
-      '5.style-loader：把CSS代码注入到JavaScript中，通过DOM操作去加载CSS。',
+      '5.style-loader：把CSS代码注入到JavaScript中，通过DOM操作去加载CSS',
       '6.eslint-loader：通过ESLint检查JavaScript代码',
       '',
       'Plugin：中文名称 插件，是一个扩展器，丰富webpack本身，增强功能 ，针对的是在loader结束之后，webpack打包的整个过程，他并不直接操作文件，而是基于事件机制工作，监听webpack打包过程中的某些节点, 在合适的机会通过webpackt提供的API改变输出结果',
@@ -2019,7 +2019,178 @@ export const problem: iProblemItem[] = [
     answer: [
       '1.Entry Points：入口文件设置的时候可以配置',
       '2.CommonsChunkPlugin',
-      '3.Dynamic Imports：动态导入,通过模块的内联函数调用来分割。',
+      '3.Dynamic Imports：动态导入,通过模块的内联函数调用来分割',
+    ]
+  },
+  {
+    id: 150,
+    title: '组合式API中保留state和getter的响应性',
+    tags: [tagMnum.vue, tagMnum.vue3, tagMnum.vuex],
+    answer: [
+      "import { computed } from 'vue'",
+      "import { useStore } from 'vuex'",
+      "",
+      "const store = useStore()",
+      "const a = computed(() => store.getters.double)",
+    ]
+  },
+  {
+    id: 151,
+    title: 'CSS3新特性有哪些',
+    tags: [tagMnum.css],
+    answer: [
+      '边框',
+      'border-radius、border-shadow、border-image、border-image-source、border-image-slice、border-image-width、border-image-outset、border-image-repeat',
+      '',
+      '背景',
+      'Background-size、Background-origin、background-position、Background-clip',
+      '',
+      '渐变',
+      'Linear-gradient()、Radial-gradient()',
+      '',
+      '文本效果',
+      'Word-break、Word - wrap、Text - overflow、Text - shadow',
+      '',
+      '转换',
+      'Transform',
+      '',
+      '过渡',
+      'Transition',
+      '',
+      '动画',
+      'animation',
+    ]
+  },
+  {
+    id: 151,
+    title: '清除浮动的方式有哪些',
+    tags: [tagMnum.css],
+    answer: [
+      '1.给父元素单独定义高度',
+      '2.父级定义overflow：hidden',
+      '3.在浮动元素后面加一个空标签clear：both；height：0；overflow：hidden',
+    ]
+  },
+  {
+    id: 152,
+    title: '如何让chrome浏览器显示小于12px的文字',
+    tags: [tagMnum.css],
+    answer: [
+      '方法一（低版本chrome）',
+      'html{-webkit-text-size-adjust: none;}',
+      '方法二',
+      'transform: scale()',
+    ]
+  },
+  {
+    id: 153,
+    title: '行内元素/块级元素有哪些',
+    tags: [tagMnum.html],
+    answer: [
+      '行内元素：相邻的行内元素会排列在同一行，不会独占一行 设置宽高无效 span',
+      '',
+      '块级元素：会独占一行 可以设置宽高等属性div',
+      '',
+      '块级元素：div h1 - h6 hr p ul ol table address blockquote dir from menu',
+      '',
+      '行内元素：a br I em img input select span sub sup u textarea',
+    ]
+  },
+  {
+    id: 154,
+    title: 'flex属性有那些请简述',
+    tags: [tagMnum.css],
+    answer: [
+      '父',
+      'flex-direction：主轴的方向',
+      'flex-wrap：换行',
+      'flex-flow：flex-direction和flex-wrap简写',
+      'justify-content：主轴上的对齐方式',
+      'align-items：交叉轴上对齐方式',
+      'align-content：多根轴线的对齐方式',
+      '',
+      '子',
+      'order：排列顺序，越小排列越靠前',
+      'flex-grow：放大比例',
+      'flex-shrink：缩小比例',
+      'flex-basis：设置或检索弹性盒伸缩基准值',
+      'flex：flex-grow,flex-shrink和flex-basis的简写',
+      'align-self：对齐方式，覆盖align-items',
+    ]
+  },
+  {
+    id: 155,
+    title: '为什么0.1 + 0.2 = 0.30000000000000004',
+    tags: [tagMnum.js],
+    answer: [
+      'js存在计算精度不足问题',
+      'js的Number在内存中存储使用的是一种64位双精度浮点数存储方法',
+      '',
+      '由于计算机在计算的过程中，会把十进制数字先转换成二进制，然后做运算，因为浮点类型的小数位的限制而截断了运算完的二进制，这时候再把它转换成了十进制就产生了精度的问题',
+    ]
+  },
+  {
+    id: 156,
+    title: '如何解决js计算精度问题',
+    tags: [tagMnum.js],
+    answer: [
+      '四舍五入',
+      '(0.1 + 0.2).toFixed(1); // 0.3',
+      '',
+      '换算成整型计算',
+      '(0.1 * 10 + 0.2*10) / 10; // 0.3',
+    ]
+  },
+  {
+    id: 157,
+    title: '什么叫优雅降级和渐进增强',
+    tags: [tagMnum.theory],
+    answer: [
+      '渐进增强',
+      '针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验',
+      '',
+      '优雅降级',
+      '一开始就构建完整的功能，然后再针对低版本浏览器进行兼容',
+      '',
+      '经常会提到向上兼容和向下兼容的概念。渐进增强相当于向上兼容，而优雅降级相当于向下兼容'
+    ]
+  },
+  {
+    id: 158,
+    title: '什么是柯里化',
+    tags: [tagMnum.theory, tagMnum.js],
+    answer: [
+      '柯里化函数：把一个多参数的函数转化为单参数函数的方法。并且返回接受余下的参数而且返回结果的新函数的技术'
+    ]
+  },
+  {
+    id: 159,
+    title: '宏任务和微任务',
+    tags: [tagMnum.theory, tagMnum.js],
+    answer: [
+      'js中的一个机制，就是遇到宏任务，先将宏任务放入eventqueue，然后在执行微任务',
+      '',
+      '宏任务：setTimeout, setInterval, Ajax, DOM事件',
+      '',
+      '微任务：Promise async/await'
+    ]
+  },
+  {
+    id: 160,
+    title: 'require与import的区别',
+    tags: [tagMnum.js, tagMnum.node],
+    answer: [
+      'require是CommonJS规范的模块化语法，import是ECMAScript 6规范的模块化语法',
+      '',
+      'require是运行时加载，import是编译时加载；',
+      '',
+      'require可以写在代码的任意位置，import只能写在文件的最顶端且不可在条件语句或函数作用域中使用',
+      '',
+      'require通过module.exports导出的值就不能再变化，import通过export导出的值可以改变',
+      '',
+      'require通过module.exports导出的是exports对象，import通过export导出是指定输出的代码',
+      '',
+      'require运行时才引入模块的属性所以性能相对较低，import编译时引入模块的属性所所以性能稍高',
     ]
   },
 ]

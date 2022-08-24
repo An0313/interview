@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, computed } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import { iProblemItem, problem as allProblem } from "@/const/problem";
 import { problemTagMnum } from "@/const/problemTag";
@@ -73,7 +73,7 @@ const pageTitle = ref<string>("加载中");
 const tags = ref<string>("");
 
 // 用户收藏的全部面试题
-const collectList = ref(store.state.collectList);
+const collectList = computed(() => store.state.collectList);
 // 当前查看的面试题是否收藏
 const isCollect = ref<boolean>(false);
 

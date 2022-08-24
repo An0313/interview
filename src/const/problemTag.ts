@@ -5,6 +5,7 @@ import HtmlIcon from '@/static/img/htmlIcon'
 import CssIcon from '@/static/img/cssIcon'
 import JsIcon from '@/static/img/jsIcon'
 import TsIcon from '@/static/img/tsIcon'
+import NodeIcon from '@/static/img/NodeIcon'
 import OptimizeIcon from '@/static/img/optimizeIcon'
 import CompanyIcon from '@/static/img/company'
 import WxIcon from '@/static/img/wxIcon'
@@ -103,6 +104,10 @@ const problemTag: Array<iTagItem> = [
         id: 403,
         name: 'vue-cli',
         key: 'vueCli'
+      }, {
+        id: 404,
+        name: 'Vue3',
+        key: 'vue3'
       }
     ]
   },
@@ -141,57 +146,63 @@ const problemTag: Array<iTagItem> = [
   },
   {
     id: 8,
+    name: 'NodeJS',
+    key: 'node',
+    icon: NodeIcon
+  },
+  {
+    id: 9,
     name: 'Git',
     key: 'git',
     icon: GitIcon
   },
   {
-    id: 9,
+    id: 10,
     name: '打包工具',
     key: 'pack',
     icon: WebpackIcon,
     children: [
       {
-        id: 901,
+        id: 1001,
         name: 'webpack',
         key: 'webpack',
       }, {
-        id: 902,
+        id: 1002,
         name: 'gulp',
         key: 'gulp'
       }, {
-        id: 903,
+        id: 1003,
         name: 'vite',
         key: 'vite'
       }
     ]
   },
   {
-    id: 10,
+    id: 11,
     name: '算法',
     key: 'algorithm',
     icon: AlgorithmIcon
   },
   {
-    id: 11,
+    id: 12,
     name: '性能优化',
     key: 'optimize',
     icon: OptimizeIcon
   },
   {
-    id: 12,
+    id: 13,
     name: '理论概念',
     key: 'theory',
     icon: TheoryIcon
   },
   {
-    id: 13,
+    id: 14,
     name: 'hr面/Boos面',
     key: 'hr',
     icon: HrIcon
   },
   {
-    id: 14,
+    id: 15,
     name: '大厂面试',
     key: 'company',
     icon: CompanyIcon
