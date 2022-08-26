@@ -44,12 +44,13 @@
     "mp-weixin" : {
         "appid" : "wx6b189e9c73f70c83",
         "setting" : {
-            "urlCheck" : false,
+            "urlCheck" : true,
             "postcss" : true,
             "minified" : true
         },
         "usingComponents" : true,
-        "lazyCodeLoading" : "requiredComponents"
+        "lazyCodeLoading" : "requiredComponents",
+        "mergeVirtualHostAttributes": true
     },
     "mp-alipay" : {
         "usingComponents" : true

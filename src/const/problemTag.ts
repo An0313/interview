@@ -98,7 +98,7 @@ const problemTag: Array<iTagItem> = [
         key: 'vueRouter',
       }, {
         id: 402,
-        name: 'vuex',
+        name: 'Vuex',
         key: 'vuex'
       }, {
         id: 403,
@@ -121,15 +121,11 @@ const problemTag: Array<iTagItem> = [
         id: 501,
         name: 'React Router',
         key: 'reactRouter',
-      // }, {
-      //   id: 102,
-      //   name: 'vuex',
-      //   key: 'vuex'
-      // }, {
-      //   id: 103,
-      //   name: 'vue-cli',
-      //   key: 'vueCli'
-      }
+      }, {
+        id: 502,
+        name: 'Redux',
+        key: 'redux',
+      },
     ]
   },
   {

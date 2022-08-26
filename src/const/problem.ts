@@ -2049,7 +2049,7 @@ export const problem: iProblemItem[] = [
       'Linear-gradient()、Radial-gradient()',
       '',
       '文本效果',
-      'Word-break、Word - wrap、Text - overflow、Text - shadow',
+      'Word-break、Word-wrap、Text-overflow、Text-shadow',
       '',
       '转换',
       'Transform',
@@ -2193,6 +2193,206 @@ export const problem: iProblemItem[] = [
       'require运行时才引入模块的属性所以性能相对较低，import编译时引入模块的属性所所以性能稍高',
     ]
   },
+  {
+    id: 162,
+    title: 'scoped 原理及穿透方法',
+    tags: [tagMnum.vue, tagMnum.css],
+    answer: [
+      '原理',
+      '通过在 DOM 结构以及 css 样式上加唯一不重复的标记：data-v-hash 的方式，以保证唯一(通过 PostCSS 转译)，达到样式私有模块化的目的',
+      '',
+      '穿透方法',
+      '/deep/ >>>',
+    ]
+  },
+  {
+    id: 163,
+    title: '为什么要使用脚手架',
+    tags: [tagMnum.vue, tagMnum.react],
+    answer: [
+      '快速开始一个项目，不用手动配置，直接开发',
+    ]
+  },
+  {
+    id: 164,
+    title: 'Vue与React怎么兼容 IE',
+    tags: [tagMnum.vue, tagMnum.react],
+    answer: [
+      '使用 babel-polyfill 插件,和前缀名 hack',
+    ]
+  },
+  {
+    id: 165,
+    title: 'Vue中使用了哪些设计模式',
+    tags: [tagMnum.vue, tagMnum.theory],
+    answer: [
+      '1.工厂模式-传入参数即可创建实例 虚拟 DOM 根据参数的不同返回基础标签的 Vnode 和组件 Vnode',
+      '2.单例模式-整个程序有且仅有一个实例 vuex 和 vue-router 的插件注册方法 install 判断如果系统存在实例就直接返回掉',
+      '3.发布-订阅模式(vue 事件机制)',
+      '4.观察者模式(响应式数据原理)',
+      '5.策略模式 策略模式指对象有某个行为, 但是在不同的场景中, 该行为有不同的实现方案-比如选项的合并策略',
+    ]
+  },
+  {
+    id: 166,
+    title: '面向过程，面向对象是什么？优缺点',
+    tags: [tagMnum.js],
+    answer: [
+      '1.面向过程：面向过程就是分析出实现需求所需要的步骤，通过函数一步一步实现这些步骤，接着依次调用即可',
+      '',
+      '优点：性能上它是优于面向对象的，因为类在调用的时候需要实例化，开销过大',
+      '',
+      '缺点：不易维护、复用、扩展',
+      '',
+      '用途：单片机、嵌入式开发、Linux / Unix等对性能要求较高的地方',
+      '',
+      '',
+      '2.面向对象：将数据与函数绑定到一起，进行封装，这样能够更快速的开发程序，减少了重复代码的重写过程',
+      '',
+      '面向对象有三大特性：封装，继承，多态',
+      '',
+      '优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统更加灵活、更加易于维护 ',
+      '',
+      '缺点：性能比面向过程低',
+    ]
+  },
+  {
+    id: 167,
+    title: 'Node是什么',
+    tags: [tagMnum.node],
+    answer: [
+      'node是一个JS运行环境',
+      '浏览器也是一个运行环境，JS代码写好之后需要放到浏览器里面去运行，脱离了浏览器是没有办法运行的，现在不仅浏览器能运行JS，Node也能运行Js',
+      '他比浏览器拥有更多能力',
+    ]
+  },
+  {
+    id: 168,
+    title: '为什么要用Node',
+    tags: [tagMnum.node],
+    answer: [
+      '简单强大，轻量可扩展',
+      '简单体现在node使用的是javascript,json来进行编码，人人都会；强大体现在非阻塞IO,可以适应分块传输数据，较慢的网络环境，尤其擅长高并发访问；轻量体现在node本身既是代码，又是服务器，前后端使用统一语言;可扩展体现在可以轻松应对多实例，多服务器架构，同时有海量的第三方应用组件'
+    ]
+  },
+  {
+    id: 169,
+    title: 'Vue组件为什么只能有一个根元素',
+    tags: [tagMnum.vue, tagMnum.vue3],
+    answer: [
+      '这题现在有些落伍，vue3已经不用一个根了。因此这题目很有说头！',
+      '',
+      'vue2中组件确实只能有一个根，但vue3中组件已经可以多根节点了',
+      '',
+      '之所以需要这样是因为vdom是一颗单根树形结构，patch方法在遍历的时候从根节点开始遍历，它要求只有一个根节点。组件也会转换为一个vdom，自然应该满足这个要求',
+      '',
+      'vue3中之所以可以写多个根节点，是因为引入了Fragment的概念，这是一个抽象的节点，如果发现组件是多根的，就创建一个Fragment节点，把多个根节点作为它的children。将来patch的时候，如果发现是一个Fragment节点，则直接遍历children创建或更新',
+    ]
+  },
+  {
+    id: 170,
+    title: 'Vue ref和reactive的区别',
+    tags: [tagMnum.vue, tagMnum.vue3],
+    answer: [
+      '1.ref接收内部值（inner value）返回响应式Ref对象，reactive返回响应式代理对象',
+      '2.从定义上看ref通常用于处理单值的响应式，reactive用于处理对象类型的数据响应式',
+      '3.两者均是用于构造响应式数据，但是ref主要解决原始值的响应式问题',
+      '4.ref返回的响应式数据在JS中使用需要加上.value才能访问其值，在视图中使用会自动脱ref，不需要.value；ref可以接收对象或数组等非原始值，但内部依然是reactive实现响应式；reactive内部如果接收Ref对象会自动脱ref；使用展开运算符(...)展开reactive返回的响应式对象会使其失去响应性，可以结合toRefs()将值转换为Ref对象之后再展开',
+    ]
+  },
+  {
+    id: 171,
+    title: 'Vue watch和watchEffect的区别',
+    tags: [tagMnum.vue, tagMnum.vue3],
+    answer: [
+      'watchEffect立即运行一个函数，然后被动地追踪它的依赖，当这些依赖改变时重新执行该函数',
+      '',
+      'watch侦测一个或多个响应式数据源并在数据源变化时调用一个回调函数',
+      '',
+      '从实现上来说，watchEffect(fn)相当于watch(fn,fn,{immediate:true})',
+    ]
+  },
+  {
+    id: 172,
+    title: 'vue-loader是什么？它有什么作用',
+    tags: [tagMnum.vue, tagMnum.pack, tagMnum.webpack],
+    answer: [
+      '是什么',
+      'vue-loader是用于处理单文件组件（SFC，Single-File Component）的webpack loader',
+      '',
+      '作用',
+      '因为有了vue-loader，我们就可以在项目中编写SFC格式的Vue组件，我们可以把代码分割为<template>、<script>和<style>，代码会异常清晰。结合其他loader我们还可以用Pug编写<template>，用SASS编写<style>，用TS编写<script>。我们的<style>还可以单独作用当前组件',
+    ]
+  },
+  {
+    id: 173,
+    title: '写过自定义指令吗？使用场景有哪些',
+    tags: [tagMnum.vue],
+    answer: [
+      'v-model或v-for',
+      'v-once',
+      '图片懒加载 v-lazy',
+    ]
+  },
+  {
+    id: 174,
+    title: 'v-once的使用场景',
+    tags: [tagMnum.vue],
+    answer: [
+      '仅渲染元素和组件一次，并且跳过未来更新',
+    ]
+  },
+  {
+    id: 175,
+    title: '从零开始写一个vuex，说说你的思路',
+    tags: [tagMnum.vue, tagMnum.vuex],
+    answer: [
+      '官方说vuex是一个状态管理模式和库，并确保这些状态以可预期的方式变更。可见要实现一个vuex：',
+      '',
+      '要实现一个Store存储全局状态',
+      '要提供修改状态所需API：commit(type, payload), dispatch(type, payload)',
+      '',
+      '实现Store时，可以定义Store类，构造函数接收选项options，设置属性state对外暴露状态，提供commit和dispatch修改属性state。这里需要设置state为响应式对象，同时将Store定义为一个Vue插件',
+      '',
+      'commit(type, payload)方法中可以获取用户传入mutations并执行它，这样可以按用户提供的方法修改状态。 dispatch(type, payload)类似，但需要注意它可能是异步的，需要返回一个Promise给用户以处理异步结果',
+    ]
+  },
+  {
+    id: 176,
+    title: 'vuex中actions和mutations有什么区别',
+    tags: [tagMnum.vue, tagMnum.vuex],
+    answer: [
+      '修改状态只能是mutations，actions只能通过提交mutation修改状态',
+    ]
+  },
+  {
+    id: 177,
+    title: '刷新后vuex与redux的数据丢失怎么解决',
+    tags: [tagMnum.vue, tagMnum.vuex, tagMnum.react, tagMnum.redux],
+    answer: [
+      'localStorage',
+      '',
+      '不是所有状态都需要持久化,通过插件的选项控制哪些需要持久化,',
+      '',
+      '类似的插件有vuex-persist、redux-persist、vuex-persistedstate',
+    ]
+  },
+  {
+    id: 178,
+    title: 'Composition API 与 Options API 有什么不同',
+    tags: [tagMnum.vue, tagMnum.vue3],
+    answer: [
+      'Composition API是一组API，包括：Reactivity API、生命周期钩子、依赖注入，使用户可以通过导入函数方式编写vue组件。而Options API则通过声明组件选项的对象形式编写组件',
+      '',
+      'Composition API最主要作用是能够简洁、高效复用逻辑。解决了过去Options API中mixins的各种缺点',
+      '',
+      'Composition API具有更加敏捷的代码组织能力，很多用户喜欢Options API，认为所有东西都有固定位置的选项放置代码，但是单个组件增长过大之后这反而成为限制，一个逻辑关注点分散在组件各处，形成代码碎片，维护时需要反复横跳，Composition API则可以将它们有效组织在一起',
+      '',
+      'Composition API拥有更好的类型推断，对ts支持更友好',
+      '',
+      '低复杂度的场景，Options API仍是一个好选择。对于那些大型，高扩展，强维护的项目上，Composition API会获得更大收益',
+    ]
+  },
 ]
 
 export interface iProbleSort {
@@ -2210,8 +2410,8 @@ export const probleSort = (() => {
   return sort
 })()
 
-let i = 0
-problem.forEach((item, index) => {
-  if (item.id !== i + 1) console.log(item.id)
-  i++
-})
+// let i = 0
+// problem.forEach((item, index) => {
+//   if (item.id !== i + 1) console.log(item.id)
+//   i++
+// })

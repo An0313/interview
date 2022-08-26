@@ -51,6 +51,10 @@ const stroe = useStore();
 
 const indexList: iIndexListItem[] = (() =>
   [
+    // {
+    //   title: "#",
+    //   sub: [problemTagMnum.company],
+    // },
     {
       title: "基础",
       sub: [problemTagMnum.html, problemTagMnum.css, problemTagMnum.js],
@@ -72,7 +76,6 @@ const indexList: iIndexListItem[] = (() =>
         problemTagMnum.optimize,
         problemTagMnum.theory,
         problemTagMnum.hr,
-        problemTagMnum.company,
       ],
     },
   ].map((item) => {
