@@ -7,6 +7,7 @@
         <text class="tips">（本地存储）</text>
       </view>
     </view>
+     // #ifdef MP-WEIXIN
     <view class="list">
       <view class="item relative">
         联系我们
@@ -17,6 +18,7 @@
         <OpenBtn openType="feedback"></OpenBtn>
       </view>
     </view>
+     // #endif
   </view>
 </template>
 

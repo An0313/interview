@@ -2393,6 +2393,30 @@ export const problem: iProblemItem[] = [
       '低复杂度的场景，Options API仍是一个好选择。对于那些大型，高扩展，强维护的项目上，Composition API会获得更大收益',
     ]
   },
+  {
+    id: 179,
+    title: '什么是React Context',
+    tags: [tagMnum.react],
+    answer: [
+      'Context 通过组件树提供了一个传递数据的方法，从而避免了在每一个层级手动的传递 props 属性',
+    ]
+  },
+  {
+    id: 180,
+    title: '在React中Props如何验证类型',
+    tags: [tagMnum.react],
+    answer: [
+      'import PropTypes from "prop-types"',
+    ]
+  },
+  {
+    id: 181,
+    title: 'React使用构造函数和getInitialState的区别',
+    tags: [tagMnum.react],
+    answer: [
+      '构造函数和getInitialState之间的区别就是ES6和ES5本身的区别。在使用ES6类时，应该在构造函数中初始化state，并在使用React.createClass时定义getInitialState方法',
+    ]
+  },
 ]
 
 export interface iProbleSort {

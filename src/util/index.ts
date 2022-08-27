@@ -169,7 +169,6 @@ export interface getNavInfoRes {
 }
 
 export const getNavInfo = (): getNavInfoRes => {
-  const { app, mp } = getTerminal()
 
   const navData = {
     statusBarHeight: 0,
@@ -177,15 +176,16 @@ export const getNavInfo = (): getNavInfoRes => {
     titleHeight: 0
   }
 
-  if (app || mp) {
-    navData.statusBarHeight = (uni.getSystemInfoSync().statusBarHeight as number)
+  navData.statusBarHeight = (uni.getSystemInfoSync().statusBarHeight as number)
 
-    if (mp) {
-      const { top, height } = uni.getMenuButtonBoundingClientRect()
-      navData.titleHeight = 2 * (top - navData.statusBarHeight) + height
-      navData.navHeight = navData.statusBarHeight + navData.titleHeight
-    }
-  }
+  //#ifdef MP
+  const { top, height } = uni.getMenuButtonBoundingClientRect()
+  navData.titleHeight = 2 * (top - navData.statusBarHeight) + height
+  //#endif
+  //#ifndef MP
+  navData.titleHeight = 40;
+  //#endif
+  navData.navHeight = navData.statusBarHeight + navData.titleHeight
 
   return navData
 }

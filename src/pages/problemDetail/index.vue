@@ -28,10 +28,11 @@
           @click="handleChangeProble(currentIndex - 1)"
           >上一题</view
         >
-        // #ifdef MP-WEIXIN
+        
         <view class="btn" hover-class="btn-hover" @click="handleCollect" :class="{collect: isCollect}">
           {{`${isCollect ? '已': ''}收藏`}}
         </view>
+		// #ifdef MP-WEIXIN
         <view class="btn share">
           分享
           <OpenBtn />
