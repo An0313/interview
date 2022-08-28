@@ -3,19 +3,25 @@
     <view
       class="tabbarItem"
       v-for="(item, index) in props.tabbar"
-      :key="item.name"
+      :key="item.key"
       @click="handleOpenPage(index)"
     >
       <image
         class="tabbarItemIcon"
         :src="index === props.selectIndex ? item.selectedIcon : item.icon"
       />
+      <text
+        class="tabbarItemText"
+        :class="{ active: index === props.selectIndex }"
+        >{{ item.name }}</text
+      >
     </view>
   </view>
 </template>
 
 <script lang="ts" setup>
 interface iTabbarItem {
+  key: string;
   name: string;
   icon: string;
   selectedIcon: string;
@@ -52,10 +58,23 @@ const handleOpenPage = (index: number) => {
     font-size: 0;
 
     .tabbarItemIcon {
-      $iconSize: 60rpx;
+      $iconSize: calc($h / 2);
+      $m: calc($h / 2 - $iconSize / 2 - $i-font-size-sm / 2);
+      display: block;
       width: $iconSize;
       height: $iconSize;
-      vertical-align: middle;
+      margin: $m auto;
+    }
+
+    .tabbarItemText {
+      display: block;
+      line-height: $i-font-size-sm;
+      font-size: $i-font-size-sm;
+      color: $i-text-color-grey;
+
+      &.active {
+        color: $i-text-color;
+      }
     }
   }
 }

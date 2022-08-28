@@ -4,9 +4,13 @@
       <view class="page">
         <view
           class="pageContent"
-          :style="{ transform: `translateX(-${selectIndex * 100}vw)` }"
+          :style="{
+            width: `${tabbar.length}00vw`,
+            transform: `translateX(-${selectIndex * 100}vw)`,
+          }"
         >
           <Home class="pageItem"></Home>
+          <WrittenExamination class="pageItem"></WrittenExamination>
           <User class="pageItem"></User>
         </view>
       </view>
@@ -25,25 +29,37 @@ import Page from "@/const/pages";
 import { appName, defaultShare } from "@/const";
 import Tabbar from "./components/Tabbar";
 import Home from "./components/home";
+import WrittenExamination from "./components/writtenExamination";
 import User from "./components/user";
 import homeIcon from "./components/Tabbar/img/home";
 import homeFillIcon from "./components/Tabbar/img/home-fill";
+import writtenExaminationIcon from "./components/Tabbar/img/writtenExamination";
+import writtenExaminationFillIcon from "./components/Tabbar/img/writtenExamination-fill";
 import userIcon from "./components/Tabbar/img/user";
 import userFillIcon from "./components/Tabbar/img/user-fill";
 
 const selectIndex = ref<number>(0);
 const tabbar = [
   {
-    name: "home",
+    key: "home",
     icon: homeIcon,
     selectedIcon: homeFillIcon,
     title: appName,
+    name: '面试题'
   },
   {
-    name: "user",
+    key: "writtenExamination",
+    icon: writtenExaminationIcon,
+    selectedIcon: writtenExaminationFillIcon,
+    title: '笔试题',
+    name: '笔试题'
+  },
+  {
+    key: "user",
     icon: userIcon,
     selectedIcon: userFillIcon,
     title: "个人中心",
+    name: '我的'
   },
 ];
 
@@ -71,10 +87,9 @@ onShareTimeline(() => {
 
   .pageContent {
     display: flex;
-    width: 200vw;
     height: 100%;
     transform: translateX(0);
-    transition: transform 0.5s;
+    transition: transform 0.25s;
     overflow: hidden;
 
     .pageItem {
