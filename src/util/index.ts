@@ -197,8 +197,8 @@ export const getCurrentinstance = () => {
   return pages[pages.length - 1] as any
 }
 
-export const toast = (title: string, fn?: () => any) => {
-  const duration = 1500
+export const toast = (title: string, fn?: () => void) => {
+  const duration: number = 4500
   uni.showToast({
     title,
     icon: 'none',
@@ -206,7 +206,7 @@ export const toast = (title: string, fn?: () => any) => {
     position: 'center',
     success() {
       if (fn) {
-        setTimeout(fn, debounce)
+        setTimeout(fn, duration)
       }
     }
   })

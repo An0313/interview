@@ -2417,6 +2417,14 @@ export const problem: iProblemItem[] = [
       '构造函数和getInitialState之间的区别就是ES6和ES5本身的区别。在使用ES6类时，应该在构造函数中初始化state，并在使用React.createClass时定义getInitialState方法',
     ]
   },
+  {
+    id: 182,
+    title: '如何打印出字符串中的转义字符',
+    tags: [tagMnum.js],
+    answer: [
+      'JSON.stringify(str)',
+    ]
+  },
 ]
 
 export interface iProbleSort {

@@ -55,6 +55,7 @@ interface PropsType {
   list: iProblemItem[];
   type: string;
   index?: number;
+  collectList: number[]
 }
 
 const props = withDefaults(defineProps<PropsType>(), {
@@ -66,12 +67,6 @@ const $emit = defineEmits(["change"]);
 const store = useStore();
 // 页面标题（当前面试题的title）
 const pageTitle = ref<string>("加载中");
-// 用户收藏的全部面试题
-const collectList = computed(() =>
-  props.type === defailType.problem
-    ? store.state.collectList
-    : store.state.collectAnswerList
-);
 // 当前查看的面试题是否收藏
 const isCollect = ref<boolean>(false);
 
@@ -82,7 +77,7 @@ const handleChangeProble = (val: number) => {
 
 // 收藏面试题
 const handleCollect = async () => {
-  const cl = [...collectList.value];
+  const cl = [...props.collectList];
   const { id } = props.list[props.index];
   const _isCollect = isCollect.value;
 
@@ -101,7 +96,7 @@ watchEffect(() => {
   const p = props.list[index];
   if (p) {
     pageTitle.value = `第${index + 1}题`;
-    isCollect.value = collectList.value.includes(p.id);
+    isCollect.value = props.collectList.includes(p.id);
   }
 });
 </script>

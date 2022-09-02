@@ -1,6 +1,7 @@
 <template>
   <DetailLayout
     :list="list"
+    :collectList="collectList"
     :index="currentIndex"
     type="problem"
     @change="changeIndex"
@@ -27,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, computed } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import { iProblemItem, problem as allProblem } from "@/const/problem";
 import { problemTagMnum } from "@/const/problemTag";
@@ -39,6 +40,7 @@ const store = useStore();
 const list = ref<iProblemItem[]>(store.state.probleList);
 // 当前面试题
 const problem = ref<iProblemItem | null>(null);
+const collectList = computed(() => store.state.collectList);
 // 当前查看面试题的index
 const currentIndex = ref<number>(0);
 // 当前面试题的标签
@@ -68,9 +70,7 @@ watchEffect(() => {
   const p = list.value[index];
   if (p) {
     problem.value = p;
-    tags.value = p.tags
-      .map((item) => problemTagMnum[item])
-      .join(" ・ ");
+    tags.value = p.tags.map((item) => problemTagMnum[item]).join(" ・ ");
   }
 });
 
