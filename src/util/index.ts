@@ -198,7 +198,7 @@ export const getCurrentinstance = () => {
 }
 
 export const toast = (title: string, fn?: () => void) => {
-  const duration: number = 4500
+  const duration: number = 1500
   uni.showToast({
     title,
     icon: 'none',

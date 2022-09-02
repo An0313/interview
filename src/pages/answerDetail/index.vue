@@ -85,13 +85,14 @@ onLoad(({ index, id }) => {
 
 const handleSelectAnswer = (index: number): void => {
   if (userValue[currentIndex.value] === undefined) {
-    const { answer } = problem.value as iAnswerListItem;
+    const { answer : _answer } = problem.value as iAnswerListItem;
 
     userValue[currentIndex.value] = index;
     currentUserValue.value = index;
-    if (answer === index) {
+    if (_answer === index) {
       console.log("回答正确");
-      toast("练习结束", () => {
+     
+     if (currentIndex.value === answer.length - 1) toast("练习结束", () => {
         uni.navigateBack();
       });
       // 下一题
