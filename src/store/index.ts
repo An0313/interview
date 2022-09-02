@@ -5,16 +5,19 @@ import { iProblemItem } from '@/const/problem'
 interface iState {
   probleList: iProblemItem[]
   collectList: number[]
+  collectAnswerList: number[]
 }
 
 const collectStorageKey = 'collectList'
+const collectAnswerStorageKey = 'collectAnswer'
 
 export const key: InjectionKey<Store<iState>> = Symbol()
 
 export const store = createStore<iState>({
   state: {
     probleList: [],
-    collectList: uni.getStorageSync(collectStorageKey) || []
+    collectList: uni.getStorageSync(collectStorageKey) || [],
+    collectAnswerList: uni.getStorageSync(collectAnswerStorageKey) || []
   },
   mutations: {
     setState(state, payload) {
@@ -30,6 +33,10 @@ export const store = createStore<iState>({
     setCollectList(context, payload) {
       context.commit('setState', { collectList: payload })
       uni.setStorage({ key: collectStorageKey, data: payload })
+    },
+    setCollectAnswerList(context, payload) {
+      context.commit('setState', { collectList: payload })
+      uni.setStorage({ key: collectAnswerStorageKey, data: payload })
     }
   },
   modules: {

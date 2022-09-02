@@ -38,34 +38,40 @@ import writtenExaminationFillIcon from "./components/Tabbar/img/writtenExaminati
 import userIcon from "./components/Tabbar/img/user";
 import userFillIcon from "./components/Tabbar/img/user-fill";
 
+enum tabbarKey {
+  home,
+  writtenExamination,
+  user,
+}
+
 const selectIndex = ref<number>(0);
 const tabbar = [
   {
-    key: "home",
+    key: tabbarKey.home,
     icon: homeIcon,
     selectedIcon: homeFillIcon,
     title: appName,
-    name: '面试题'
+    name: "面试题",
   },
   {
-    key: "writtenExamination",
+    key: tabbarKey.writtenExamination,
     icon: writtenExaminationIcon,
     selectedIcon: writtenExaminationFillIcon,
-    title: '笔试题',
-    name: '笔试题'
+    title: "笔试题",
+    name: "笔试题",
   },
   {
-    key: "user",
+    key: tabbarKey.user,
     icon: userIcon,
     selectedIcon: userFillIcon,
     title: "个人中心",
-    name: '我的'
+    name: "我的",
   },
 ];
 
-onLoad(({ index }) => {
-  if (index) {
-    selectIndex.value = Number(index);
+onLoad(({ sKey }) => {
+  if (sKey && tabbarKey[sKey as any]) {
+    selectIndex.value = Number(tabbarKey[sKey as any]);
   }
 });
 

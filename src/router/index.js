@@ -31,6 +31,16 @@ const router = [
 			disableScroll: true,
 		}
 	},
+	// 笔试题详情
+	{
+		path: 'pages/answerDetail/index',
+		name: 'answerDetail',
+		meta: {},
+		style: {
+			navigationStyle: 'custom',
+			disableScroll: true,
+		}
+	},
 ]
 
 const setMainPackages = (router) => {
