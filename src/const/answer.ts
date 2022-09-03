@@ -11,7 +11,7 @@ export const answer: iAnswerListItem[] = [
   {
     id: 1,
     title: '请问以下JS代码会输出什么',
-    code: 'var a = 10; \n(function a() {\n    a = 20;\n    console.log(a); \n})()',
+    code: 'var a = 10;\n(function a() {\na = 20;\nconsole.log(a);\n})()',
     option: [
       '10',
       '20',
@@ -134,7 +134,7 @@ export const answer: iAnswerListItem[] = [
   {
     id: 9,
     title: '运行后的输出是',
-    code: "(function() {\n      var a = b = 5;\n  })();   \nconsole.log(b);\nconsole.log(a);",
+    code: "(function() {\n var a = b = 5;\n  })();\nconsole.log(b);\nconsole.log(a);",
     option: [
       "5、5",
       "undefined、undefined",
@@ -150,7 +150,7 @@ export const answer: iAnswerListItem[] = [
   {
     id: 10,
     title: '运行后的输出是',
-    code: "var len = 117;\nlet func = {\n  len: 935,\n  showLen: function() {\n    console.log(this.len);\n  },\n  show: function() {\n    (function(cb) {\n      cb();\n    })(this.showLen)\n  }\n}\nfunc.show();",
+    code: "var len = 117;\nlet func = {\n  len: 935,\n  showLen: function() {\n console.log(this.len);\n  },\n  show: function() {\n (function(cb) {\n   cb();\n })(this.showLen)\n  }\n}\nfunc.show();",
     option: [
       "117",
       "935",
@@ -160,6 +160,67 @@ export const answer: iAnswerListItem[] = [
     answer: 0,
     explain: [
       '个匿名函数，this为window（非严格模式下）'
+    ]
+  },
+  {
+    id: 11,
+    title: '运行后的输出是',
+    code: "var x = new Boolean(false);\nif (x) {\n  alert('hi'); \n}\nvar y = Boolean(0);\nif (y) {\n  alert('hello');  \n}",
+    option: [
+      "hi",
+      "hi hello",
+      "hello",
+      "不显示",
+    ],
+    answer: 0,
+    explain: [
+      'x = Boolean对象； x 并不是 布尔类型的 false'
+    ]
+  },
+  {
+    id: 12,
+    title: '分析下面代码，总共输出（ ）行########',
+    code: "var i = 0;\nwhile( i < 40 ){\n if( i < 30 )\n continue;\n Document.write(‘########’);\n i++;\n}",
+    option: [
+      "0",
+      "9",
+      "30",
+      "39",
+      "40",
+    ],
+    answer: 0,
+    explain: [
+      '主要考察continue的知识，continue的意思是该行以后都不执行，然后进行下一轮循环'
+    ]
+  },
+  {
+    id: 13,
+    title: '运行后的输出是',
+    code: "console.log('one');\nsetTimeout(function(){\n console.log('two');\n},0);\nconsole.log('three');",
+    option: [
+      "’one’’two’’three’",
+      "‘one’’three’’two’",
+      "‘one’’three’",
+      "‘two’’one’’three’",
+    ],
+    answer: 1,
+    explain: [
+      '定时器是异步宏任务，当同步代码执行结束，才会执行该任务'
+    ]
+  },
+  {
+    id: 14,
+    title: '运行后的输出是',
+    code: "var a = 'w' \nlet obj = {\n a: 'o',\n print: function() {\n console.log(this.a);\n },\n print2: () => { \n console.log(this.a);\n }\n}\nlet p = obj.print;\nlet p2 = obj.print2;\nobj.print();\nobj.print2();\np();\np2();",
+    option: [
+      "o、 undefined、 undefined、undefined",
+      "o、 w、 undefined、 undefined",
+      "o、 w、 w、 undefined",
+      "o、 w、 w、 w",
+    ],
+    answer: 3,
+    explain: [
+      '定时器是异步宏任务，当同步代码执行结束，才会执行该任务'
     ]
   },
 ]

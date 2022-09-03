@@ -7,7 +7,6 @@ v1.0.7
 > 优化 小程序警告 app.json window disableScroll   
 > bug 列表页分享   
 
-
 v1.0.8
 > bug 新增收藏不展示   
 > bug 详情页收藏状态错误   
@@ -21,3 +20,9 @@ v1.0.9
 > bug App标题栏高度   
 > add 添加app图标   
 > bug app详情页内不显示收藏按钮
+
+v1.1.0
+> add 面试题。总共182   
+> add 笔试题。总共10   
+> add 添加题号弹窗
+> bug 笔试题答错后不提示正确选项   
