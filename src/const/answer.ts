@@ -220,7 +220,147 @@ export const answer: iAnswerListItem[] = [
     ],
     answer: 3,
     explain: [
-      '定时器是异步宏任务，当同步代码执行结束，才会执行该任务'
+      '箭头函数的this与最外层的this保持一致'
+    ]
+  },
+  {
+    id: 15,
+    title: '运行后的输出是',
+    code: "var myObject = {\n foo: \"bar\",\n func: function() {\n var self = this;\n console.log(this.foo); \n console.log(self.foo); \n (function() {\n console.log(this.foo); \n console.log(self.foo); \n }());\n }\n};\nmyObject.func();",
+    option: [
+      "bar、bar、bar、bar",
+      "bar、bar、bar、undefined",
+      "bar、bar、undefined、bar",
+      "undefined、bar、undefined、bar",
+    ],
+    answer: 2,
+    explain: [
+      '1.第一个this.foo输出bar，因为当前this指向对象myObject',
+      '2.第二个self.foo输出bar，因为self是this的副本，同指向myObject对象',
+      '3.第三个this.foo输出undefined，因为这个IIFE(立即执行函数表达式)中的this指向window',
+      '4.第四个self.foo输出bar，因为这个匿名函数所处的上下文中没有self，所以通过作用域链向上查找，从包含它的父函数中找到了指向myObject对象的self。'
+    ]
+  },
+  {
+    id: 16,
+    title: '运行后的输出是',
+    code: "var str1=new RegExp(\"e\");\ndocument.write(str1.exec(\"hello\"));",
+    option: [
+      "e",
+      "null",
+      "1",
+      "true",
+    ],
+    answer: 0,
+    explain: [
+      '该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null',
+      '本题的exec执行结果是一个数组，但是使用了document.write，所以会默认调用toString的方法,结果就是e'
+    ]
+  },
+  {
+    id: 17,
+    title: '运行后的输出是',
+    code: "for(var i = 0; i < 5; i++){\n setTimeout(function(){\n console.log(i);\n }, 1000 * i);\n}",
+    option: [
+      "4 4 4 4 4",
+      "0 1 2 3 4",
+      "0 0 0 0 0",
+      "5 5 5 5 5",
+    ],
+    answer: 3,
+    explain: [
+      'setTimeout()是一个异步函数，由于js会先执行所有同步任务，再执行异步任务，所以当开始执行setTimeout()异步任务时，for循环早已结束，并且由var声明的变量i不具有块级作用域的特点，当for循环结束时，i值为5，故再执行setTimeout()函数时，输出结果为5 5 5 5 5'
+    ]
+  },
+  {
+    id: 18,
+    title: '运行后的输出是',
+    code: "console.log(0xff ^ 33)",
+    option: [
+      "111",
+      "333",
+      "222",
+      "444",
+    ],
+    answer: 2,
+    explain: [
+      '异或运算 (0xff)1111111 ^ (33)00100001 = 11011110 = 222'
+    ]
+  },
+  {
+    id: 19,
+    title: '返回值为true的是',
+    code: "Object.is(NaN,NaN); //1\nObject.is(+0,-0); //2\nNaN === NaN; //3\n+0 === -0; //4",
+    option: [
+      "1 4",
+      "1 3",
+      "2 3",
+      "2 4",
+    ],
+    answer: 0,
+    explain: [
+      'Object.is()，其行为与===基本一致，不过有两处不同： +0不等于-0。 NaN等于自身'
+    ]
+  },
+  {
+    id: 20,
+    title: '输出的结果是',
+    code: "function f(x) {\n console.log(x);\n var x = 200;\n console.log(x);\n }\nf(a = 100);\nconsole.log(a);",
+    option: [
+      "undefined、200、undefined",
+      "100、200、undefined",
+      "100、200、100",
+      "undefined、200、100",
+    ],
+    answer: 2,
+    explain: [
+      'JS中的函数是非惰性求值，也就是说f（a=100）是将a=100完成计算赋值后的结果即100传入到了f函数中，传入的是值而不是逻辑，相当于f（100），同时变量a也处于函数外也即全局环境了，因此f函数里面的x一开始是传进来的100，后续被重新赋值为200'
+    ]
+  },
+  {
+    id: 21,
+    title: '输出的结果是',
+    code: "var one;\nvar two = null;\nconsole.log(one == two,one === two);",
+    option: [
+      "true false",
+      "true true",
+      "false false",
+      "false true",
+    ],
+    answer: 0,
+    explain: [
+      '变量one只声明未赋值，所以其值为undefined，在使用“==”对undefined和null进行比较时，不能将null和undefined转换成其他任何值，并且规定undefined == null返回结果为true，而使用“===”进行比较时，由于“===”需要严格区分数据类型，故undefined === null返回结果为False'
+    ]
+  },
+  {
+    id: 22,
+    title: '输出的结果是',
+    code: "1 in Object(1.0).constructor;\nNumber[1] = 123;\n1 in Object(1.0).constructor;",
+    option: [
+      "true false",
+      "true true",
+      "false false",
+      "false true",
+    ],
+    answer: 3,
+    explain: [
+      '实际上Object（1.0）就是将数字“1.0”封装成它对应的包装类的一个对象实例比如Number（1.0），所以目的是为了检测1是否在Number上。一开始1并不在Number原型链上所以返回false，直到添加了“Number[1]”这个下标属性之后才让1处于Number的原型链上，也因此返回了true'
+    ]
+  },
+  {
+    id: 23,
+    title: '输出的结果是',
+    code: "function out(x){\n var temp = 2;\n function inside(y){\n document.write( x + y + (temp--));\n }\n inside(5);\n }\n out(3);",
+    option: [
+      "11",
+      "10",
+      "9",
+      "8",
+    ],
+    answer: 1,
+    explain: [
+      '如果该运算符作为后置操作符，则返回它递减之前的值',
+      '如果该运算符作为前置操作符，则返回它递减之后的值。'
     ]
   },
 ]

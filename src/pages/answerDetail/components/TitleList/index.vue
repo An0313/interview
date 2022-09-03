@@ -3,7 +3,12 @@
     <view class="moreBtn" @click="handleShowPopup">
       <image class="moreImg" :src="MORE_IMG" />
     </view>
-    <view class="popup" :class="{ show: showPopup }" @click="handleHidePopup">
+    <view
+      class="popup"
+      :class="{ show: showPopup }"
+      @click="handleHidePopup"
+      @touchmove.stop.prevent="() => {}"
+    >
       <view class="content" :class="{ show: showPopup }" @click.stop="() => {}">
         <view class="header">题 号</view>
         <view class="body" @click="handleChangeIndex">
@@ -31,7 +36,7 @@ import { answer } from "@/const/answer";
 import MORE_IMG from "@/static/img/more";
 
 interface PropsType {
-  list: number[] | undefined[];
+  list: Array<number | undefined>;
   index: number;
 }
 
@@ -48,6 +53,8 @@ const handleChangeIndex = (e: any) => {
 
   if (index !== undefined && index !== props.index) $emit("change", index);
 };
+
+defineExpose({ handleShowPopup });
 </script>
 
 <style lang="scss" scoped>
@@ -156,7 +163,7 @@ $popup-zIndex: calc($btn-zIndex + 1);
       }
 
       &.active {
-        box-shadow: 0 0 5rpx #333;
+        box-shadow: 0 0 15rpx #666;
       }
     }
   }

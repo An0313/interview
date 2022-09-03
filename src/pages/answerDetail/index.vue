@@ -31,13 +31,7 @@
             >选项{{ index + 1 }}： {{ item }}</view
           >
         </view>
-        <view
-          class="explain"
-          v-if="
-            currentUserValue !== undefined &&
-            currentUserValue !== problem.answer
-          "
-        >
+        <view class="explain" v-show="currentUserValue !== undefined">
           <view>解析：</view>
           <view
             class="row"
@@ -58,6 +52,7 @@
       </view>
 
       <TitleList
+        ref="titleListRef"
         :list="userValue"
         :index="currentIndex"
         @change="changeIndex"
@@ -84,8 +79,11 @@ const collectList = computed(() => store.state.collectAnswerList);
 const currentIndex = ref<number>(0);
 const problem = ref<iAnswerListItem | null>(null);
 const code = ref<string>("");
-const userValue = ref<number[] | undefined[]>(list.value.map(() => undefined));
+const userValue = ref<Array<number | undefined>>(
+  list.value.map(() => undefined)
+);
 const currentUserValue = ref<iUserValue>(undefined);
+const titleListRef = ref(null);
 
 onLoad(({ index, id }) => {
   // 分享
@@ -93,6 +91,7 @@ onLoad(({ index, id }) => {
     const _id = Number(id);
     const index = answer.findIndex((item) => item.id === _id);
     list.value = answer;
+    userValue.value = answer.map(() => undefined);
     currentIndex.value = index === -1 ? 0 : index;
   } else if (index) {
     currentIndex.value = Number(index);
@@ -106,26 +105,30 @@ const handleSelectAnswer = (index: number): void => {
 
     userValue.value[i] = index;
     currentUserValue.value = index;
+
+    // const isComplete = !userValue.value.includes(undefined);
+
+    // 回答正确
     if (_answer === index) {
-      console.log("回答正确");
-
-      if (i === answer.length - 1)
-        toast("练习结束", () => {
-          uni.navigateBack();
-        });
-      else {
-        // 进入下一题
-        setTimeout(() => {
-          changeIndex(i + 1);
-        }, 500);
-      }
-
+      // if (!isComplete) {
+      //   let nextIndex = -1;
+      //   userValue.value.filter((item, index) => {
+      //   })
+      //   // 进入下一题
+      //   setTimeout(() => {
+      //     changeIndex(i + 1);
+      //   }, 500);
+      // }
       // 如果在错题库中 冲错题库中删除
-      // 最后一题进入结果页
     } else {
-      console.log("回答错误");
+      // 回答错误
       // 放入错题库
       // 显示解析
+    }
+
+    if (!userValue.value.includes(undefined)) {
+      toast("练习结束");
+      titleListRef.value?.handleShowPopup();
     }
   }
 };
