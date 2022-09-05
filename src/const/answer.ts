@@ -1,3 +1,7 @@
+/**
+ * 笔试题
+ */
+
 export interface iAnswerListItem {
   id: number
   title: string
@@ -58,7 +62,7 @@ export const answer: iAnswerListItem[] = [
   {
     id: 4,
     title: '请问以下JS代码会输出什么',
-    code: "let x = 10;\nlet foo = () => {\n    console.log(x);\n    let x = 20;\n    x++;\n}\nfoo();\n",
+    code: "let x = 10;\nlet foo = () => {\n    console.log(x);\n    let x = 20;\n    x++;\n}\nfoo();",
     option: [
       '抛出ReferenceError',
       '10',
@@ -361,6 +365,36 @@ export const answer: iAnswerListItem[] = [
     explain: [
       '如果该运算符作为后置操作符，则返回它递减之前的值',
       '如果该运算符作为前置操作符，则返回它递减之后的值。'
+    ]
+  },
+  {
+    id: 24,
+    title: '输出的结果是',
+    code: "['1', '7', '11'].map(parseInt)",
+    option: [
+      "[1, NaN, 3]",
+      "[1, 7, 11]",
+    ],
+    answer: 0,
+    explain: [
+      "['1', '7', '11'].map(parseInt) = ",
+      "[parseInt('1', 0)、 parseInt('7', 1)、 parseInt('11', 2)] =",
+      "[1, NaN (没有一进制 所以NaN), 3 (11 二进制转十进制 = 3)]"
+    ]
+  },
+  {
+    id: 25,
+    title: '输出的结果是',
+    code: "parseInt(0.0000005)",
+    option: [
+      "0",
+      "5",
+      "NaN",
+    ],
+    answer: 1,
+    explain: [
+      "1. 隐式转换 parseInt(String(0.0000005))",
+      "2. parseInt('5e-7')"
     ]
   },
 ]

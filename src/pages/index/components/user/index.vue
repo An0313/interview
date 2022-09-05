@@ -2,6 +2,10 @@
   <view class="user">
     <view class="userInfo"></view>
     <view class="list">
+      <view class="item" @click="handleLearningMaterials"> 
+        学习资料
+        <text class="tips">（免费领取 无套路）(持续更新)</text>
+      </view>
       <view class="item" @click="handleViewCollect"> 
         我的收藏
         <text class="tips">（本地存储）</text>
@@ -30,6 +34,12 @@ import Pages from "@/const/pages";
 
 const store = useStore();
 const collectList = computed(() => store.state.collectList);
+
+const handleLearningMaterials = () => {
+  uni.navigateTo({
+    url: Pages.learningMaterials
+  })
+}
 
 const handleViewCollect = () => {
   store.dispatch(
