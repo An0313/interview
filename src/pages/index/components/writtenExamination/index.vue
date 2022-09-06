@@ -37,7 +37,6 @@ interface iAnswerBtnItem {
   key: answerBtnKey;
   name: string;
   sub?: string;
-  // list: iAnswerListItem[];
 }
 
 const store = useStore();
@@ -53,11 +52,6 @@ const answerBtn: iAnswerBtnItem[] = [
   // },
   // {
   //   key: answerBtnKey.random,
-  //   name: "随机练习",
-  //   list: answer.sort(() => Math.random() - 0.5),
-  // },
-  // {
-  //   key: answerBtnKey.random,
   //   name: "未做练习",
   //   list: answer,
   // },
@@ -68,15 +62,15 @@ const answerBtn: iAnswerBtnItem[] = [
   // },
   {
     key: answerBtnKey.start,
-    name: "开始练习",
-    // list: answer,
+    name: "顺序练习",
+  },
+    {
+    key: answerBtnKey.random,
+    name: "随机练习",
   },
   {
     key: answerBtnKey.collect,
     name: "收藏练习",
-    // list: computed(() =>
-    //   answer.filter((item) => store.state.collectAnswerList.includes(item.id))
-    // ).value,
   },
 ];
 
@@ -85,14 +79,16 @@ const handleOpenDefail = (index: number): void => {
   let list;
 
   switch (key) {
-    case answerBtnKey.start:
-      list = answer;
-      break;
     case answerBtnKey.collect:
       list = answer.filter((item) => collectList.value.includes(item.id));
       break;
 
+    case answerBtnKey.random:
+      list = answer.sort(() => Math.random() - 0.5);
+      break;
+
     default:
+      list = answer;
       break;
   }
   store.dispatch("setState", { answerList: list });

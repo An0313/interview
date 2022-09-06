@@ -2,7 +2,7 @@
     "name" : "前端面试宝",
     "appid" : "__UNI__8B01752",
     "description" : "web前端面试题大全，初级html、css、js到中级vue、react再到高级需要的webpack、vite、es6+、ts等面试题应有尽有，大厂最新面试题免费领！",
-    "versionName" : "1.1.0",
+    "versionName" : "1.1.1",
     "versionCode" : "100",
     "transformPx" : false,
     "app-plus" : {

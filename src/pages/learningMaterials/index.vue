@@ -1,7 +1,12 @@
 <template>
   <Layout title="学习资料">
     <view class="list">
-      <view class="item" v-for="item in list" :key="item.id" @click="showAd">
+      <view
+        class="item"
+        v-for="(item, index) in list"
+        :key="item.id"
+        @click="showAd(index)"
+      >
         <image class="cover" :src="item.cover" mode="widthFix" />
         <text class="title">{{ item.name }}</text>
       </view>
@@ -11,50 +16,59 @@
 
 <script lang="ts" setup>
 import { onLoad } from "@dcloudio/uni-app";
-import Pages from "@/const/pages";
-import VUE_COVER from "./img/vue";
-import REACT_COVER from "./img/react";
-import TS_COVER from "./img/ts";
-import WEBPACK_COVER from "./img/webpack";
-import PINIA_COVER from "./img/pinia";
+import * as IMGS from "./imgs";
 
-const list = [
+interface iListItem {
+  id: number;
+  name: string;
+  cover: string;
+  avid: string;
+}
+
+let avid: string = "";
+let isEnded: boolean = false;
+
+const list: iListItem[] = [
   {
     id: 1,
     name: "2022年最新版Vue3全套教程",
-    cover: VUE_COVER,
+    cover: IMGS.VUE_COVER,
+    avid: "897124656",
   },
   {
     id: 2,
     name: "React入门到实战(2022全网最新",
-    cover: REACT_COVER,
+    cover: IMGS.REACT_COVER,
+    avid: "979795771",
   },
   {
     id: 3,
     name: "TypeScript教程",
-    cover: TS_COVER,
+    cover: IMGS.TS_COVER,
+    avid: "800627522",
   },
   {
     id: 4,
     name: "2022版Webpack5入门到原理",
-    cover: WEBPACK_COVER,
+    cover: IMGS.WEBPACK_COVER,
+    avid: "939218689",
   },
   {
     id: 5,
     name: "2022最新版！Pinia基础入门教程",
-    cover: PINIA_COVER,
+    cover: IMGS.PINIA_COVER,
+    avid: "555256420",
   },
 ];
 
 // 领取资料
 const receive = () => {
-  uni.navigateTo({
-    url: Pages.webview,
-    success(res) {
-      res.eventChannel.emit("onGetData", {
-        src: "https://mp.weixin.qq.com/s?__biz=Mzg2Njg0NjgzOA==&mid=2247483662&idx=1&sn=b900ddebefd097d7c63a5fb7af37e3ce&chksm=ce45d017f9325901ec7e5e4ea2ef052902bb97816ee3dd22c5324233aba17e0af75c0ab9cbd5&token=1608215834&lang=zh_CN#rd",
-      });
-    },
+  const timestamp = Date.now();
+  uni.navigateToMiniProgram({
+    appId: "wx7564fd5313d24844",
+    path: `pages/video/video?__preload_=${timestamp * 10 + 3}&__key_=${
+      timestamp * 10 + 4
+    }&avid=${avid}`,
   });
 };
 
@@ -75,6 +89,7 @@ onLoad(() => {
       if (res && res.isEnded) {
         // 正常播放结束，可以下发游戏奖励
         console.log("正常播放结束");
+        isEnded = true;
         receive();
       } else {
         // 播放中途退出，不下发游戏奖励
@@ -85,10 +100,12 @@ onLoad(() => {
 });
 // #endif
 
-const showAd = () => {
+const showAd = (i: number) => {
+  avid = list[i].avid;
   // #ifdef MP-WEIXIN
   // 用户触发广告后，显示激励视频广告
-  if (videoAd) {
+  if (isEnded) receive()
+  else if (videoAd) {
     videoAd.show().catch(() => {
       // 失败重试
       videoAd

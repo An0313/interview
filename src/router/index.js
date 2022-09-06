@@ -51,16 +51,6 @@ const router = [
 			disableScroll: true,
 		}
 	},
-	// 通用webwiew
-	{
-		path: 'pages/webview/index',
-		name: 'webview',
-		meta: {},
-		style: {
-			navigationStyle: 'custom',
-			disableScroll: true,
-		}
-	},
 ]
 
 const setMainPackages = (router) => {

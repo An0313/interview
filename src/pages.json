@@ -34,13 +34,6 @@
         "navigationStyle": "custom",
         "disableScroll": true
       }
-    },
-    {
-      "path": "pages/webview/index",
-      "style": {
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
     }
   ],
   "globalStyle": {

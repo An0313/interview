@@ -3,6 +3,5 @@ export default {
   "probleList": "/pages/probleList/index",
   "problemDetail": "/pages/problemDetail/index",
   "answerDetail": "/pages/answerDetail/index",
-  "learningMaterials": "/pages/learningMaterials/index",
-  "webview": "/pages/webview/index"
+  "learningMaterials": "/pages/learningMaterials/index"
 }
