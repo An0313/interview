@@ -1191,6 +1191,10 @@ export const problem: iProblemItem[] = [
       '',
       'async await与Promise一样，是非阻塞的',
       'async await是基于Promise实现的，可以说是改良版的Promise，它不能用于普通的回调函数',
+      'promise是一个对象，async是一个函数',
+      'promise属于ES6，async属于es7',
+      'promise处理异步是另一种地狱回调，async是测底拉平，更加优雅好用',
+      'promise是async的底层',
     ]
   },
   {
@@ -2423,6 +2427,56 @@ export const problem: iProblemItem[] = [
     tags: [tagMnum.js],
     answer: [
       'JSON.stringify(str)',
+    ]
+  },
+  {
+    id: 183,
+    title: 'Typescript 中的 interface 和 type 有什么区别',
+    tags: [tagMnum.ts],
+    answer: [
+      '1.interface定义数据的形状，具体这个数据结构如何，有哪些属性，如定义一个object；type定义数据的类型，指一个数据具体值是什么类型，如boolean，string',
+      '2.interface可以被class继承和实现，也可以继承class；但type不行',
+      '3.interface不能作为交叉、联合类型的产物，但可以作为其组成元素；而type就没有什么限制既可以作为组成元素又可作为产物',
+      '4.使用type可以自定义范型函数，为己所用；interface不行',
+      '',
+      '但是在日常的工作中他俩还真没有太大区别，特殊场景单独分析，基本上都能怎么舒服怎么来',
+    ]
+  },
+  {
+    id: 184,
+    title: 'JS 是单线程的，为什么 JS 能有异步任务',
+    tags: [tagMnum.js],
+    answer: [
+      'Js代码分为同步，异步代码。宏观任务和微观任务。js是单线程的，在主线程里面在执行代码的时候按照顺序最先执行同步代码，在执行的过程中发现有异步代码（回调函数）则会把异步代码放在任务队列中（消息队列）。在执行了所有的主线程里的同步代码以后，异步代码会放在主线程里面最后执行',
+    ]
+  },
+  {
+    id: 185,
+    title: 'js声明变量的六种方法是什？',
+    tags: [tagMnum.js],
+    answer: [
+      'ES5: var 、function； ES6:  let、const、import、class ',
+    ]
+  },
+  {
+    id: 186,
+    title: 'CSS中，自适应的单位都有哪些',
+    tags: [tagMnum.css],
+    answer: [
+      '1. % ',
+      '2. vw（相对于视口宽度的单位） ',
+      '3. vh ',
+      '4. vm（相对于视口宽度或者高度，取决于哪个小）',
+      '5. em（相对于父元素字体大小的单位） ',
+      '6. rem（相对于根元素字体大小的单位）',
+    ]
+  },
+  {
+    id: 187,
+    title: 'HTML 中 title 属性 和 alt 属性有什么区别',
+    tags: [tagMnum.html],
+    answer: [
+      'title表示，当图片正常显示时，鼠标悬浮在图片时显示的文字，alt表示，图片无法正常显示时，展示的文字',
     ]
   },
 ]

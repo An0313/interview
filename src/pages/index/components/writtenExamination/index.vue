@@ -20,16 +20,21 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import { answer, iAnswerListItem } from "@/const/answer";
+import { answer } from "@/const/answer";
 import Pages from "@/const/pages";
 import { useStore } from "@/store";
-import { json } from "stream/consumers";
+import { toast } from "@/util";
+import {
+  getRecord,
+  RECORD_PRACTICE_KEY,
+  RECORD_WRONG_KEY,
+} from "@/pages/answerDetail/util";
 
 enum answerBtnKey {
   start,
-  order,
   random,
   error,
+  practice,
   collect,
 }
 
@@ -40,33 +45,24 @@ interface iAnswerBtnItem {
 }
 
 const store = useStore();
-const startIndex = 0;
 
 const collectList = computed(() => store.state.collectAnswerList);
 const answerBtn: iAnswerBtnItem[] = [
-  // {
-  //   key: answerBtnKey.order,
-  //   name: "顺序练习",
-  //   sub: `(0/${answer.length})`,
-  //   list: answer,
-  // },
-  // {
-  //   key: answerBtnKey.random,
-  //   name: "未做练习",
-  //   list: answer,
-  // },
-  // {
-  //   key: answerBtnKey.error,
-  //   name: "错题练习",
-  //   list: answer,
-  // },
   {
     key: answerBtnKey.start,
     name: "顺序练习",
   },
-    {
+  {
     key: answerBtnKey.random,
     name: "随机练习",
+  },
+  {
+    key: answerBtnKey.practice,
+    name: "未做练习",
+  },
+  {
+    key: answerBtnKey.error,
+    name: "错题练习",
   },
   {
     key: answerBtnKey.collect,
@@ -87,17 +83,32 @@ const handleOpenDefail = (index: number): void => {
       list = answer.sort(() => Math.random() - 0.5);
       break;
 
+    case answerBtnKey.error:
+      list = answer.filter((item) =>
+        getRecord(RECORD_WRONG_KEY).includes(item.id)
+      );
+      break;
+
+    case answerBtnKey.practice:
+      list = answer.filter((item) =>
+        !getRecord(RECORD_PRACTICE_KEY).includes(item.id)
+      );
+      break;
+
     default:
       list = answer;
       break;
   }
-  store.dispatch("setState", { answerList: list });
-  let url = Pages.answerDetail;
-  if (key === answerBtnKey.order && startIndex > 0)
-    url += `?index=${startIndex}`;
-  uni.navigateTo({
-    url,
-  });
+
+  if (!list || list.length <= 0) toast("暂无习题");
+  else {
+    store.dispatch("setState", { answerList: list });
+    let url = Pages.answerDetail;
+
+    uni.navigateTo({
+      url,
+    });
+  }
 };
 </script>
 

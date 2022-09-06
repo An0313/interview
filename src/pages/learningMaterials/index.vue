@@ -15,7 +15,8 @@
 </template>
 
 <script lang="ts" setup>
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
+import Pages from '@/const/pages'
 import * as IMGS from "./imgs";
 
 interface iListItem {
@@ -98,13 +99,25 @@ onLoad(() => {
     });
   }
 });
+
+onShareAppMessage(() => {
+  return {
+    title: "web前端学习资料免费领取",
+    path: Pages.learningMaterials
+  };
+});
+onShareTimeline(() => {
+  return {
+    title: "web前端学习资料免费领取",
+  };
+});
 // #endif
 
 const showAd = (i: number) => {
   avid = list[i].avid;
   // #ifdef MP-WEIXIN
   // 用户触发广告后，显示激励视频广告
-  if (isEnded) receive()
+  if (isEnded) receive();
   else if (videoAd) {
     videoAd.show().catch(() => {
       // 失败重试

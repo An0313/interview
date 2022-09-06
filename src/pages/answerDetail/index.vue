@@ -70,6 +70,12 @@ import { answer, iAnswerListItem } from "@/const/answer";
 import Pages from "@/const/pages";
 import { isDev } from "@/const/env";
 import { toast } from "@/util";
+import {
+  RECORD_WRONG_KEY,
+  RECORD_PRACTICE_KEY,
+  addRecord,
+  delRecord,
+} from "./util";
 
 type iUserValue = number | undefined;
 
@@ -83,7 +89,7 @@ const userValue = ref<Array<number | undefined>>(
   list.value.map(() => undefined)
 );
 const currentUserValue = ref<iUserValue>(undefined);
-const titleListRef = ref(null);
+const titleListRef = ref<any>(null);
 
 onLoad(({ index, id }) => {
   // 分享
@@ -101,29 +107,22 @@ onLoad(({ index, id }) => {
 const handleSelectAnswer = (index: number): void => {
   const i = currentIndex.value;
   if (userValue.value[i] === undefined) {
-    const { answer: _answer } = problem.value as iAnswerListItem;
+    const { answer: _answer, id: _id } = problem.value as iAnswerListItem;
 
     userValue.value[i] = index;
     currentUserValue.value = index;
 
-    // const isComplete = !userValue.value.includes(undefined);
+    // 添加到练习记录
+    addRecord(RECORD_PRACTICE_KEY, _id);
 
     // 回答正确
     if (_answer === index) {
-      // if (!isComplete) {
-      //   let nextIndex = -1;
-      //   userValue.value.filter((item, index) => {
-      //   })
-      //   // 进入下一题
-      //   setTimeout(() => {
-      //     changeIndex(i + 1);
-      //   }, 500);
-      // }
-      // 如果在错题库中 冲错题库中删除
+      // 如果在错题库中 从错题库中删除
+      delRecord(RECORD_WRONG_KEY, _id);
     } else {
       // 回答错误
       // 放入错题库
-      // 显示解析
+      addRecord(RECORD_WRONG_KEY, _id);
     }
 
     if (!userValue.value.includes(undefined)) {
