@@ -41,16 +41,6 @@ const router = [
 			disableScroll: true,
 		}
 	},
-	// 学习资料
-	{
-		path: 'pages/learningMaterials/index',
-		name: 'learningMaterials',
-		meta: {},
-		style: {
-			navigationStyle: 'custom',
-			disableScroll: true,
-		}
-	},
 ]
 
 const setMainPackages = (router) => {

@@ -397,4 +397,34 @@ export const answer: iAnswerListItem[] = [
       "2. parseInt('5e-7')"
     ]
   },
+  {
+    id: 26,
+    title: '输出的结果是',
+    code: "var a = 1;\nfunction fn(){\n var a = 2;\n function a(){console.log(3);}\n return a;\n function a(){console.log(4);}\n}\nvar b = fn();\nconsole.log(b);",
+    option: [
+      "1",
+      "2",
+      "f a(){console.log(3);}",
+      "f a(){console.log(4);}",
+    ],
+    answer: 1,
+    explain: [
+      "由于存在变量提升和函数提升，且函数提升会在变量提升之前，因此变量a会先被赋值为函数f a(){console.log(3);}，之后被重新赋值为函数f a(){console.log(4);}，最后被赋值为2，所以b值为2"
+    ]
+  },
+  {
+    id: 27,
+    title: '输出的结果是',
+    code: "var foo = \"10\"+3-\"1\";\nconsole.log(foo);",
+    option: [
+      '"102"',
+      "102",
+      "12",
+      '"12"'
+    ],
+    answer: 1,
+    explain: [
+      "隐式转换"
+    ]
+  },
 ]

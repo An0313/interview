@@ -11,6 +11,7 @@
         >
           <Home class="pageItem"></Home>
           <WrittenExamination class="pageItem"></WrittenExamination>
+          <Welfare class="pageItem"></Welfare>
           <User class="pageItem"></User>
         </view>
       </view>
@@ -27,20 +28,17 @@ import { ref } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import Page from "@/const/pages";
 import { appName, defaultShare } from "@/const";
-import Tabbar from "./components/Tabbar";
-import Home from "./components/home";
-import WrittenExamination from "./components/writtenExamination";
-import User from "./components/user";
-import homeIcon from "./components/Tabbar/img/home";
-import homeFillIcon from "./components/Tabbar/img/home-fill";
-import writtenExaminationIcon from "./components/Tabbar/img/writtenExamination";
-import writtenExaminationFillIcon from "./components/Tabbar/img/writtenExamination-fill";
-import userIcon from "./components/Tabbar/img/user";
-import userFillIcon from "./components/Tabbar/img/user-fill";
+import Tabbar from "./components/Tabbar/index.vue";
+import Home from "./components/home/index.vue";
+import WrittenExamination from "./components/writtenExamination/index.vue";
+import Welfare from "./components/Welfare/index.vue";
+import User from "./components/user/index.vue";
+import * as TabbarImg from "./components/Tabbar/imgs";
 
 enum tabbarKey {
   home,
   writtenExamination,
+  learningMaterials,
   user,
 }
 
@@ -48,22 +46,29 @@ const selectIndex = ref<number>(0);
 const tabbar = [
   {
     key: tabbarKey.home,
-    icon: homeIcon,
-    selectedIcon: homeFillIcon,
+    icon: TabbarImg.HOME,
+    selectedIcon: TabbarImg.HOME_FILL,
     title: appName,
     name: "面试题",
   },
   {
     key: tabbarKey.writtenExamination,
-    icon: writtenExaminationIcon,
-    selectedIcon: writtenExaminationFillIcon,
+    icon: TabbarImg.WRITTENEXAMINATION,
+    selectedIcon: TabbarImg.WRITTENEXAMINATION_FILL,
     title: "笔试题",
     name: "笔试题",
   },
   {
+    key: tabbarKey.learningMaterials,
+    icon: TabbarImg.WELFARE,
+    selectedIcon: TabbarImg.WELFARE_FILL,
+    title: "学习资料",
+    name: "领资料",
+  },
+  {
     key: tabbarKey.user,
-    icon: userIcon,
-    selectedIcon: userFillIcon,
+    icon: TabbarImg.USER,
+    selectedIcon: TabbarImg.USER_FILL,
     title: "个人中心",
     name: "我的",
   },

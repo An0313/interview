@@ -27,13 +27,6 @@
         "navigationStyle": "custom",
         "disableScroll": true
       }
-    },
-    {
-      "path": "pages/learningMaterials/index",
-      "style": {
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
     }
   ],
   "globalStyle": {

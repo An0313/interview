@@ -1,22 +1,20 @@
 <template>
-  <Layout title="学习资料">
-    <view class="list">
-      <view
-        class="item"
-        v-for="(item, index) in list"
-        :key="item.id"
-        @click="showAd(index)"
-      >
-        <image class="cover" :src="item.cover" mode="widthFix" />
-        <text class="title">{{ item.name }}</text>
-      </view>
+  <view class="list">
+    <view
+      class="item"
+      v-for="(item, index) in list"
+      :key="item.id"
+      @click="showAd(index)"
+    >
+      <image class="cover" :src="item.cover" mode="widthFix" />
+      <text class="title">{{ item.name }}</text>
     </view>
-  </Layout>
+  </view>
 </template>
 
 <script lang="ts" setup>
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
-import Pages from '@/const/pages'
+import Pages from "@/const/pages";
 import * as IMGS from "./imgs";
 
 interface iListItem {
@@ -103,7 +101,7 @@ onLoad(() => {
 onShareAppMessage(() => {
   return {
     title: "web前端学习资料免费领取",
-    path: Pages.learningMaterials
+    path: Pages.learningMaterials,
   };
 });
 onShareTimeline(() => {
