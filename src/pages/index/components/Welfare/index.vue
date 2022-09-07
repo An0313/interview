@@ -13,8 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
-import Pages from "@/const/pages";
+import { onLoad } from "@dcloudio/uni-app";
 import * as IMGS from "./imgs";
 
 interface iListItem {
@@ -96,18 +95,6 @@ onLoad(() => {
       }
     });
   }
-});
-
-onShareAppMessage(() => {
-  return {
-    title: "web前端学习资料免费领取",
-    path: Pages.learningMaterials,
-  };
-});
-onShareTimeline(() => {
-  return {
-    title: "web前端学习资料免费领取",
-  };
 });
 // #endif
 
