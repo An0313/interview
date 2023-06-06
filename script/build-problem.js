@@ -1,31 +1,19 @@
-const fs = require('fs')
-const path = require('path')
-const { problemTag, problemTagMnum, problem, probleSort } = require('./data');
-
-// 写入文件
-const writeFile = (filePath, fileName, fileContent) => {
-    fs.writeFile(path.resolve(__dirname, filePath, fileName), fileContent, e => {
-        if (e) console.error(e)
-        else console.log(`${fileName} 创建成功`)
-    })
-}
-
-// toJSON
-const stringify = (obj) => JSON.stringify(obj, null, '  ')
+const {writeFile, stringify} = require('./utils')
+const {problemTag, problemTagMenu, problem, problemSort} = require('./data');
 
 
 // 面试题文件
 const problemJs = () => {
-    const problemText = 'export const problem = ' + stringify(problem)
-    const probleSortText = 'export const probleSort = ' + stringify(probleSort)
-    writeFile('../src/const', 'problem.js', problemText + '\n' + probleSortText)
+    const problemText = 'export const problem: IProblem.item[] = ' + stringify(problem)
+    const problemSortText = 'export const problemSort: IProblem.sort = ' + stringify(problemSort)
+    writeFile('../src/const', 'problem.ts', problemText + '\n' + problemSortText)
 }
 
 // 面试题标签文件
 const problemTagJs = () => {
-    const problemTagText = 'export const problemTag = ' + stringify(problemTag)
-    const problemTagMnumText = 'export const problemTagMnum =' + stringify(problemTagMnum)
-    writeFile('../src/const', 'problemTag.js', problemTagText + '\n' + problemTagMnumText)
+    const problemTagText = 'export const problemTag: IProblem.tagItem[] = ' + stringify(problemTag)
+    const problemTagMenuText = 'export const problemTagMenu: IProblem.tagMenu =' + stringify(problemTagMenu)
+    writeFile('../src/const', 'problemTag.ts', problemTagText + '\n' + problemTagMenuText)
 }
 
 problemJs()

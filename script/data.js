@@ -173,7 +173,7 @@ const problemTag = setId([
 module.exports.problemTag = problemTag
 
 // 面试题分类菜单
-const problemTagMnum = (() => {
+const problemTagMenu = (() => {
     const _problemTagMnum = {}
     problemTag.forEach(item => {
         _problemTagMnum[item.id] = item.name
@@ -190,7 +190,7 @@ const problemTagMnum = (() => {
     })
     return _problemTagMnum
 })()
-module.exports.problemTagMnum = problemTagMnum
+module.exports.problemTagMnum = problemTagMenu
 
 // 面试题
 const problem = setId([
@@ -2668,7 +2668,7 @@ const problem = setId([
 module.exports.problem = problem
 
 // 面试题分类
-module.exports.probleSort = (() => {
+module.exports.problemSort = (() => {
     const sort = {}
     problem.forEach((item, index) => {
         item.tags.forEach((tag, tagIndex) => {
