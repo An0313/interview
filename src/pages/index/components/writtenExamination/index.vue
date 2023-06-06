@@ -22,7 +22,7 @@
 import { computed } from "vue";
 import { answer } from "@/const/answer";
 import Pages from "@/const/pages";
-import { useStore } from "@/store";
+import { useCounterStore } from '@/stores/problem';
 import { toast } from "@/util";
 import {
   getRecord,
@@ -44,9 +44,9 @@ interface iAnswerBtnItem {
   sub?: string;
 }
 
-const store = useStore();
+const store = useCounterStore ();
 
-const collectList = computed(() => store.state.collectAnswerList);
+const collectList = computed(() => store.collectAnswerList);
 const answerBtn: iAnswerBtnItem[] = [
   {
     key: answerBtnKey.start,
@@ -102,12 +102,12 @@ const handleOpenDefail = (index: number): void => {
 
   if (!list || list.length <= 0) toast("暂无习题");
   else {
-    store.dispatch("setState", { answerList: list });
-    let url = Pages.answerDetail;
-
-    uni.navigateTo({
-      url,
-    });
+    // store.dispatch("setState", { answerList: list });
+    // let url = Pages.answerDetail;
+    //
+    // uni.navigateTo({
+    //   url,
+    // });
   }
 };
 </script>

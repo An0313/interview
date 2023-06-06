@@ -174,30 +174,30 @@ module.exports.problemTag = problemTag
 
 // 面试题分类菜单
 const problemTagMenu = (() => {
-    const _problemTagMnum = {}
+    const _problemTagMenu = {}
     problemTag.forEach(item => {
-        _problemTagMnum[item.id] = item.name
-        _problemTagMnum[item.key] = item.id
+        _problemTagMenu[item.id] = item.name
+        _problemTagMenu[item.key] = item.id
 
 
         if (item.children) {
             item.children.forEach(cItem => {
-                _problemTagMnum[cItem.id] = cItem.name
-                _problemTagMnum[cItem.key] = cItem.id
+                _problemTagMenu[cItem.id] = cItem.name
+                _problemTagMenu[cItem.key] = cItem.id
 
             })
         }
     })
-    return _problemTagMnum
+    return _problemTagMenu
 })()
-module.exports.problemTagMnum = problemTagMenu
+module.exports.problemTagMenu = problemTagMenu
 
 // 面试题
 const problem = setId([
     {
 
         title: 'H5和小程序有什么区别',
-        tags: [problemTagMnum.html, problemTagMnum.wx],
+        tags: [problemTagMenu.html, problemTagMenu.wx],
         answer: [
             '运行环境的不同',
             'H5运行环境为浏览器',
@@ -214,7 +214,7 @@ const problem = setId([
     {
 
         title: '重绘和回流是什么',
-        tags: [problemTagMnum.html, problemTagMnum.css],
+        tags: [problemTagMenu.html, problemTagMenu.css],
         answer: [
             '我们都知道一个页面从加载到完成，首先是构建DOM树，然后根据DOM节点进行几何布局形成render树(渲染树)，当渲染树构建完成后，页面就根据DOM树开始布局，渲染树也根据设置的样式渲染这些节点',
             '',
@@ -241,7 +241,7 @@ const problem = setId([
     {
 
         title: '如何避免重绘与回流',
-        tags: [problemTagMnum.html, problemTagMnum.css, problemTagMnum.optimize],
+        tags: [problemTagMenu.html, problemTagMenu.css, problemTagMenu.optimize],
         answer: [
             '1、避免使用 table 布局',
             '2、尽可能在 DOM 树的最末端改变 class',
@@ -258,7 +258,7 @@ const problem = setId([
     {
 
         title: '本地存储与cookie存储区别',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '1、 cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存',
             '2、 cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。存储大小限制也不同，cookie数据不能超过4k，同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如会话标识。sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大',
@@ -269,7 +269,7 @@ const problem = setId([
     {
 
         title: '移动端布局的自适应如何做',
-        tags: [problemTagMnum.html, problemTagMnum.css, problemTagMnum.js],
+        tags: [problemTagMenu.html, problemTagMenu.css, problemTagMenu.js],
         answer: [
             '<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">',
             'rem, vw',
@@ -278,7 +278,7 @@ const problem = setId([
     {
 
         title: '导入样式时，使用 link 和 @import 有什么区别',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '1、link是HTML标签，@import是css提供的',
             '2、link引入的样式页面加载时同时加载，@import引入的样式需等页面加载完成后再加载',
@@ -289,7 +289,7 @@ const problem = setId([
     {
 
         title: '浏览器内多个标签页之间的通信方式有哪些',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '1、WebSocket （可跨域）',
             '2、postMessage（可跨域）',
@@ -303,7 +303,7 @@ const problem = setId([
     {
 
         title: 'Vue v-model 的原理',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'v-model只不过是一个语法糖',
             '',
@@ -316,7 +316,7 @@ const problem = setId([
     {
 
         title: '怎么给 Vue 定义全局的方法',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'Vue2',
             '1、挂载到 Vue 的 prototype上',
@@ -329,7 +329,7 @@ const problem = setId([
     {
 
         title: 'keep-alive 有关的生命周期是哪些',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'activated 和 deactivated 两个生命周期函数',
             '',
@@ -339,7 +339,7 @@ const problem = setId([
     {
 
         title: '你知道 Vue 中 key 的原理吗',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '便于Diff时更高效的进行节点查询对比',
             '',
@@ -350,7 +350,7 @@ const problem = setId([
     {
 
         title: '你知道 style 加 scoped 属性的用途和原理吗',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '用途：防止全局同名CSS污染',
             '',
@@ -360,7 +360,7 @@ const problem = setId([
     {
 
         title: '如何在子组件中访问父组件的实例',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '1、直接在子组件中通过 this.$parent.event 来调用父组件的方法',
             '',
@@ -372,7 +372,7 @@ const problem = setId([
     {
 
         title: 'babel-polyfill主要是用来做什么的',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             'Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的API，比如 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise 等全局对象，以及一些定义在全局对象上的方法（比如 Object.assign ）都不会转码',
             '',
@@ -384,7 +384,7 @@ const problem = setId([
     {
 
         title: '说说你对 Vue 错误处理的了解',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '分为 errorCaptured 与errorHandler',
             '',
@@ -396,7 +396,7 @@ const problem = setId([
     {
 
         title: '事件 e.target 和 e.currentTarget 的区别',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'event.currentTarget 指向事件所绑定的元素',
             '',
@@ -406,7 +406,7 @@ const problem = setId([
     {
 
         title: 'Vue 文件中 style 与 script 是必须的吗？',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '1、如果没有 render 函数，那么 template 是必须要有的，否则报错',
             '',
@@ -418,7 +418,7 @@ const problem = setId([
     {
 
         title: 'Vue怎么实现强制刷新组件',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '1、v-if',
             '2、this.$forceUpdate()',
@@ -428,7 +428,7 @@ const problem = setId([
     {
 
         title: 'Vue 自定义事件怎么接收子组件的多个参数',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'this.$emit("eventName",data)',
             'data为一个对象'
@@ -437,7 +437,7 @@ const problem = setId([
     {
 
         title: '$attrs 和 $listeners的使用场景有哪些',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '多级组件嵌套需要传递数据时，通常使用的方法是通过vuex。如果为了传递数据而无中间层处理，则可以使用Vue中提供的$attrs和$listeners'
         ]
@@ -445,7 +445,7 @@ const problem = setId([
     {
 
         title: '说说你对 Vue 的表单修饰符 .lazy 的理解',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'v-model 默认的触发条件是 input 事件, 加了 .lazy 修饰符之后, v-model 会在 change 事件触发的时候去监听'
         ]
@@ -453,7 +453,7 @@ const problem = setId([
     {
 
         title: '怎么修改 Vue 打包后生成文件路径',
-        tags: [problemTagMnum.vue, problemTagMnum.pack, problemTagMnum.webpack, problemTagMnum.vite],
+        tags: [problemTagMenu.vue, problemTagMenu.pack, problemTagMenu.webpack, problemTagMenu.vite],
         answer: [
             'webpack: vue.config.js 中设置 outputDir ',
             '',
@@ -463,7 +463,7 @@ const problem = setId([
     {
 
         title: 'Vue 中什么是递归组件',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '当前注册一个vue组件定义 name 为 "node-tree" ，在组件 template 内部 <node-tree></node-tree>'
         ]
@@ -471,7 +471,7 @@ const problem = setId([
     {
 
         title: '怎么访问到子组件的实例或者子元素',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'this.$children',
             '',
@@ -483,7 +483,7 @@ const problem = setId([
     {
 
         title: 'Vue 双向绑定原理是什么',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'VUE2: 通过 Object.defineProperty 去监听对象的每一个属性，然后在 get , set 方法中通过发布订阅者模式来实现的数据响应，但是存在一定的缺陷，比如只能监听已存在的属性，对于新增删除属性就无能为力了，同时无法监听数组和对象的变化',
             '',
@@ -493,7 +493,7 @@ const problem = setId([
     {
 
         title: '使用 Vue 渲染大量数据时应该怎么优化',
-        tags: [problemTagMnum.vue, problemTagMnum.optimize],
+        tags: [problemTagMenu.vue, problemTagMenu.optimize],
         answer: [
             '1、对与一次获取全部数据时可使用 Object.freeze',
             '',
@@ -505,7 +505,7 @@ const problem = setId([
     {
 
         title: '<template></template> 标签有什么作用',
-        tags: [problemTagMnum.vue, problemTagMnum.optimize],
+        tags: [problemTagMenu.vue, problemTagMenu.optimize],
         answer: [
             'template作用：当做一个不可见的包裹元素，不显示在页面中，减少了不必要的dom元素',
             '',
@@ -515,7 +515,7 @@ const problem = setId([
     {
 
         title: 'Vue的is这个特性主要用在哪些方面',
-        tags: [problemTagMnum.vue, problemTagMnum.optimize],
+        tags: [problemTagMenu.vue, problemTagMenu.optimize],
         answer: [
             '1、解决限制元素',
             '有些 HTML 标签内只能使用特定元素，例如 <ul> <table> <select> 等元素。这会导致使用这些元素时遇到一些问题，例如：',
@@ -530,7 +530,7 @@ const problem = setId([
     {
 
         title: 'Vue 的 :class 和 :style 有几种使用方式',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             ':class',
             '1、绑定变量',
@@ -548,7 +548,7 @@ const problem = setId([
     {
 
         title: 'Vue 组件中写 name 选项有什么作用',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '项目使用 keep-alive 时，可搭配组件 name 进行缓存过滤',
             '',
@@ -560,7 +560,7 @@ const problem = setId([
     {
 
         title: 'SSR 解决了什么问题',
-        tags: [problemTagMnum.optimize],
+        tags: [problemTagMenu.optimize],
         answer: [
             '优化首屏加载速度',
             '',
@@ -570,7 +570,7 @@ const problem = setId([
     {
 
         title: '说说你对 Vue 的 extend 的理解',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '创建、复用组件',
             '',
@@ -580,7 +580,7 @@ const problem = setId([
     {
 
         title: 'Vue 中常用的指令有哪些',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'v-if',
             'v-else-if',
@@ -598,7 +598,7 @@ const problem = setId([
     {
 
         title: '第一次加载页面时会触发哪几个钩子',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'beforeCreate => created => beforeMount => mounted',
         ]
@@ -606,7 +606,7 @@ const problem = setId([
     {
 
         title: 'Vue 生命周期总共有几个阶段',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'beforeCreate：在 new 一个 vue 实例后，只有一些默认的生命周期钩子和默认事件，其他的东西都还没创建',
             '',
@@ -628,7 +628,7 @@ const problem = setId([
     {
 
         title: 'React 和 Vue 的区别',
-        tags: [problemTagMnum.vue, problemTagMnum.react],
+        tags: [problemTagMenu.vue, problemTagMenu.react],
         answer: [
             'React 是 facebook 官方维护的，而 vue 是尤雨溪本人维护的。并且在其他周边库，如 react-rouer 和 redux ，是 React 社区在维护的。而 vuex 和 vue-router 都是尤雨溪在维护的',
             '',
@@ -644,7 +644,7 @@ const problem = setId([
     {
 
         title: 'React 和 Vue 的优缺点',
-        tags: [problemTagMnum.vue, problemTagMnum.react],
+        tags: [problemTagMenu.vue, problemTagMenu.react],
         answer: [
             'Vue 优点：',
             'Vue 比 React 更容易上手',
@@ -670,7 +670,7 @@ const problem = setId([
     {
 
         title: 'React 和 Vue 的共同点',
-        tags: [problemTagMnum.vue, problemTagMnum.react],
+        tags: [problemTagMenu.vue, problemTagMenu.react],
         answer: [
             '都比较轻便',
             '',
@@ -691,7 +691,7 @@ const problem = setId([
     {
 
         title: '动态给 data 加新的属性会发生什么？怎样解决？',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '如果在实例创建之后添加新的属性到实例上，它不会触发视图更新',
             '',
@@ -701,7 +701,7 @@ const problem = setId([
     {
 
         title: 'v-if 和 v-for 的优先级？同时出现怎么优化？',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'v-for 优先级高',
             '',
@@ -711,7 +711,7 @@ const problem = setId([
     {
 
         title: 'Vue data 什么是函数而不是对象',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '对象为引用类型，当重用组件时，由于数据对象都指向同一个 data 对象，当在一个组件中修改 data 时，其他重用的组件中的 data 会同时被修改；而使用返回对象的函数，由于每次返回的都是一个新对象（Object的实例），引用地址不同，则不会出现这个问题',
         ]
@@ -719,7 +719,7 @@ const problem = setId([
     {
 
         title: 'watch 和计算属性有什么区别',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '一个是侦听属性，一个是计算属性',
             '',
@@ -733,7 +733,7 @@ const problem = setId([
     {
 
         title: '循环中 key 有什么作用',
-        tags: [problemTagMnum.vue, problemTagMnum.react, problemTagMnum.optimize],
+        tags: [problemTagMenu.vue, problemTagMenu.react, problemTagMenu.optimize],
         answer: [
             '性能优化 diff 时更快更准确找到变化的位置'
         ]
@@ -741,7 +741,7 @@ const problem = setId([
     {
 
         title: 'v-show 和 v-if 有什么区别',
-        tags: [problemTagMnum.vue, problemTagMnum.optimize],
+        tags: [problemTagMenu.vue, problemTagMenu.optimize],
         answer: [
             'v-if 不渲染 DOM，v-show 会渲染 DOM'
         ]
@@ -749,7 +749,7 @@ const problem = setId([
     {
 
         title: 'v-show 和 v-if 使用场景分别是什么',
-        tags: [problemTagMnum.vue, problemTagMnum.optimize],
+        tags: [problemTagMenu.vue, problemTagMenu.optimize],
         answer: [
             'v-show 使用场景：',
             '1、预渲染需求',
@@ -762,7 +762,7 @@ const problem = setId([
     {
 
         title: 'Vue 组件之间的通信都有哪些',
-        tags: [problemTagMnum.vue, problemTagMnum.optimize],
+        tags: [problemTagMenu.vue, problemTagMenu.optimize],
         answer: [
             'props',
             '$emit / $on',
@@ -776,7 +776,7 @@ const problem = setId([
     {
 
         title: 'head、body、!Doctype 标签的作用',
-        tags: [problemTagMnum.html],
+        tags: [problemTagMenu.html],
         answer: [
             '!DOCTYPE：',
             '它是指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令',
@@ -793,7 +793,7 @@ const problem = setId([
     {
 
         title: 'h5 新特性有哪些',
-        tags: [problemTagMnum.html, problemTagMnum.js],
+        tags: [problemTagMenu.html, problemTagMenu.js],
         answer: [
             '!新增选择器 document.querySelector、document.querySelectorAll',
             '拖拽释放(Drag and drop) API',
@@ -817,7 +817,7 @@ const problem = setId([
     {
 
         title: '伪类和伪元素',
-        tags: [problemTagMnum.html, problemTagMnum.css],
+        tags: [problemTagMenu.html, problemTagMenu.css],
         answer: [
             '伪类：用于已有元素处于某种状态时为其添加对应的样式，这个状态是根据用户行为而动态变化的',
             '例如：用户悬停在指定元素时，可以通过: hover 来描述这个元素的状态，虽然它和一般css相似，可以为已有元素添加样式，但是它只有处于 DOM 树无法描述的状态下才能为元素添加样式，所以称为伪类',
@@ -829,7 +829,7 @@ const problem = setId([
     {
 
         title: 'html5语义化标签有哪些',
-        tags: [problemTagMnum.html],
+        tags: [problemTagMenu.html],
         answer: [
             '<title>：页面标题',
             '',
@@ -893,7 +893,7 @@ const problem = setId([
     {
 
         title: '使用语义化标签的优点',
-        tags: [problemTagMnum.html, problemTagMnum.optimize],
+        tags: [problemTagMenu.html, problemTagMenu.optimize],
         answer: [
             '易于用户阅读，样式丢失的时候能让页面呈现清晰的结构',
             '',
@@ -907,7 +907,7 @@ const problem = setId([
     {
 
         title: 'let const var',
-        tags: [problemTagMnum.js, problemTagMnum.es6],
+        tags: [problemTagMenu.js, problemTagMenu.es6],
         answer: [
             'var',
             '在变量未赋值时，变量undefined（声明提升）',
@@ -929,7 +929,7 @@ const problem = setId([
     {
 
         title: 'js 数据类型',
-        tags: [problemTagMnum.js, problemTagMnum.es6, problemTagMnum.es10],
+        tags: [problemTagMenu.js, problemTagMenu.es6, problemTagMenu.es10],
         answer: [
             '共有8种',
             'ES5中有6种：String、Number、Boolean、Null、Undefined、Object',
@@ -940,7 +940,7 @@ const problem = setId([
     {
 
         title: 'for、for in、 for of、forEach 的区别',
-        tags: [problemTagMnum.js, problemTagMnum.es6],
+        tags: [problemTagMenu.js, problemTagMenu.es6],
         answer: [
             'for：',
             '用来遍历数组',
@@ -968,7 +968,7 @@ const problem = setId([
     {
 
         title: 'iframe 优缺点',
-        tags: [problemTagMnum.html],
+        tags: [problemTagMenu.html],
         answer: [
             '优点：',
             '能原封不动的把嵌入的网页展现出来',
@@ -987,7 +987,7 @@ const problem = setId([
     {
 
         title: '变量提升与函数提升',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '变量提升:',
             '即将变量声明提升到它所在作用域的最顶端',
@@ -1001,7 +1001,7 @@ const problem = setId([
     {
 
         title: 'vue-router 怎么配置404页面',
-        tags: [problemTagMnum.vue, problemTagMnum.vueRouter],
+        tags: [problemTagMenu.vue, problemTagMenu.vueRouter],
         answer: [
             'path: "*" 放在最后',
         ]
@@ -1009,7 +1009,7 @@ const problem = setId([
     {
 
         title: 'vue-router 有几种模式？有哪些区别？',
-        tags: [problemTagMnum.vue, problemTagMnum.vueRouter],
+        tags: [problemTagMenu.vue, problemTagMenu.vueRouter],
         answer: [
             '提供了两种路由模式：hash 模式和 history 模式',
             'hash 模式：',
@@ -1024,7 +1024,7 @@ const problem = setId([
     {
 
         title: 'vue-router 有哪几种导航钩子',
-        tags: [problemTagMnum.vue, problemTagMnum.vueRouter],
+        tags: [problemTagMenu.vue, problemTagMenu.vueRouter],
         answer: [
             '全局：',
             '1、beforeEach',
@@ -1043,7 +1043,7 @@ const problem = setId([
     {
 
         title: 'Vue 完整的导航解析流程',
-        tags: [problemTagMnum.vue, problemTagMnum.vueRouter],
+        tags: [problemTagMenu.vue, problemTagMenu.vueRouter],
         answer: [
             '1、导航被触发',
             '2、在失活的组件里调用 beforeRouteLeave 守卫',
@@ -1062,7 +1062,7 @@ const problem = setId([
     {
 
         title: 'Vue 怎样动态加载路由',
-        tags: [problemTagMnum.vue, problemTagMnum.vueRouter],
+        tags: [problemTagMenu.vue, problemTagMenu.vueRouter],
         answer: [
             'router.addRoutes',
         ]
@@ -1070,49 +1070,49 @@ const problem = setId([
     {
 
         title: '为什么选择前端',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: '个人的优缺点',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: '介绍一下前端的学习经历',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: '作为前端应该掌握哪些知识',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: '对未来三年职业的规划',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: '通过什么方式提高能力',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: '遇到实现不了的功能怎么进行处理',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: 'webpack和gulp的区别',
-        tags: [problemTagMnum.pack, problemTagMnum.webpack, problemTagMnum.gulp],
+        tags: [problemTagMenu.pack, problemTagMenu.webpack, problemTagMenu.gulp],
         answer: [
             'gulp:',
             '是工具链、构建工具，可以配合各种插件做js压缩，css压缩，less编译 替代手工实现自动化工作',
@@ -1133,7 +1133,7 @@ const problem = setId([
     {
 
         title: 'webpack打包流程',
-        tags: [problemTagMnum.pack, problemTagMnum.webpack],
+        tags: [problemTagMenu.pack, problemTagMenu.webpack],
         answer: [
             '1、读取入口文件',
             '2、分析入口文件，得到其所依赖的文件信息',
@@ -1144,7 +1144,7 @@ const problem = setId([
     {
 
         title: 'Git的一些常用命令',
-        tags: [problemTagMnum.git],
+        tags: [problemTagMenu.git],
         answer: [
             'git config',
             'git init',
@@ -1167,7 +1167,7 @@ const problem = setId([
     {
 
         title: '微信小程序是单页应用吗',
-        tags: [problemTagMnum.wx],
+        tags: [problemTagMenu.wx],
         answer: [
             '是，通过路由进行页面切换'
         ]
@@ -1175,7 +1175,7 @@ const problem = setId([
     {
 
         title: '微信小程序组件的生命周期',
-        tags: [problemTagMnum.wx],
+        tags: [problemTagMenu.wx],
         answer: [
             'created：组件实例刚被创建好，此时还不能调用setData -- 刚被创建出来',
             'attached：组件完全初始化完毕，进入页面节点树',
@@ -1187,7 +1187,7 @@ const problem = setId([
     {
 
         title: '微信小程序是是单线程吗',
-        tags: [problemTagMnum.wx],
+        tags: [problemTagMenu.wx],
         answer: [
             '微信小程序是双线程架构，分为逻辑层和渲染层，在进行文件解析的时候不会发生阻塞'
         ]
@@ -1195,7 +1195,7 @@ const problem = setId([
     {
 
         title: 'bindtap和catchtap的区别',
-        tags: [problemTagMnum.wx],
+        tags: [problemTagMenu.wx],
         answer: [
             '相同点：首先他们都是作为点击事件函数，就是点击时触发',
             '',
@@ -1205,7 +1205,7 @@ const problem = setId([
     {
 
         title: '微信小程序的优劣势',
-        tags: [problemTagMnum.wx],
+        tags: [problemTagMenu.wx],
         answer: [
             '优:',
             '无需下载，通过搜索和扫一扫就可以打开',
@@ -1224,7 +1224,7 @@ const problem = setId([
     {
 
         title: '虚拟dom是什么',
-        tags: [problemTagMnum.vue, problemTagMnum.react, problemTagMnum.js, problemTagMnum.theory],
+        tags: [problemTagMenu.vue, problemTagMenu.react, problemTagMenu.js, problemTagMenu.theory],
         answer: [
             '虚拟 dom 相当于在 js 和真实 dom 中间加了一个缓存，利用 dom diff 算法避免了没有必要的 dom 操作，从而 提高性能'
         ]
@@ -1232,7 +1232,7 @@ const problem = setId([
     {
 
         title: 'React组件间通信',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             '1、父组件向子组件通讯: 父组件可以向子组件通过传 props 的方式，向子组件进行通讯',
             '2、子组件向父组件通讯: props + 回调的方式, 父组件向子组件传递props进行通讯',
@@ -1245,7 +1245,7 @@ const problem = setId([
     {
 
         title: 'React hooks的优缺点',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             '优:',
             '1、更容易复用代码',
@@ -1266,7 +1266,7 @@ const problem = setId([
     {
 
         title: '设计模式有哪些',
-        tags: [problemTagMnum.theory],
+        tags: [problemTagMenu.theory],
         answer: [
             '设计模式分为三种类型，共23种',
             '',
@@ -1280,7 +1280,7 @@ const problem = setId([
     {
 
         title: '模块化、组件化、工程化',
-        tags: [problemTagMnum.theory],
+        tags: [problemTagMenu.theory],
         answer: [
             '工程化：',
             '前端工程化是一个高层次的思想，而模块化和组件化是为工程化思想下相对较具体的开发方式，因此可以简单的认为模块化和组件化是工程化的表现形式。工程化是将前端项目当成一项系统工程进行分析、组织和构建从而达到项目结构清晰、分工明确、团队配合默契、开发效率提高的目的',
@@ -1297,7 +1297,7 @@ const problem = setId([
     {
 
         title: '谈谈对 MVC、MVP、MVVM 模式的理解',
-        tags: [problemTagMnum.theory],
+        tags: [problemTagMenu.theory],
         answer: [
             'MVC',
             'MVC 除了把应用程序分为 View、Model层，还额外的加了一个 Controller层，它的职责是进行 Model 和 View 之间的协作（路由、输入预处理等）的应由逻辑（application logic）；Model 进行处理业务逻辑',
@@ -1317,7 +1317,7 @@ const problem = setId([
     {
 
         title: '跨域是什么？如何解决跨域？',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '跨域是什么?',
             '请求url的协议、域名、端口三者之间任意一个与当前页面url不同即为跨域',
@@ -1333,7 +1333,7 @@ const problem = setId([
     {
 
         title: 'GET 和 POST区别',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             'GET产生一个TCP数据包；POST产生两个',
             '通常get用来获取数据，post用来提交数据',
@@ -1348,7 +1348,7 @@ const problem = setId([
     {
 
         title: '数组去重',
-        tags: [problemTagMnum.js, problemTagMnum.es6],
+        tags: [problemTagMenu.js, problemTagMenu.es6],
         answer: [
             '1、Array.from(new Set(arr))',
             '2、双for循环',
@@ -1358,7 +1358,7 @@ const problem = setId([
     {
 
         title: '简单说说 js 中有哪几种内存泄露的情况',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '意外的全局变量',
             '闭包',
@@ -1370,7 +1370,7 @@ const problem = setId([
     {
 
         title: 'promise和 async await 区别',
-        tags: [problemTagMnum.js, problemTagMnum.es6, problemTagMnum.es7],
+        tags: [problemTagMenu.js, problemTagMenu.es6, problemTagMenu.es7],
         answer: [
             'Promise的出现解决了传统callback函数导致的“地域回调”问题，但它的语法导致了它向纵向发展行成了一个回调链，遇到复杂的业务场景，这样的语法显然也是不美观的。而async await代码看起来会简洁些，使得异步代码看起来像同步代码，await的本质是可以提供等同于”同步效果“的等待异步返回能力的语法糖，只有这一句代码执行完，才会执行下一句',
             '',
@@ -1385,7 +1385,7 @@ const problem = setId([
     {
 
         title: 'promise的理解',
-        tags: [problemTagMnum.js, problemTagMnum.es6],
+        tags: [problemTagMenu.js, problemTagMenu.es6],
         answer: [
             'ES6中的Promise 是异步编程的一种方案',
             '可以很好地解决回调地狱的问题',
@@ -1396,7 +1396,7 @@ const problem = setId([
     {
 
         title: 'call appy bind 作用和区别',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '作用：改变this指向',
             '区别:',
@@ -1408,7 +1408,7 @@ const problem = setId([
     {
 
         title: 'new 会发生什么',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '1、创建一个新对象',
             '2、将新对象的__proto__（原型）指向构造函数的prototype（原型对象）',
@@ -1419,7 +1419,7 @@ const problem = setId([
     {
 
         title: '箭头函数与普通函数的区别',
-        tags: [problemTagMnum.js, problemTagMnum.es6],
+        tags: [problemTagMenu.js, problemTagMenu.es6],
         answer: [
             '语法更加简洁、清晰',
             '箭头函数没有自己的this',
@@ -1432,7 +1432,7 @@ const problem = setId([
     {
 
         title: '哪些类型能被扩展操作符...扩展',
-        tags: [problemTagMnum.js, problemTagMnum.es6],
+        tags: [problemTagMenu.js, problemTagMenu.es6],
         answer: [
             '数组、对象、字符串',
         ]
@@ -1440,7 +1440,7 @@ const problem = setId([
     {
 
         title: '什么是暂时性死区',
-        tags: [problemTagMnum.js, problemTagMnum.es6],
+        tags: [problemTagMenu.js, problemTagMenu.es6],
         answer: [
             '在代码块内，使用let和const命令声明变量之前，该变量都是不可用的，语法上被称为暂时性死区',
             '',
@@ -1450,7 +1450,7 @@ const problem = setId([
     {
 
         title: '防抖和节流？应用场景？',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '防抖和节流：优化高频率执行js代码的一种手段，js中的一些事件如浏览器的resize、scroll，鼠标的mousemove、mouseover，input输入框的keypress等事件在触发时，会不断地调用绑定在事件上的回调函数，极大地浪费资源，降低前端性能。为了优化体验，需要对这类事件进行调用次数的限制',
             '',
@@ -1466,7 +1466,7 @@ const problem = setId([
     {
 
         title: '浅拷贝与深拷贝',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '浅拷贝只复制对象的第一层属性、深拷贝可以对对象的属性进行递归复制'
         ]
@@ -1474,7 +1474,7 @@ const problem = setId([
     {
 
         title: 'css 无继承性的属性有哪些',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             'display',
             'vertical-align',
@@ -1487,7 +1487,7 @@ const problem = setId([
     {
 
         title: 'css有继承性的属性',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             'font',
             'font-family',
@@ -1503,7 +1503,7 @@ const problem = setId([
     {
 
         title: 'css预处理工具有哪些',
-        tags: [problemTagMnum.css, problemTagMnum.less, problemTagMnum.sass, problemTagMnum.stylus],
+        tags: [problemTagMenu.css, problemTagMenu.less, problemTagMenu.sass, problemTagMenu.stylus],
         answer: [
             'Less: 可以在浏览器中运行，实现主题定制功能；编程能力弱，不直接支持对象，循环，判断等；',
             'Sass: 用户多，更容易找到scss的学习资源；可编程能力比较强，支持函数，列表，对象，判断，循环等；安装node-sass会经常失败或者报错，需要使用cnpm或者手工安装',
@@ -1513,7 +1513,7 @@ const problem = setId([
     {
 
         title: '说说css mask的用途',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             'CSS 属性 mask 允许使用者通过遮罩或者裁切特定区域的图片的方式来隐藏一个元素的部分或者全部可见区域',
             '',
@@ -1523,7 +1523,7 @@ const problem = setId([
     {
 
         title: 'css使一个元素多背景叠加',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             'background: background1, ..., backgroundN',
             '',
@@ -1535,7 +1535,7 @@ const problem = setId([
     {
 
         title: 'display:flex后，哪些属性会失效呢',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '子元素的float、clear和vertical-align属性将失效'
         ]
@@ -1543,7 +1543,7 @@ const problem = setId([
     {
 
         title: 'flex是哪些属性的简写',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             'flex-grow：项目放大的比例',
             'flex-shrink：项目缩小的比例',
@@ -1554,7 +1554,7 @@ const problem = setId([
     {
 
         title: '对盒子模型的理解',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '一个盒子由 context,padding,margin,border 组成',
             '',
@@ -1570,7 +1570,7 @@ const problem = setId([
     {
 
         title: 'css选择器有哪些',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '常见选择器',
             'id选择器、类选择器、标签选择器、后代选择器、子选择器、相邻同胞选择器、群组选择器',
@@ -1588,7 +1588,7 @@ const problem = setId([
     {
 
         title: 'css选择器优先级',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '!important >内联 > ID选择器 > 类选择器 > 标签选择器',
         ]
@@ -1596,7 +1596,7 @@ const problem = setId([
     {
 
         title: '元素不定宽高，如何水平垂直居',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             'margin:0 auto',
             '定位 + transform负值',
@@ -1609,7 +1609,7 @@ const problem = setId([
     {
 
         title: '响应式网站如何开发',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             'meta声明viewport',
             '媒体查询',
@@ -1618,7 +1618,7 @@ const problem = setId([
     {
 
         title: 'CSS提高性能的方法有哪些',
-        tags: [problemTagMnum.css, problemTagMnum.optimize],
+        tags: [problemTagMenu.css, problemTagMenu.optimize],
         answer: [
             '加载性能',
             'css压缩',
@@ -1647,7 +1647,7 @@ const problem = setId([
     {
 
         title: 'JS基本数据类型和引用数据类型有哪些',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '值类型(基本类型)：',
             'Number、String、Boolean、Undefined、Null',
@@ -1659,7 +1659,7 @@ const problem = setId([
     {
 
         title: 'JS不同数据类型如何存储',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '基本数据类型：',
             '直接存储在栈中，占据空间小、大小固定，属于希望被频繁引用的数据',
@@ -1671,7 +1671,7 @@ const problem = setId([
     {
 
         title: 'typeof 与 instanceof 区别',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             'typeof的返回值是一个字符串，用来说明变量的数据类型（null ,Array、Object 结果都是Object）；instanceof的返回值是布尔值，用于判断一个变量是否属于某个对象的实例',
         ]
@@ -1679,7 +1679,7 @@ const problem = setId([
     {
 
         title: '说说你对闭包的理解',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '闭包就是可以访问其他函数内部变量的函数，我们通常用它来定义私有化的变量和方法，创建一个闭包最简单的方法就是在一个函数内创建一个函数，它有三个特性是 函数内可以再嵌套函数，内部函数可以访问外部的方法和变量，方法和变量不会被垃圾回收机制回收',
             '优点',
@@ -1694,7 +1694,7 @@ const problem = setId([
     {
 
         title: '闭包使用场景',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '创建私有变量与私有方法',
             '延长变量的生命周期',
@@ -1706,7 +1706,7 @@ const problem = setId([
     {
 
         title: '常见的BOM对象你了解哪些',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             'window、location、navigator 、screen、history',
         ]
@@ -1714,7 +1714,7 @@ const problem = setId([
     {
 
         title: 'js判断一个数组',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             'Array.isArray()',
             'instanceof',
@@ -1725,7 +1725,7 @@ const problem = setId([
     {
 
         title: '什么是原型和原型链',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '原型',
             '1.所有引用类型都有一个__proto__(隐式原型)属性，属性值是一个普通的对象',
@@ -1739,7 +1739,7 @@ const problem = setId([
     {
 
         title: '什么是事件代理',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '事件代理（Event Delegation），又称之为事件委托。是JavaScript中常用绑定事件的常用技巧。顾名思义，“事件代理”即是把原本需要绑定在子元素的响应事件（click、keydown......）委托给父元素，让父元素担当事件监听的职务。事件代理的原理是DOM元素的事件冒泡',
         ]
@@ -1747,7 +1747,7 @@ const problem = setId([
     {
 
         title: '冒泡与捕获的区别',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '事件冒泡：一个由里到外，冒泡，向上层延申',
             '事件捕获：一个由外到里，前往捕获，形成向下趋势'
@@ -1756,7 +1756,7 @@ const problem = setId([
     {
 
         title: '什么是bundle？什么是chunk?什么是module?',
-        tags: [problemTagMnum.pack, problemTagMnum.webpack],
+        tags: [problemTagMenu.pack, problemTagMenu.webpack],
         answer: [
             'bundle：是由webpack打包出来的文件',
             'chunk：是一个代码块，一个chunk由多个模块组合而成',
@@ -1766,7 +1766,7 @@ const problem = setId([
     {
 
         title: '什么是Loader?什么是Plugin?',
-        tags: [problemTagMnum.pack, problemTagMnum.webpack],
+        tags: [problemTagMenu.pack, problemTagMenu.webpack],
         answer: [
             'Loader：因为webpack本身只理解JavaScript,所以loader用来解析js以外的东西',
             '主要功能：用于告诉webpack如何处理某一类型的文件，并引入到打包出来的文件中',
@@ -1790,7 +1790,7 @@ const problem = setId([
     {
 
         title: '如何利用webpack来优化前端性能',
-        tags: [problemTagMnum.optimize, problemTagMnum.pack, problemTagMnum.webpack],
+        tags: [problemTagMenu.optimize, problemTagMenu.pack, problemTagMenu.webpack],
         answer: [
             '压缩代码',
             '利用CDN加速',
@@ -1805,7 +1805,7 @@ const problem = setId([
     {
 
         title: '如何提高webpack的构建速度',
-        tags: [problemTagMnum.optimize, problemTagMnum.pack, problemTagMnum.webpack],
+        tags: [problemTagMenu.optimize, problemTagMenu.pack, problemTagMenu.webpack],
         answer: [
             '多入口情况下，使用CommonsChunkPlugin来提取公共代码',
             '',
@@ -1836,7 +1836,7 @@ const problem = setId([
     {
 
         title: 'Vue3做了那些优化',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '小',
             '移除一些不常用的 API',
@@ -1859,7 +1859,7 @@ const problem = setId([
     {
 
         title: 'React生命周期',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             '挂载阶段:',
             '1.constructor() 组件挂载前',
@@ -1880,7 +1880,7 @@ const problem = setId([
     {
 
         title: '说说React中的setState执行机制',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             'setState第一个参数可以是一个对象，或者是一个函数，而第二个参数是一个回调函数，用于可以实时的获取到更新之后的数据',
             '',
@@ -1896,7 +1896,7 @@ const problem = setId([
     {
 
         title: 'React中类组件和函数组件的区别',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             '函数组件',
             '函数组件也称无状态组件，以函数形态存在的组件',
@@ -1917,7 +1917,7 @@ const problem = setId([
     {
 
         title: 'React Hooks解决了什么问题',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             'Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性',
             '',
@@ -1930,7 +1930,7 @@ const problem = setId([
     {
 
         title: 'React性能优化的手段有哪些',
-        tags: [problemTagMnum.react, problemTagMnum.optimize],
+        tags: [problemTagMenu.react, problemTagMenu.optimize],
         answer: [
             '避免使用内联函数与匿名函数',
             '使用内联函数，则每次调用render函数时都会创建一个新的函数实例',
@@ -1956,7 +1956,7 @@ const problem = setId([
     {
 
         title: '对TypeScript的理解？与JavaScript的区别',
-        tags: [problemTagMnum.ts, problemTagMnum.js],
+        tags: [problemTagMenu.ts, problemTagMenu.js],
         answer: [
             'TypeScript是JavaScript的类型的超集，支持ES6语法，支持面向对象编程的概念，其是一种静态类型检查的语言，提供了类型注解，在代码编译阶段就可以检查出数据类型的错误，TypeScript在编译阶段需要编译成JavaScript来运行',
             '',
@@ -1973,7 +1973,7 @@ const problem = setId([
     {
 
         title: 'React如何获取表单数据',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             '1.给文本框value属性绑定state中定义的变量,配合onChange事件修改state',
             '2.给文本框添加ref,表单提交时或获取ref的value',
@@ -1982,7 +1982,7 @@ const problem = setId([
     {
 
         title: '受控组件和非受控组件',
-        tags: [problemTagMnum.html, problemTagMnum.js, problemTagMnum.vue, problemTagMnum.react],
+        tags: [problemTagMenu.html, problemTagMenu.js, problemTagMenu.vue, problemTagMenu.react],
         answer: [
             '受控组件',
             '就是受我们控制的组件，由自己维护state',
@@ -1996,7 +1996,7 @@ const problem = setId([
     {
 
         title: 'React路由跳转的方式有哪些',
-        tags: [problemTagMnum.react, problemTagMnum.reactRouter],
+        tags: [problemTagMenu.react, problemTagMenu.reactRouter],
         answer: [
             '声明式导航:',
             '使用NavLink或者Link跳转',
@@ -2010,7 +2010,7 @@ const problem = setId([
     {
 
         title: 'React中state和props有什么区别',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             '相同：',
             '两者都是 JavaScript 对象',
@@ -2025,7 +2025,7 @@ const problem = setId([
     {
 
         title: 'super()和super(props)的区别',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             '在React中，类组件基于ES6，所以在constructor中必须使用 super',
             '',
@@ -2037,7 +2037,7 @@ const problem = setId([
     {
 
         title: '说说你对发布订阅、观察者模式的理解',
-        tags: [problemTagMnum.theory],
+        tags: [problemTagMenu.theory],
         answer: [
             '发布订阅模式',
             '发布-订阅是一种消息范式，消息的发送者（称为发布者）不会将消息直接发送给特定的接收者（称为订阅者）。而是将发布的消息分为不同的类别，无需了解哪些订阅者（如果有的话）可能存在',
@@ -2055,7 +2055,7 @@ const problem = setId([
     {
 
         title: '浏览器的渲染过程',
-        tags: [problemTagMnum.html, problemTagMnum.css, problemTagMnum.theory],
+        tags: [problemTagMenu.html, problemTagMenu.css, problemTagMenu.theory],
         answer: [
             'HTML 经过解析生成 DOM树； CSS经过解析生成　Style Rules。 二者一结合生成了Render Tree。 通过layout计算出DOM要显示的宽高、位置、颜色。 最后渲染在界面上',
         ]
@@ -2063,25 +2063,25 @@ const problem = setId([
     {
 
         title: '为什么换工作',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: '印象最深刻的项目',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: '你认为什么样的代码是好的',
-        tags: [problemTagMnum.hr],
+        tags: [problemTagMenu.hr],
         answer: []
     },
     {
 
         title: '从浏览器地址输入url到显示页面的步骤',
-        tags: [problemTagMnum.theory],
+        tags: [problemTagMenu.theory],
         answer: [
             '1、首先，在浏览器地址栏中输入url',
             '2、浏览器先查看浏览器缓存 - 系统缓存 - 路由器缓存，如果缓存中有，会直接在屏幕中显示页面内容。若没有，则跳到第三步操作',
@@ -2099,7 +2099,7 @@ const problem = setId([
     {
 
         title: 'git发生冲突如何解决',
-        tags: [problemTagMnum.git],
+        tags: [problemTagMenu.git],
         answer: [
             '本地当前分支上，修改冲突代码--->add--->commit--->push',
         ]
@@ -2107,7 +2107,7 @@ const problem = setId([
     {
 
         title: '高阶组件的理解与应用场景',
-        tags: [problemTagMnum.theory, problemTagMnum.react],
+        tags: [problemTagMenu.theory, problemTagMenu.react],
         answer: [
             '高阶函数（Higher-order function），至少满足下列一个条件的函数',
             '1.接受一个或多个函数作为输入',
@@ -2121,7 +2121,7 @@ const problem = setId([
     {
 
         title: '小程序的wxss和css有哪些区别',
-        tags: [problemTagMnum.wx, problemTagMnum.css],
+        tags: [problemTagMenu.wx, problemTagMenu.css],
         answer: [
             'WXSS 具有 CSS 大部分特性。同时为了更适合开发微信小程序，WXSS 对 CSS 进行了扩充以及修改',
             '1.尺寸单位 rpx',
@@ -2132,7 +2132,7 @@ const problem = setId([
     {
 
         title: '微信小程序rpx与px如何换算',
-        tags: [problemTagMnum.wx, problemTagMnum.css],
+        tags: [problemTagMenu.wx, problemTagMenu.css],
         answer: [
             'rpx换算px (屏幕宽度/750)',
             'px换算rpx (750/屏幕宽度)',
@@ -2141,7 +2141,7 @@ const problem = setId([
     {
 
         title: '微信小程序性能如何优化',
-        tags: [problemTagMnum.wx, problemTagMnum.optimize],
+        tags: [problemTagMenu.wx, problemTagMenu.optimize],
         answer: [
             '加载性能',
             '1.控制包大小',
@@ -2162,7 +2162,7 @@ const problem = setId([
     {
 
         title: '为什么要使用CSS预编译',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             'CSS缺点',
             '1.语法不够强大，比如无法嵌套书写，导致模块化开发中需要书写很多重复的选择器',
@@ -2179,7 +2179,7 @@ const problem = setId([
     {
 
         title: 'Vue Router模式hash和history的实现原理',
-        tags: [problemTagMnum.vue, problemTagMnum.vueRouter],
+        tags: [problemTagMenu.vue, problemTagMenu.vueRouter],
         answer: [
             'hash模式实现原理',
             '基于location.hash来实现的，其实实现原理很简单，location.hash的值就是URL中#后面的内容',
@@ -2192,7 +2192,7 @@ const problem = setId([
     {
 
         title: 'Vue数据更新页面不更新的情况有哪些',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '1.不存在于 data 中的 变量',
             '2.对象的动态添加和删除',
@@ -2204,7 +2204,7 @@ const problem = setId([
     {
 
         title: 'webpack中代码分割的方法',
-        tags: [problemTagMnum.pack, problemTagMnum.webpack],
+        tags: [problemTagMenu.pack, problemTagMenu.webpack],
         answer: [
             '1.Entry Points：入口文件设置的时候可以配置',
             '2.CommonsChunkPlugin',
@@ -2214,7 +2214,7 @@ const problem = setId([
     {
 
         title: '组合式API中保留state和getter的响应性',
-        tags: [problemTagMnum.vue, problemTagMnum.vue3, problemTagMnum.vuex],
+        tags: [problemTagMenu.vue, problemTagMenu.vue3, problemTagMenu.vuex],
         answer: [
             "import { computed } from 'vue'",
             "import { useStore } from 'vuex'",
@@ -2226,7 +2226,7 @@ const problem = setId([
     {
 
         title: 'CSS3新特性有哪些',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '边框',
             'border-radius、border-shadow、border-image、border-image-source、border-image-slice、border-image-width、border-image-outset、border-image-repeat',
@@ -2253,7 +2253,7 @@ const problem = setId([
     {
 
         title: '清除浮动的方式有哪些',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '1.给父元素单独定义高度',
             '2.父级定义overflow：hidden',
@@ -2263,7 +2263,7 @@ const problem = setId([
     {
 
         title: '如何让chrome浏览器显示小于12px的文字',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '方法一（低版本chrome）',
             'html{-webkit-text-size-adjust: none;}',
@@ -2274,7 +2274,7 @@ const problem = setId([
     {
 
         title: '行内元素/块级元素有哪些',
-        tags: [problemTagMnum.html],
+        tags: [problemTagMenu.html],
         answer: [
             '行内元素：相邻的行内元素会排列在同一行，不会独占一行 设置宽高无效 span',
             '',
@@ -2288,7 +2288,7 @@ const problem = setId([
     {
 
         title: 'flex属性有那些请简述',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '父',
             'flex-direction：主轴的方向',
@@ -2310,7 +2310,7 @@ const problem = setId([
     {
 
         title: '为什么0.1 + 0.2 = 0.30000000000000004',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             'js存在计算精度不足问题',
             'js的Number在内存中存储使用的是一种64位双精度浮点数存储方法',
@@ -2321,7 +2321,7 @@ const problem = setId([
     {
 
         title: '如何解决js计算精度问题',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '四舍五入',
             '(0.1 + 0.2).toFixed(1); // 0.3',
@@ -2333,7 +2333,7 @@ const problem = setId([
     {
 
         title: '什么叫优雅降级和渐进增强',
-        tags: [problemTagMnum.theory],
+        tags: [problemTagMenu.theory],
         answer: [
             '渐进增强',
             '针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验',
@@ -2347,7 +2347,7 @@ const problem = setId([
     {
 
         title: '什么是柯里化',
-        tags: [problemTagMnum.theory, problemTagMnum.js],
+        tags: [problemTagMenu.theory, problemTagMenu.js],
         answer: [
             '柯里化函数：把一个多参数的函数转化为单参数函数的方法。并且返回接受余下的参数而且返回结果的新函数的技术'
         ]
@@ -2355,7 +2355,7 @@ const problem = setId([
     {
 
         title: '宏任务和微任务',
-        tags: [problemTagMnum.theory, problemTagMnum.js],
+        tags: [problemTagMenu.theory, problemTagMenu.js],
         answer: [
             'js中的一个机制，就是遇到宏任务，先将宏任务放入eventqueue，然后在执行微任务',
             '',
@@ -2367,7 +2367,7 @@ const problem = setId([
     {
 
         title: 'require与import的区别',
-        tags: [problemTagMnum.js, problemTagMnum.node],
+        tags: [problemTagMenu.js, problemTagMenu.node],
         answer: [
             'require是CommonJS规范的模块化语法，import是ECMAScript 6规范的模块化语法',
             '',
@@ -2385,7 +2385,7 @@ const problem = setId([
     {
 
         title: 'scoped 原理及穿透方法',
-        tags: [problemTagMnum.vue, problemTagMnum.css],
+        tags: [problemTagMenu.vue, problemTagMenu.css],
         answer: [
             '原理',
             '通过在 DOM 结构以及 css 样式上加唯一不重复的标记：data-v-hash 的方式，以保证唯一(通过 PostCSS 转译)，达到样式私有模块化的目的',
@@ -2397,7 +2397,7 @@ const problem = setId([
     {
 
         title: '为什么要使用脚手架',
-        tags: [problemTagMnum.vue, problemTagMnum.react],
+        tags: [problemTagMenu.vue, problemTagMenu.react],
         answer: [
             '快速开始一个项目，不用手动配置，直接开发',
         ]
@@ -2405,7 +2405,7 @@ const problem = setId([
     {
 
         title: 'Vue与React怎么兼容 IE',
-        tags: [problemTagMnum.vue, problemTagMnum.react],
+        tags: [problemTagMenu.vue, problemTagMenu.react],
         answer: [
             '使用 babel-polyfill 插件,和前缀名 hack',
         ]
@@ -2413,7 +2413,7 @@ const problem = setId([
     {
 
         title: 'Vue中使用了哪些设计模式',
-        tags: [problemTagMnum.vue, problemTagMnum.theory],
+        tags: [problemTagMenu.vue, problemTagMenu.theory],
         answer: [
             '1.工厂模式-传入参数即可创建实例 虚拟 DOM 根据参数的不同返回基础标签的 Vnode 和组件 Vnode',
             '2.单例模式-整个程序有且仅有一个实例 vuex 和 vue-router 的插件注册方法 install 判断如果系统存在实例就直接返回掉',
@@ -2425,7 +2425,7 @@ const problem = setId([
     {
 
         title: '面向过程，面向对象是什么？优缺点',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             '1.面向过程：面向过程就是分析出实现需求所需要的步骤，通过函数一步一步实现这些步骤，接着依次调用即可',
             '',
@@ -2448,7 +2448,7 @@ const problem = setId([
     {
 
         title: 'Node是什么',
-        tags: [problemTagMnum.node],
+        tags: [problemTagMenu.node],
         answer: [
             'node是一个JS运行环境',
             '浏览器也是一个运行环境，JS代码写好之后需要放到浏览器里面去运行，脱离了浏览器是没有办法运行的，现在不仅浏览器能运行JS，Node也能运行Js',
@@ -2458,7 +2458,7 @@ const problem = setId([
     {
 
         title: '为什么要用Node',
-        tags: [problemTagMnum.node],
+        tags: [problemTagMenu.node],
         answer: [
             '简单强大，轻量可扩展',
             '简单体现在node使用的是javascript,json来进行编码，人人都会；强大体现在非阻塞IO,可以适应分块传输数据，较慢的网络环境，尤其擅长高并发访问；轻量体现在node本身既是代码，又是服务器，前后端使用统一语言;可扩展体现在可以轻松应对多实例，多服务器架构，同时有海量的第三方应用组件'
@@ -2467,7 +2467,7 @@ const problem = setId([
     {
 
         title: 'Vue组件为什么只能有一个根元素',
-        tags: [problemTagMnum.vue, problemTagMnum.vue3],
+        tags: [problemTagMenu.vue, problemTagMenu.vue3],
         answer: [
             '这题现在有些落伍，vue3已经不用一个根了。因此这题目很有说头！',
             '',
@@ -2481,7 +2481,7 @@ const problem = setId([
     {
 
         title: 'Vue ref和reactive的区别',
-        tags: [problemTagMnum.vue, problemTagMnum.vue3],
+        tags: [problemTagMenu.vue, problemTagMenu.vue3],
         answer: [
             '1.ref接收内部值（inner value）返回响应式Ref对象，reactive返回响应式代理对象',
             '2.从定义上看ref通常用于处理单值的响应式，reactive用于处理对象类型的数据响应式',
@@ -2492,7 +2492,7 @@ const problem = setId([
     {
 
         title: 'Vue watch和watchEffect的区别',
-        tags: [problemTagMnum.vue, problemTagMnum.vue3],
+        tags: [problemTagMenu.vue, problemTagMenu.vue3],
         answer: [
             'watchEffect立即运行一个函数，然后被动地追踪它的依赖，当这些依赖改变时重新执行该函数',
             '',
@@ -2504,7 +2504,7 @@ const problem = setId([
     {
 
         title: 'vue-loader是什么？它有什么作用',
-        tags: [problemTagMnum.vue, problemTagMnum.pack, problemTagMnum.webpack],
+        tags: [problemTagMenu.vue, problemTagMenu.pack, problemTagMenu.webpack],
         answer: [
             '是什么',
             'vue-loader是用于处理单文件组件（SFC，Single-File Component）的webpack loader',
@@ -2516,7 +2516,7 @@ const problem = setId([
     {
 
         title: '写过自定义指令吗？使用场景有哪些',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             'v-model或v-for',
             'v-once',
@@ -2526,7 +2526,7 @@ const problem = setId([
     {
 
         title: 'v-once的使用场景',
-        tags: [problemTagMnum.vue],
+        tags: [problemTagMenu.vue],
         answer: [
             '仅渲染元素和组件一次，并且跳过未来更新',
         ]
@@ -2534,7 +2534,7 @@ const problem = setId([
     {
 
         title: '从零开始写一个vuex，说说你的思路',
-        tags: [problemTagMnum.vue, problemTagMnum.vuex],
+        tags: [problemTagMenu.vue, problemTagMenu.vuex],
         answer: [
             '官方说vuex是一个状态管理模式和库，并确保这些状态以可预期的方式变更。可见要实现一个vuex：',
             '',
@@ -2549,7 +2549,7 @@ const problem = setId([
     {
 
         title: 'vuex中actions和mutations有什么区别',
-        tags: [problemTagMnum.vue, problemTagMnum.vuex],
+        tags: [problemTagMenu.vue, problemTagMenu.vuex],
         answer: [
             '修改状态只能是mutations，actions只能通过提交mutation修改状态',
         ]
@@ -2557,7 +2557,7 @@ const problem = setId([
     {
 
         title: '刷新后vuex与redux的数据丢失怎么解决',
-        tags: [problemTagMnum.vue, problemTagMnum.vuex, problemTagMnum.react, problemTagMnum.redux],
+        tags: [problemTagMenu.vue, problemTagMenu.vuex, problemTagMenu.react, problemTagMenu.redux],
         answer: [
             'localStorage',
             '',
@@ -2569,7 +2569,7 @@ const problem = setId([
     {
 
         title: 'Composition API 与 Options API 有什么不同',
-        tags: [problemTagMnum.vue, problemTagMnum.vue3],
+        tags: [problemTagMenu.vue, problemTagMenu.vue3],
         answer: [
             'Composition API是一组API，包括：Reactivity API、生命周期钩子、依赖注入，使用户可以通过导入函数方式编写vue组件。而Options API则通过声明组件选项的对象形式编写组件',
             '',
@@ -2585,7 +2585,7 @@ const problem = setId([
     {
 
         title: '什么是React Context',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             'Context 通过组件树提供了一个传递数据的方法，从而避免了在每一个层级手动的传递 props 属性',
         ]
@@ -2593,7 +2593,7 @@ const problem = setId([
     {
 
         title: '在React中Props如何验证类型',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             'import PropTypes from "prop-types"',
         ]
@@ -2601,7 +2601,7 @@ const problem = setId([
     {
 
         title: 'React使用构造函数和getInitialState的区别',
-        tags: [problemTagMnum.react],
+        tags: [problemTagMenu.react],
         answer: [
             '构造函数和getInitialState之间的区别就是ES6和ES5本身的区别。在使用ES6类时，应该在构造函数中初始化state，并在使用React.createClass时定义getInitialState方法',
         ]
@@ -2609,7 +2609,7 @@ const problem = setId([
     {
 
         title: '如何打印出字符串中的转义字符',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             'JSON.stringify(str)',
         ]
@@ -2617,7 +2617,7 @@ const problem = setId([
     {
 
         title: 'Typescript 中的 interface 和 type 有什么区别',
-        tags: [problemTagMnum.ts],
+        tags: [problemTagMenu.ts],
         answer: [
             '1.interface定义数据的形状，具体这个数据结构如何，有哪些属性，如定义一个object；type定义数据的类型，指一个数据具体值是什么类型，如boolean，string',
             '2.interface可以被class继承和实现，也可以继承class；但type不行',
@@ -2630,7 +2630,7 @@ const problem = setId([
     {
 
         title: 'JS 是单线程的，为什么 JS 能有异步任务',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             'Js代码分为同步，异步代码。宏观任务和微观任务。js是单线程的，在主线程里面在执行代码的时候按照顺序最先执行同步代码，在执行的过程中发现有异步代码（回调函数）则会把异步代码放在任务队列中（消息队列）。在执行了所有的主线程里的同步代码以后，异步代码会放在主线程里面最后执行',
         ]
@@ -2638,7 +2638,7 @@ const problem = setId([
     {
 
         title: 'js声明变量的六种方法是什？',
-        tags: [problemTagMnum.js],
+        tags: [problemTagMenu.js],
         answer: [
             'ES5: var 、function； ES6:  let、const、import、class ',
         ]
@@ -2646,7 +2646,7 @@ const problem = setId([
     {
 
         title: 'CSS中，自适应的单位都有哪些',
-        tags: [problemTagMnum.css],
+        tags: [problemTagMenu.css],
         answer: [
             '1. % ',
             '2. vw（相对于视口宽度的单位） ',
@@ -2659,7 +2659,7 @@ const problem = setId([
     {
 
         title: 'HTML 中 title 属性 和 alt 属性有什么区别',
-        tags: [problemTagMnum.html],
+        tags: [problemTagMenu.html],
         answer: [
             'title表示，当图片正常显示时，鼠标悬浮在图片时显示的文字，alt表示，图片无法正常显示时，展示的文字',
         ]

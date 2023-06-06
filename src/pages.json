@@ -7,34 +7,6 @@
         "disableScroll": true
       }
     },
-    {
-      "path": "pages/probleList/index",
-      "style": {
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
-    },
-    {
-      "path": "pages/problemDetail/index",
-      "style": {
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
-    },
-    {
-      "path": "pages/answerDetail/index",
-      "style": {
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
-    }
   ],
-  "globalStyle": {
-    "navigationBarTitleText": "web前端面试题",
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "default",
-    "backgroundColor": "#ffffff",
-    "backgroundColorTop": "#ffffff"
-  }
+
 }

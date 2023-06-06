@@ -29,9 +29,7 @@
 <script setup lang="ts">
 import { onLoad } from "@dcloudio/uni-app";
 import SearchBar from "../SearchBar/index.vue";
-import { useStore } from "@/store";
-import { problemTag, problemTagMnum, iTagItem } from "@/const/problemTag";
-import { probleSort, problem, iProblemItem } from "@/const/problem";
+import { useCounterStore } from '@/stores/problem';
 import Page from "@/const/pages";
 import { isDev } from "@/const/env";
 
@@ -47,35 +45,36 @@ interface iIndexListItem {
   sub: iIndexListItemSub[];
 }
 
-const stroe = useStore();
+const store = useCounterStore();
+const {problemTag, problemTagMenu, problem, problemSort} = store
 
 const indexList: iIndexListItem[] = (() =>
   [
     // {
     //   title: "#",
-    //   sub: [problemTagMnum.company],
+    //   sub: [problemTagMenu.company],
     // },
     {
       title: "基础",
-      sub: [problemTagMnum.html, problemTagMnum.css, problemTagMnum.js],
+      sub: [problemTagMenu.html, problemTagMenu.css, problemTagMenu.js],
     },
     {
       title: "框架",
-      sub: [problemTagMnum.vue, problemTagMnum.react, problemTagMnum.wx],
+      sub: [problemTagMenu.vue, problemTagMenu.react, problemTagMenu.wx],
     },
     {
       title: "工具",
-      sub: [problemTagMnum.git, problemTagMnum.pack],
+      sub: [problemTagMenu.git, problemTagMenu.pack],
     },
     {
       title: "其他",
       sub: [
-        problemTagMnum.ts,
-        problemTagMnum.node,
-        problemTagMnum.algorithm,
-        problemTagMnum.optimize,
-        problemTagMnum.theory,
-        problemTagMnum.hr,
+        problemTagMenu.ts,
+        problemTagMenu.node,
+        problemTagMenu.algorithm,
+        problemTagMenu.optimize,
+        problemTagMenu.theory,
+        problemTagMenu.hr,
       ],
     },
   ].map((item) => {
@@ -84,10 +83,10 @@ const indexList: iIndexListItem[] = (() =>
       sub: item.sub.map((subItem): iIndexListItemSub => {
         return {
           id: subItem,
-          icon: (problemTag.find((item) => item.id === subItem) as iTagItem)
+          icon: (problemTag.find((item) => item.id === subItem) as IProblem.tagItem)
             .icon,
-          name: problemTagMnum[subItem],
-          total: probleSort[subItem]?.length || 0,
+          name: problemTagMenu[subItem],
+          total: problemSort[subItem]?.length || 0,
         };
       }),
     };
@@ -98,15 +97,15 @@ const search = (value: iProblemItem[]) => {
 };
 
 const handleClickItem = (subItem: iIndexListItemSub) => {
-  handleOpenList({ name: subItem.name, list: probleSort[subItem.id] });
+  handleOpenList({ name: subItem.name, list: problemSort[subItem.id] });
 };
 
 // 打开分类列表页面
 const handleOpenList = ({ name, list }: any): void => {
-  stroe.dispatch("setProbleList", list);
-  uni.navigateTo({
-    url: `${Page.probleList}?name=${name}`,
-  });
+  // stroe.dispatch("setProbleList", list);
+  // uni.navigateTo({
+  //   url: `${Page.probleList}?name=${name}`,
+  // });
 };
 
 // #ifdef MP-WEIXIN
