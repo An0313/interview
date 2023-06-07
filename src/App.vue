@@ -2,6 +2,15 @@
 import { onLaunch, onShow, onHide } from "@dcloudio/uni-app";
 import { wxCloudEnvId } from "@/const/env";
 
+import {useCounterStore} from '@/stores/problem'
+
+const store = useCounterStore()
+
+// 获取面试题、笔试题数据
+const getProblem = async () => {
+
+}
+
 // declare wx:(an)
 onLaunch(() => {
   console.log("App Launch");
@@ -11,6 +20,8 @@ onLaunch(() => {
     console.log('初始化成功')
   });
   // #endif
+
+  getProblem()
 });
 onShow(() => {
   console.log("App Show");
