@@ -1,18 +1,18 @@
 {
-  "name": "uni-preset-vue",
-  "version": "1.1.2",
+  "name": "interview-app",
+  "version": "1.2.0",
   "scripts": {
-    "start": "node script/build-problem.js",
-    "dev:app": "uni -p app",
-    "dev:custom": "uni -p",
-    "dev:h5": "uni",
-    "dev:h5:ssr": "uni --ssr",
-    "dev:mp-weixin": "uni -p mp-weixin",
-    "build:app": "uni build -p app",
-    "build:custom": "uni build -p",
-    "build:h5": "uni build",
-    "build:h5:ssr": "uni build --ssr",
-    "build:mp-weixin": "uni build -p mp-weixin"
+    "start": "node script/build-problem.js && node script/build-router.js",
+    "dev:app": "yarn start && uni -p app",
+    "dev:custom": "yarn start && uni -p",
+    "dev:h5": "yarn start && uni",
+    "dev:h5:ssr": "yarn start && uni --ssr",
+    "dev:mp-weixin": "yarn start && uni -p mp-weixin",
+    "build:app": "yarn start && uni build -p app",
+    "build:custom": "yarn start && uni build -p",
+    "build:h5": "yarn start && uni build",
+    "build:h5:ssr": "yarn start && uni build --ssr",
+    "build:mp-weixin": "yarn start && uni build -p mp-weixin"
   },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-alpha-3050420220804004",

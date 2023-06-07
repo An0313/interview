@@ -1,5 +1,5 @@
 const {writeFile, stringify} = require('./utils')
-const {problemTag, problemTagMenu, problem, problemSort} = require('./data');
+const {problemTag, problemTagMenu, problem, problemSort} = require('./data/problem');
 
 
 // 面试题文件

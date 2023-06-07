@@ -10,15 +10,14 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
-import { useStore } from "@/store";
-import { iProblemItem, probleSort } from "@/const/problem";
+import { useCounterStore } from '@/stores/problem';
 import Page from "@/const/pages";
 import { defaultShare } from "@/const";
 
-const stroe = useStore();
+const store = useCounterStore();
 
 // 题目列表
-const problemList = stroe.state.probleList;
+const problemList = store.problem;
 // 页面标题
 const pageTitle = ref<string>("");
 

@@ -1,4 +1,4 @@
-const { setId } = require('./utils')
+const { setId } = require('../utils')
 
 const VueIcon = '@/static/img/vueIcon'
 const ReactIcon = '@/static/img/reactIcon'
