@@ -1,17 +1,17 @@
 <template>
-  <view class="tabbar">
+  <view class="tabBar">
     <view
-      class="tabbarItem"
-      v-for="(item, index) in props.tabbar"
+      class="tabBarItem"
+      v-for="(item, index) in props.tabBar"
       :key="item.key"
       @click="handleOpenPage(index)"
     >
       <image
-        class="tabbarItemIcon"
+        class="tabBarItemIcon"
         :src="index === props.selectIndex ? item.selectedIcon : item.icon"
       />
       <text
-        class="tabbarItemText"
+        class="tabBarItemText"
         :class="{ active: index === props.selectIndex }"
         >{{ item.name }}</text
       >
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-interface iTabbarItem {
+export interface iTabBarItem {
   key: string;
   name: string;
   icon: string;
@@ -29,35 +29,35 @@ interface iTabbarItem {
 }
 interface iPropsType {
   selectIndex: number;
-  tabbar: iTabbarItem[];
+  tabBar: iTabBarItem[];
 }
 
 const props = withDefaults(defineProps<iPropsType>(), {});
 const $emit = defineEmits(["update:selectIndex"]);
 
-// 切换tabbar
+// 切换tabBar
 const handleOpenPage = (index: number) => {
-  const { selectIndex, tabbar } = props;
-  if (index !== selectIndex && tabbar[index])
+  const { selectIndex, tabBar } = props;
+  if (index !== selectIndex && tabBar[index])
     $emit("update:selectIndex", index);
 };
 </script>
 
 <style lang="scss" scoped>
-.tabbar {
+.tabBar {
   $h: 100rpx;
   display: flex;
   width: 100%;
   height: $h;
   border-top: 1rpx solid #eee;
 
-  .tabbarItem {
+  .tabBarItem {
     flex: 1;
     line-height: $h;
     text-align: center;
     font-size: 0;
 
-    .tabbarItemIcon {
+    .tabBarItemIcon {
       $iconSize: calc($h / 2);
       $m: calc($h / 2 - $iconSize / 2 - $i-font-size-sm / 2);
       display: block;
@@ -66,7 +66,7 @@ const handleOpenPage = (index: number) => {
       margin: $m auto;
     }
 
-    .tabbarItemText {
+    .tabBarItemText {
       display: block;
       line-height: $i-font-size-sm;
       font-size: $i-font-size-sm;

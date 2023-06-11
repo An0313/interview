@@ -1,24 +1,24 @@
 <template>
-  <Layout :title="tabbar[selectIndex].title">
+  <Layout :title="tabBar[selectIndex].title">
     <template #default>
       <view class="page">
         <view
           class="pageContent"
           :style="{
-            width: `${tabbar.length}00vw`,
+            width: `${tabBar.length}00vw`,
             transform: `translateX(-${selectIndex * 100}vw)`,
           }"
         >
-          <Home class="pageItem"></Home>
-          <WrittenExamination class="pageItem"></WrittenExamination>
-          <Welfare class="pageItem"></Welfare>
-          <User class="pageItem"></User>
+          <Home class="pageItem"/>
+          <WrittenExamination class="pageItem"/>
+          <Welfare class="pageItem"/>
+          <User class="pageItem"/>
         </view>
       </view>
-      <!-- <component :is="tabbar[selectIndex].component" /> -->
+
     </template>
     <template #footer>
-      <Tabbar v-model:selectIndex="selectIndex" :tabbar="tabbar"></Tabbar>
+      <TabBar v-model:selectIndex="selectIndex" :tabBar="tabBar" />
     </template>
   </Layout>
 </template>
@@ -28,58 +28,66 @@ import { ref } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import Page from "@/const/pages";
 import { appName, defaultShare } from "@/const";
-import Tabbar from "./components/Tabbar/index.vue";
+import TabBar from "./components/TabBar/index.vue";
+import type {iTabBarItem} from './components/TabBar/index.vue'
 import Home from "./components/home/index.vue";
 import WrittenExamination from "./components/writtenExamination/index.vue";
 import Welfare from "./components/Welfare/index.vue";
 import User from "./components/user/index.vue";
-import * as TabbarImg from "./components/Tabbar/imgs";
+import * as TabBarImg from "./components/TabBar/imgs";
 
-enum tabbarKey {
+enum TabBarKey {
   home,
   writtenExamination,
   learningMaterials,
   user,
 }
 
+// 选中 tabBar 的下标
 const selectIndex = ref<number>(0);
-const tabbar = [
+
+// 要渲染的 tabBar 的数据
+const tabBar: iTabBarItem[] = [
   {
-    key: tabbarKey.home,
-    icon: TabbarImg.HOME,
-    selectedIcon: TabbarImg.HOME_FILL,
+    key: TabBarKey.home,
+    icon: TabBarImg.HOME,
+    selectedIcon: TabBarImg.HOME_FILL,
     title: appName,
     name: "面试题",
   },
   {
-    key: tabbarKey.writtenExamination,
-    icon: TabbarImg.WRITTENEXAMINATION,
-    selectedIcon: TabbarImg.WRITTENEXAMINATION_FILL,
+    key: TabBarKey.writtenExamination,
+    icon: TabBarImg.WRITTENEXAMINATION,
+    selectedIcon: TabBarImg.WRITTENEXAMINATION_FILL,
     title: "笔试题",
     name: "笔试题",
   },
   {
-    key: tabbarKey.learningMaterials,
-    icon: TabbarImg.WELFARE,
-    selectedIcon: TabbarImg.WELFARE_FILL,
+    key: TabBarKey.learningMaterials,
+    icon: TabBarImg.WELFARE,
+    selectedIcon: TabBarImg.WELFARE_FILL,
     title: "学习资料",
     name: "领资料",
   },
   {
-    key: tabbarKey.user,
-    icon: TabbarImg.USER,
-    selectedIcon: TabbarImg.USER_FILL,
+    key: TabBarKey.user,
+    icon: TabBarImg.USER,
+    selectedIcon: TabBarImg.USER_FILL,
     title: "个人中心",
     name: "我的",
   },
 ];
 
-onLoad(({ sKey }) => {
-  if (sKey && tabbarKey[sKey as any]) {
-    selectIndex.value = Number(tabbarKey[sKey as any]);
+onLoad(({ sKey }: {sKey?: TabBarKey}) => {
+  if (sKey && TabBarKey[sKey]) {
+    selectIndex.value = Number(TabBarKey[sKey]);
   }
 });
 
+
+
+
+// 微信小程序分享配置
 // #ifdef MP-WEIXIN
 onShareAppMessage(() => {
   return defaultShare;
@@ -88,6 +96,8 @@ onShareTimeline(() => {
   return defaultShare;
 });
 // #endif
+
+
 </script>
 
 <style lang="scss" scoped>
