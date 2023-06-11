@@ -30,17 +30,18 @@
 <script lang="ts" setup>
 import { ref, watchEffect, computed } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
-import { iProblemItem, problem as allProblem } from "@/const/problem";
-import { problemTagMnum } from "@/const/problemTag";
+import DetailLayout from '@/components/DetailLayout/DetailLayout.vue'
 import Page from "@/const/pages";
-import { useStore } from "@/store";
+import {useCounterStore} from '@/stores/problem'
 
-const store = useStore();
+const store = useCounterStore();
+
+const {problemListPageData, problemTagMenu, problem: allProblem} = store
 // 面试题列表
-const list = ref<iProblemItem[]>(store.state.probleList);
+const list = ref<IProblem.item[]>([]);
 // 当前面试题
-const problem = ref<iProblemItem | null>(null);
-const collectList = computed(() => store.state.collectList);
+const problem = ref<IProblem.item | null>(null);
+const collectList = computed(() => store.collectList);
 // 当前查看面试题的index
 const currentIndex = ref<number>(0);
 // 当前面试题的标签
@@ -55,13 +56,14 @@ onLoad(({ id, index }) => {
     currentIndex.value = index === -1 ? 0 : index;
   } else if (index) {
     currentIndex.value = Number(index);
+    list.value = problemListPageData
   }
 });
 
 const changeIndex = (val: number) => {
   currentIndex.value = val;
   tags.value = list.value[val].tags
-    .map((item) => problemTagMnum[item])
+    .map((item) => problemTagMenu[item])
     .join(" ・ ");
 };
 
@@ -70,9 +72,10 @@ watchEffect(() => {
   const p = list.value[index];
   if (p) {
     problem.value = p;
-    tags.value = p.tags.map((item) => problemTagMnum[item]).join(" ・ ");
+    tags.value = p.tags.map((item) => problemTagMenu[item]).join(" ・ ");
   }
 });
+
 
 // #ifdef MP-WEIXIN
 onShareAppMessage(() => {

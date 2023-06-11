@@ -10,8 +10,13 @@ interface IState {
     problemSort: IProblem.sort,
     problemTag: IProblem.tagItem[],
     problemTagMenu: IProblem.tagMenu,
-    answerList: any[],
     collectList: ICollect,
+
+
+    problemListPageData:  IProblem.item[],
+
+
+    answerList: any[],
     collectAnswerList: ICollect,
 }
 
@@ -26,13 +31,33 @@ export const useCounterStore = defineStore('problem', {
             problemTag,
             // 面试题 标签菜单
             problemTagMenu,
-            // 笔试题
-            answerList: [],
             // 面试题 收藏
             collectList: uni.getStorageSync(collectStorageKey) || [],
+
+
+            // 面试题分类列表页面数据
+            problemListPageData: [],
+
+
+            // 笔试题
+            answerList: [],
             // 笔试题 收藏
             collectAnswerList: uni.getStorageSync(collectAnswerStorageKey) || []
         };
     },
-    actions: {},
+
+    actions: {
+        // 设置面试题分类列表页面数据
+        setProblemListPageData(list: IProblem.item[]) {
+            this.problemListPageData = [...list]
+        },
+        // 设置面试题 收藏
+        setCollectList(list: ICollect) {
+            this.collectList = list
+        },
+        // 设置笔试题 收藏
+        setCollectAnswerList(list: ICollect) {
+            this.collectAnswerList = list
+        },
+    },
 });

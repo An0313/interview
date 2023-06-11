@@ -26,7 +26,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
-import Page from "@/const/pages";
 import { appName, defaultShare } from "@/const";
 import TabBar from "./components/TabBar/index.vue";
 import type {iTabBarItem} from './components/TabBar/index.vue'

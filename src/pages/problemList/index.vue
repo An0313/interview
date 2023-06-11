@@ -3,25 +3,25 @@
     // #ifdef MP-WEIXIN
     <ad unit-id="adunit-5b18f0c9b3f1ad52"></ad>
     // #endif
-    <ProbleList :list="problemList" @clickItem="handleOpenDetail" />
+    <ProbleList :list="problemListPageData" @clickItem="handleOpenDetail"/>
   </Layout>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
-import { useCounterStore } from '@/stores/problem';
+import {ref} from "vue";
+import {onLoad, onShareAppMessage, onShareTimeline} from "@dcloudio/uni-app";
+import {useCounterStore} from '@/stores/problem';
 import Page from "@/const/pages";
-import { defaultShare } from "@/const";
+import {defaultShare} from "@/const";
 
 const store = useCounterStore();
 
 // 题目列表
-const problemList = store.problem;
+const {problemListPageData} = store;
 // 页面标题
 const pageTitle = ref<string>("");
 
-onLoad(({ name }) => {
+onLoad(({name}) => {
   pageTitle.value = name || "";
 });
 

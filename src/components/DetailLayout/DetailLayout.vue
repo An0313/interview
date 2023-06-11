@@ -5,36 +5,38 @@
       <slot></slot>
       <view class="footer">
         <view
-          class="btn"
-          hover-class="btn-hover"
-          :class="{ disabled: props.index === 0 }"
-          @click="handleChangeProble(props.index - 1)"
-          >上一题</view
+            class="btn"
+            hover-class="btn-hover"
+            :class="{ disabled: props.index === 0 }"
+            @click="handleChangeProblem(props.index - 1)"
+        >上一题
+        </view
         >
 
         <view
-          class="btn"
-          hover-class="btn-hover"
-          @click="handleCollect"
-          :class="{ collect: isCollect }"
+            class="btn"
+            hover-class="btn-hover"
+            @click="handleCollect"
+            :class="{ collect: isCollect }"
         >
           {{ `${isCollect ? "已" : ""}收藏` }}
         </view>
         // #ifdef MP-WEIXIN
         <view class="btn share">
           分享
-          <OpenBtn />
+          <OpenBtn/>
         </view>
         <view class="btn feedback">
           纠错
-          <OpenBtn openType="contact" />
+          <OpenBtn openType="contact"/>
         </view>
         // #endif
         <view
-          class="btn"
-          :class="{ disabled: props.index === props.list.length - 1 }"
-          @click="handleChangeProble(props.index + 1)"
-          >下一题</view
+            class="btn"
+            :class="{ disabled: props.index === props.list.length - 1 }"
+            @click="handleChangeProblem(props.index + 1)"
+        >下一题
+        </view
         >
       </view>
     </view>
@@ -42,17 +44,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watchEffect, computed } from "vue";
-import { iProblemItem } from "@/const/problem";
-import { useStore } from "@/store";
+import {ref, watchEffect, computed} from "vue";
+import {useCounterStore} from "@/stores/problem";
 
-enum defailType {
+enum defaultType {
   problem = "problem",
   answer = "answer",
 }
 
 interface PropsType {
-  list: iProblemItem[];
+  list: IProblem.item[];
   type: string;
   index?: number;
   collectList: number[]
@@ -64,32 +65,36 @@ const props = withDefaults(defineProps<PropsType>(), {
 
 const $emit = defineEmits(["change"]);
 
-const store = useStore();
-// 页面标题（当前面试题的title）
-const pageTitle = ref<string>("加载中");
+const store = useCounterStore();
+
+
 // 当前查看的面试题是否收藏
 const isCollect = ref<boolean>(false);
-
-// 切换面试题
-const handleChangeProble = (val: number) => {
-  if (props.list[val]) $emit("change", val);
-};
-
 // 收藏面试题
 const handleCollect = async () => {
   const cl = [...props.collectList];
-  const { id } = props.list[props.index];
+  const {id} = props.list[props.index];
   const _isCollect = isCollect.value;
 
   _isCollect ? cl.splice(cl.indexOf(id), 1) : cl.push(id);
-  store.dispatch(
-    props.type === defailType.problem
-      ? "setCollectList"
-      : "setCollectAnswerList",
-    cl
-  );
+  store[
+      props.type === defaultType.problem
+          ? "setCollectList"
+          : "setCollectAnswerList"](cl)
   isCollect.value = !_isCollect;
 };
+
+
+
+// 切换面试题
+const handleChangeProblem = (val: number) => {
+  if (props.list[val]) $emit("change", val);
+};
+
+
+
+// 页面标题（当前面试题的title）
+const pageTitle = ref<string>("加载中");
 
 watchEffect(() => {
   const index = props.index;
