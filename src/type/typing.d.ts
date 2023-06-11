@@ -31,4 +31,17 @@ declare namespace IProblem {
     interface tagMenu {
         [key: string]: string | number
     }
+
+
+
+
+    // ********************* 笔试题
+    interface answerListItem {
+        id: number
+        title: string
+        code: string
+        option: string[]
+        answer: number
+        explain: string[]
+    }
 }
