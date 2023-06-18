@@ -1,20 +1,20 @@
-const { setId } = require('../utils')
+const {setId} = require('../utils')
 
-const VueIcon = '@/static/img/vueIcon'
-const ReactIcon = '@/static/img/reactIcon'
-const HtmlIcon = '@/static/img/htmlIcon'
-const CssIcon = '@/static/img/cssIcon'
-const JsIcon = '@/static/img/jsIcon'
-const TsIcon = '@/static/img/tsIcon'
-const NodeIcon = '@/static/img/NodeIcon'
-const OptimizeIcon = '@/static/img/optimizeIcon'
-const CompanyIcon = '@/static/img/company'
-const WxIcon = '@/static/img/wxIcon'
-const GitIcon = '@/static/img/gitIcon'
-const WebpackIcon = '@/static/img/webpackIcon'
-const AlgorithmIcon = '@/static/img/algorithmIcon'
-const TheoryIcon = '@/static/img/theoryIcon'
-const HrIcon = '@/static/img/hrIcon'
+const VueIcon = require('../../src/static/img/vueIcon.ts')
+const ReactIcon = require('../../src/static/img/reactIcon.ts')
+const HtmlIcon = require('../../src/static/img/htmlIcon.ts')
+const CssIcon = require('../../src/static/img/cssIcon.ts')
+const JsIcon = require('../../src/static/img/jsIcon.ts')
+const TsIcon = require('../../src/static/img/tsIcon.ts')
+const NodeIcon = require('../../src/static/img/NodeIcon.ts')
+const OptimizeIcon = require('../../src/static/img/optimizeIcon.ts')
+const CompanyIcon = require('../../src/static/img/company.ts')
+const WxIcon = require('../../src/static/img/wxIcon.ts')
+const GitIcon = require('../../src/static/img/gitIcon.ts')
+const WebpackIcon = require('../../src/static/img/webpackIcon.ts')
+const AlgorithmIcon = require('../../src/static/img/algorithmIcon.ts')
+const TheoryIcon = require('../../src/static/img/theoryIcon.ts')
+const HrIcon = require('../../src/static/img/hrIcon.ts')
 
 // 面试题标签
 const problemTag = setId([

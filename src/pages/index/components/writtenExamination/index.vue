@@ -9,7 +9,7 @@
         hover-class="hover"
         v-for="(item, index) in answerBtn"
         :key="item.key"
-        @click="handleOpenDefail(index)"
+        @click="handleOpenDetail(index)"
       >
         <text>{{ item.name }}</text>
         <text class="sub" v-if="item.sub">{{ item.sub }}</text>
@@ -70,7 +70,7 @@ const answerBtn: iAnswerBtnItem[] = [
   },
 ];
 
-const handleOpenDefail = (index: number): void => {
+const handleOpenDetail = (index: number): void => {
   const { key } = answerBtn[index];
   let list;
 
@@ -102,12 +102,13 @@ const handleOpenDefail = (index: number): void => {
 
   if (!list || list.length <= 0) toast("暂无习题");
   else {
-    // store.dispatch("setState", { answerList: list });
-    // let url = Pages.answerDetail;
-    //
-    // uni.navigateTo({
-    //   url,
-    // });
+    console.log(list)
+    store.setAnswerListPageData(list)
+    let url = Pages.answerDetail;
+
+    uni.navigateTo({
+      url,
+    });
   }
 };
 </script>

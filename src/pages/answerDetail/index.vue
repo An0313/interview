@@ -65,8 +65,7 @@
 import { ref, computed, watchEffect } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import TitleList from "./components/TitleList/index.vue";
-import { useStore } from "@/store";
-import { answer, iAnswerListItem } from "@/const/answer";
+import { useCounterStore } from "@/stores/problem";
 import Pages from "@/const/pages";
 import { isDev } from "@/const/env";
 import { toast } from "@/util";
@@ -79,16 +78,24 @@ import {
 
 type iUserValue = number | undefined;
 
-const store = useStore();
-const list = ref<iAnswerListItem[]>(store.state.answerList);
-const collectList = computed(() => store.state.collectAnswerList);
+const store = useCounterStore();
+// 全部笔试题列表
+const answer = store.answerList
+// 当前页面的题目列表
+const list = ref<IProblem.answerList>(JSON.parse(JSON.stringify(store.answerListPageData)))
+// list 的下标，也就是当前题目的下标
 const currentIndex = ref<number>(0);
-const problem = ref<iAnswerListItem | null>(null);
+// 当前页面显示的面试题
+const problem = ref<IProblem.answerListItem | null>(null);
+// 当前笔试题的代码
 const code = ref<string>("");
-const userValue = ref<Array<number | undefined>>(
-  list.value.map(() => undefined)
-);
+// 收藏的笔试题列表
+const collectList = computed(() => store.collectAnswerList);
+// 用户选择的答案list
+const userValue = ref<Array<number | undefined>>(list.value.map(() => undefined));
+// 当前题目选择的答案
 const currentUserValue = ref<iUserValue>(undefined);
+// 标题
 const titleListRef = ref<any>(null);
 
 onLoad(({ index, id }) => {
@@ -96,7 +103,7 @@ onLoad(({ index, id }) => {
   if (id) {
     const _id = Number(id);
     const index = answer.findIndex((item) => item.id === _id);
-    list.value = answer;
+    list.value = JSON.parse(JSON.stringify(answer));
     userValue.value = answer.map(() => undefined);
     currentIndex.value = index === -1 ? 0 : index;
   } else if (index) {
@@ -107,7 +114,7 @@ onLoad(({ index, id }) => {
 const handleSelectAnswer = (index: number): void => {
   const i = currentIndex.value;
   if (userValue.value[i] === undefined) {
-    const { answer: _answer, id: _id } = problem.value as iAnswerListItem;
+    const { answer: _answer, id: _id } = problem.value as IProblem.answerListItem;
 
     userValue.value[i] = index;
     currentUserValue.value = index;
@@ -144,7 +151,7 @@ const log = (e) => {
 
 watchEffect(() => {
   const i = currentIndex.value;
-  const p = list.value[i] as iAnswerListItem;
+  const p = list.value[i] as IProblem.answerListItem;
 
   if (p) {
     problem.value = p;

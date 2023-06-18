@@ -5,6 +5,7 @@ import {collectStorageKey, collectAnswerStorageKey} from '@/const/storageKey'
 
 
 type ICollect = number[]
+
 interface IState {
     problem: IProblem.item[],
     problemSort: IProblem.sort,
@@ -13,11 +14,12 @@ interface IState {
     collectList: ICollect,
 
 
-    problemListPageData:  IProblem.item[],
+    problemListPageData: IProblem.item[],
 
 
-    answerList: any[],
+    answerList: IProblem.answerList,
     collectAnswerList: ICollect,
+    answerListPageData: IProblem.answerList,
 }
 
 export const useCounterStore = defineStore('problem', {
@@ -33,8 +35,6 @@ export const useCounterStore = defineStore('problem', {
             problemTagMenu,
             // 面试题 收藏
             collectList: uni.getStorageSync(collectStorageKey) || [],
-
-
             // 面试题分类列表页面数据
             problemListPageData: [],
 
@@ -42,7 +42,9 @@ export const useCounterStore = defineStore('problem', {
             // 笔试题
             answerList: [],
             // 笔试题 收藏
-            collectAnswerList: uni.getStorageSync(collectAnswerStorageKey) || []
+            collectAnswerList: uni.getStorageSync(collectAnswerStorageKey) || [],
+            // 笔试题分类列表页面数据
+            answerListPageData: [],
         };
     },
 
@@ -50,6 +52,10 @@ export const useCounterStore = defineStore('problem', {
         // 设置面试题分类列表页面数据
         setProblemListPageData(list: IProblem.item[]) {
             this.problemListPageData = [...list]
+        },
+        // 设置面试题分类列表页面数据
+        setAnswerListPageData(list: IProblem.answerList) {
+            this.answerListPageData = [...list]
         },
         // 设置面试题 收藏
         setCollectList(list: ICollect) {

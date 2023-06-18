@@ -33,8 +33,6 @@ declare namespace IProblem {
     }
 
 
-
-
     // ********************* 笔试题
     interface answerListItem {
         id: number
@@ -44,4 +42,7 @@ declare namespace IProblem {
         answer: number
         explain: string[]
     }
+
+    // 笔试题列表
+    type answerList = answerListItem[]
 }

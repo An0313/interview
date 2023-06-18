@@ -5,7 +5,7 @@ exports.answer = setId([
     {
 
         title: '请问以下JS代码会输出什么',
-        code: 'var a = 10;\n(function a() {\na = 20;\nconsole.log(a);\n})()',
+        code: 'var a = 10;\n(function a() {\n    a = 20;\n    console.log(a);\n})()',
         option: [
             '10',
             '20',
@@ -128,7 +128,7 @@ exports.answer = setId([
     {
 
         title: '运行后的输出是',
-        code: "(function() {\n var a = b = 5;\n  })();\nconsole.log(b);\nconsole.log(a);",
+        code: "(function() {\n    var a = b = 5;\n})();\nconsole.log(b);\nconsole.log(a);",
         option: [
             "5、5",
             "undefined、undefined",
