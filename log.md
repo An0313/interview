@@ -1,7 +1,8 @@
 # APP 版本更新记录
 
-v1.2.0 - 20230604
+v1.2.0 - 20230618
 > add node打包面试js 
+> add node上传面试题文件
 > add 远程请求面试题数据
 > add 修改项目启动与打包命令
 > add vuex => pinia
