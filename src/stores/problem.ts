@@ -1,6 +1,5 @@
 import {defineStore} from 'pinia';
-import {problem, problemSort} from '@/const/problem'
-import {problemTag, problemTagMenu} from '@/const/problemTag'
+import {problem, problemSort, problemTag, problemTagMenu, homeMenu, answerList} from '@/const/problem'
 import {collectStorageKey, collectAnswerStorageKey} from '@/const/storageKey'
 
 
@@ -12,9 +11,9 @@ interface IState {
     problemTag: IProblem.tagItem[],
     problemTagMenu: IProblem.tagMenu,
     collectList: ICollect,
-
-
     problemListPageData: IProblem.item[],
+
+    homeMenu: IProblem.homeMenuItem[],
 
 
     answerList: IProblem.answerList,
@@ -38,9 +37,12 @@ export const useCounterStore = defineStore('problem', {
             // 面试题分类列表页面数据
             problemListPageData: [],
 
+            // 首页菜单
+            homeMenu,
+
 
             // 笔试题
-            answerList: [],
+            answerList,
             // 笔试题 收藏
             collectAnswerList: uni.getStorageSync(collectAnswerStorageKey) || [],
             // 笔试题分类列表页面数据

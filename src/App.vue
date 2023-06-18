@@ -1,14 +1,26 @@
 <script setup lang="ts">
 import { onLaunch, onShow, onHide } from "@dcloudio/uni-app";
 import { wxCloudEnvId } from "@/const/env";
-
+import {getProblem} from './servers/problem'
 import {useCounterStore} from '@/stores/problem'
 
 const store = useCounterStore()
 
 // 获取面试题、笔试题数据
-const getProblem = async () => {
+const initData = async () => {
+  // console.log('papi', getProblem)
+  getProblem().then(res=> {
+    const {answerList, problem, problemSort, problemTag, problemTagMenu, homeMenu} = res.data || {}
 
+    store.$patch({
+      answerList,
+      problem,
+      problemSort,
+      problemTag,
+      homeMenu,
+      problemTagMenu
+    })
+  })
 }
 
 // declare wx:(an)
@@ -21,7 +33,7 @@ onLaunch(() => {
   });
   // #endif
 
-  getProblem()
+  initData()
 });
 onShow(() => {
   console.log("App Show");

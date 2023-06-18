@@ -170,8 +170,6 @@ const problemTag = setId([
     },
 ])
 
-module.exports.problemTag = problemTag
-
 // 面试题分类菜单
 const problemTagMenu = (() => {
     const _problemTagMenu = {}
@@ -190,7 +188,7 @@ const problemTagMenu = (() => {
     })
     return _problemTagMenu
 })()
-module.exports.problemTagMenu = problemTagMenu
+
 
 // 面试题
 const problem = setId([
@@ -2664,11 +2662,10 @@ const problem = setId([
             'title表示，当图片正常显示时，鼠标悬浮在图片时显示的文字，alt表示，图片无法正常显示时，展示的文字',
         ]
     },
-])
-module.exports.problem = problem
+]);
 
 // 面试题分类
-module.exports.problemSort = (() => {
+const problemSort = (() => {
     const sort = {}
     problem.forEach((item, index) => {
         item.tags.forEach((tag, tagIndex) => {
@@ -2678,3 +2675,54 @@ module.exports.problemSort = (() => {
     })
     return sort
 })()
+
+// 首页菜单
+const homeMenu = [
+    // {
+    //   title: "#",
+    //   sub: [problemTagMenu.company],
+    // },
+    {
+        title: "基础",
+        sub: [problemTagMenu.html, problemTagMenu.css, problemTagMenu.js],
+    },
+    {
+        title: "框架",
+        sub: [problemTagMenu.vue, problemTagMenu.react, problemTagMenu.wx],
+    },
+    {
+        title: "工具",
+        sub: [problemTagMenu.git, problemTagMenu.pack],
+    },
+    {
+        title: "其他",
+        sub: [
+            problemTagMenu.ts,
+            problemTagMenu.node,
+            problemTagMenu.algorithm,
+            problemTagMenu.optimize,
+            problemTagMenu.theory,
+            problemTagMenu.hr,
+        ],
+    },
+].map((item) => {
+    return {
+        title: item.title,
+        sub: item.sub.map((subItem) => {
+            return {
+                id: subItem,
+                icon: (problemTag.find((item) => item.id === subItem)).icon,
+                name: problemTagMenu[subItem],
+                total: problemSort[subItem]?.length || 0,
+            };
+        }),
+    };
+})
+
+module.exports = {
+    problemTagMenu,
+    problemTag,
+    problem,
+    problemSort,
+    homeMenu,
+}

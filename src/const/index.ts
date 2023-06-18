@@ -1,4 +1,4 @@
-import { getTerminal, getTerminalRes, getNavInfo, getNavInfoRes } from '@/util'
+import { getTerminal, getTerminalRes, getNavInfo, getNavInfoRes } from '@/utils'
 import Pages from './pages'
 
 export const appName = '前端面试宝'

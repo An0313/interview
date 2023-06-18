@@ -1,6 +1,6 @@
 <template>
   <view class="home">
-    <SearchBar :list="problem" @search="search"/>
+    <SearchBar :list="store.problem" @search="search"/>
     // #ifdef MP-WEIXIN
     <ad unit-id="adunit-c05ae012df7980d9"></ad>
     // #endif
@@ -27,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import {computed} from 'vue'
 import {onLoad} from "@dcloudio/uni-app";
 import SearchBar from "./components/SearchBar/index.vue";
 import {useCounterStore} from '@/stores/problem';
@@ -35,66 +36,8 @@ import {isDev} from "@/const/env";
 
 
 const store = useCounterStore();
-const {problemTag, problemTagMenu, problem, problemSort} = store
 
-// 列表
-interface iIndexListItemSub {
-  name: string;
-  total: number;
-  icon: string;
-  id: number | string;
-}
-
-interface iIndexListItem {
-  title: string;
-  sub: iIndexListItemSub[];
-}
-
-const indexList: iIndexListItem[] = (
-    () =>
-        [
-          // {
-          //   title: "#",
-          //   sub: [problemTagMenu.company],
-          // },
-          {
-            title: "基础",
-            sub: [problemTagMenu.html, problemTagMenu.css, problemTagMenu.js],
-          },
-          {
-            title: "框架",
-            sub: [problemTagMenu.vue, problemTagMenu.react, problemTagMenu.wx],
-          },
-          {
-            title: "工具",
-            sub: [problemTagMenu.git, problemTagMenu.pack],
-          },
-          {
-            title: "其他",
-            sub: [
-              problemTagMenu.ts,
-              problemTagMenu.node,
-              problemTagMenu.algorithm,
-              problemTagMenu.optimize,
-              problemTagMenu.theory,
-              problemTagMenu.hr,
-            ],
-          },
-        ].map((item) => {
-          return {
-            title: item.title,
-            sub: item.sub.map((subItem): iIndexListItemSub => {
-              return {
-                id: subItem,
-                icon: (problemTag.find((item) => item.id === subItem) as IProblem.tagItem)
-                    .icon,
-                name: problemTagMenu[subItem] as string,
-                total: problemSort[subItem]?.length || 0,
-              };
-            }),
-          };
-        })
-)();
+const indexList = computed<IProblem.homeMenuItem[]>(() => store.homeMenu)
 // 打开分类列表页面
 const handleOpenList = (name: string, list: IProblem.item[]): void => {
   store.setProblemListPageData(list)
@@ -104,8 +47,8 @@ const handleOpenList = (name: string, list: IProblem.item[]): void => {
 };
 
 // 点击列表项 打开分类列表页面
-const handleClickItem = (subItem: iIndexListItemSub) => {
-  handleOpenList(subItem.name, problemSort[subItem.id].map(index => problem[index]));
+const handleClickItem = (subItem: IProblem.homeMenuItemSub) => {
+  handleOpenList(subItem.name, store.problemSort[subItem.id].map(index => store.problem[index]));
 };
 
 // 搜索

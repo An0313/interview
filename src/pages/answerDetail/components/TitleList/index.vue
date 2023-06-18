@@ -31,14 +31,17 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import { answer } from "@/const/answer";
+import {computed, ref} from "vue";
+import {useCounterStore} from '@/stores/problem'
 import MORE_IMG from "@/static/img/more";
 
 interface PropsType {
   list: Array<number | undefined>;
   index: number;
 }
+
+const store = useCounterStore()
+const answer = computed(() => store.answerList)
 
 const props = withDefaults(defineProps<PropsType>(), {});
 

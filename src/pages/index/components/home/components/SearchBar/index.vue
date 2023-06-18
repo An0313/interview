@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { iProblemItem } from "@/const/problem";
-import { debounce, toast } from "@/util";
+import { debounce, toast } from "@/utils";
 
 interface iProps {
   list: iProblemItem[];

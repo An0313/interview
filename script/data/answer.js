@@ -1,7 +1,7 @@
 // 笔试题
 const {setId} = require('../utils');
 
-exports.answer = setId([
+exports.answerList = setId([
     {
 
         title: '请问以下JS代码会输出什么',

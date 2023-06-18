@@ -20,15 +20,14 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import { answer } from "@/const/answer";
 import Pages from "@/const/pages";
 import { useCounterStore } from '@/stores/problem';
-import { toast } from "@/util";
+import { toast } from "@/utils";
 import {
   getRecord,
   RECORD_PRACTICE_KEY,
   RECORD_WRONG_KEY,
-} from "@/pages/answerDetail/util";
+} from "@/pages/answerDetail/utils";
 
 enum answerBtnKey {
   start,
@@ -44,7 +43,9 @@ interface iAnswerBtnItem {
   sub?: string;
 }
 
-const store = useCounterStore ();
+const store = useCounterStore();
+
+const answer = computed<IProblem.answerList>(() => store.answerList)
 
 const collectList = computed(() => store.collectAnswerList);
 const answerBtn: iAnswerBtnItem[] = [
@@ -76,33 +77,32 @@ const handleOpenDetail = (index: number): void => {
 
   switch (key) {
     case answerBtnKey.collect:
-      list = answer.filter((item) => collectList.value.includes(item.id));
+      list = answer.value.filter((item) => collectList.value.includes(item.id));
       break;
 
     case answerBtnKey.random:
-      list = answer.sort(() => Math.random() - 0.5);
+      list = answer.value.sort(() => Math.random() - 0.5);
       break;
 
     case answerBtnKey.error:
-      list = answer.filter((item) =>
+      list = answer.value.filter((item) =>
         getRecord(RECORD_WRONG_KEY).includes(item.id)
       );
       break;
 
     case answerBtnKey.practice:
-      list = answer.filter((item) =>
+      list = answer.value.filter((item) =>
         !getRecord(RECORD_PRACTICE_KEY).includes(item.id)
       );
       break;
 
     default:
-      list = answer;
+      list = answer.value;
       break;
   }
 
   if (!list || list.length <= 0) toast("暂无习题");
   else {
-    console.log(list)
     store.setAnswerListPageData(list)
     let url = Pages.answerDetail;
 

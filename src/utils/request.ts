@@ -11,25 +11,19 @@ const defaultOptions: Omit<UniNamespace.RequestOptions, 'url'> = {
     dataType: 'json'
 }
 
-// request 函数返回值
-interface IRES<T = {}> {
-    code: number, // 0 成功， 其他失败
-    msg: string, // 错误信息
-    data: T, // 返回数据
-}
 
 /**
  * 发送请求
  * @param {UniNamespace.RequestOptions} ags 请求参数
  * @param {boolean} isRequestTask 是否返回 isRequestTask
- * @return {Promise<IRES> | UniNamespace.RequestTask}
+ * @return {API.RESUL}
  */
-const request = function (ags: UniNamespace.RequestOptions, isRequestTask: boolean = false) {
+const request = function (ags: UniNamespace.RequestOptions, isRequestTask: boolean = false): API.RESUL {
     const header = {...defaultOptions.header, ...(ags.header || {})}
     const options: UniNamespace.RequestOptions = {...defaultOptions, ...ags, header}
 
-    if (isRequestTask) return uni.request(options)
-    const res: IRES = {
+    // if (isRequestTask) return uni.request(options)
+    const res = {
         code: 0,
         msg: '',
         data: {}

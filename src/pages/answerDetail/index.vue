@@ -68,19 +68,19 @@ import TitleList from "./components/TitleList/index.vue";
 import { useCounterStore } from "@/stores/problem";
 import Pages from "@/const/pages";
 import { isDev } from "@/const/env";
-import { toast } from "@/util";
+import { toast } from "@/utils";
 import {
   RECORD_WRONG_KEY,
   RECORD_PRACTICE_KEY,
   addRecord,
   delRecord,
-} from "./util";
+} from "./utils";
 
 type iUserValue = number | undefined;
 
 const store = useCounterStore();
 // 全部笔试题列表
-const answer = store.answerList
+const answer = computed(() => store.answerList)
 // 当前页面的题目列表
 const list = ref<IProblem.answerList>(JSON.parse(JSON.stringify(store.answerListPageData)))
 // list 的下标，也就是当前题目的下标
@@ -102,9 +102,9 @@ onLoad(({ index, id }) => {
   // 分享
   if (id) {
     const _id = Number(id);
-    const index = answer.findIndex((item) => item.id === _id);
+    const index = answer.value.findIndex((item) => item.id === _id);
     list.value = JSON.parse(JSON.stringify(answer));
-    userValue.value = answer.map(() => undefined);
+    userValue.value = answer.value.map(() => undefined);
     currentIndex.value = index === -1 ? 0 : index;
   } else if (index) {
     currentIndex.value = Number(index);

@@ -1,4 +1,5 @@
 // 面试题
+
 declare namespace IProblem {
 
     // 面试题 列表 item
@@ -33,6 +34,24 @@ declare namespace IProblem {
     }
 
 
+    interface homeMenuItemSub {
+        name: string;
+        total: number;
+        icon: string;
+        id: number | string;
+    }
+
+    // 首页菜单item
+    interface homeMenuItem {
+        title: string;
+        sub: homeMenuItemSub[];
+    }
+
+
+
+
+
+
     // ********************* 笔试题
     interface answerListItem {
         id: number
@@ -45,4 +64,20 @@ declare namespace IProblem {
 
     // 笔试题列表
     type answerList = answerListItem[]
+
+
+
+
+
+
+
+    // ************* 请求
+    type GET_PROBLEM_DATA = API.RESUL<{
+        answerList: answerListItem[],
+        problem: item[],
+        problemSort: sort,
+        problemTag: tagItem[],
+        problemTagMenu: tagMenu,
+        homeMenu: homeMenuItem[],
+    }>
 }
