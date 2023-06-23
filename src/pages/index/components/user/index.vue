@@ -25,20 +25,16 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { useCounterStore } from '@/stores/problem';
-import { problem } from "@/const/problem";
 import Pages from "@/const/pages";
 
 const store = useCounterStore();
 const collectList = computed(() => store.collectList);
 
 const handleViewCollect = () => {
-  // store.dispatch(
-  //   "setProbleList",
-  //   problem.filter((item) => collectList.value.includes(item.id))
-  // );
-  // uni.navigateTo({
-  //   url: `${Pages.probleList}?name=我的收藏`,
-  // });
+  store.setProblemListPageData( store.problem?.filter((item) => collectList.value.includes(item.id)) || [])
+  uni.navigateTo({
+    url: `${Pages.problemList}?name=我的收藏`,
+  });
 };
 </script>
 
