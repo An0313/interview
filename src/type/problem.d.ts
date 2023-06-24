@@ -7,7 +7,7 @@ declare namespace IProblem {
         id: number,
         title: string,
         tags: Array<string | number>,
-        answer: string[]
+        answer: string
     }
 
     // 面试题 分类

@@ -2662,7 +2662,15 @@ const problem = setId([
             'title表示，当图片正常显示时，鼠标悬浮在图片时显示的文字，alt表示，图片无法正常显示时，展示的文字',
         ]
     },
-]);
+]).map(item => {
+    const {answer} = item
+    item.answer = ''
+
+    answer.forEach(str => {
+        item.answer += `${str}\n`
+    })
+    return item
+});
 
 // 面试题分类
 const problemSort = (() => {

@@ -18,7 +18,7 @@
         <text
           class="row"
           user-select
-          v-for="(item, index) in problem?.answer"
+          v-for="(item, index) in problem?.answer.split('\n')"
           :key="index"
           >{{ item }}</text
         >

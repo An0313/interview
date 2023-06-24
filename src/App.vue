@@ -35,7 +35,7 @@ onLaunch(() => {
   });
   // #endif
 
-  initData()
+  // initData()
 });
 onShow(() => {
   console.log("App Show");
