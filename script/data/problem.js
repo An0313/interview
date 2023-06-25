@@ -453,9 +453,14 @@ const problem = setId([
         title: '怎么修改 Vue 打包后生成文件路径',
         tags: [problemTagMenu.vue, problemTagMenu.pack, problemTagMenu.webpack, problemTagMenu.vite],
         answer: [
-            'webpack: vue.config.js 中设置 outputDir ',
-            '',
-            'vite: vite.config.js 中设置 base'
+          'vuecli2：',
+          'config/index.js 中设置 assetsPublicPath ',
+          '',
+          'vuecl3+：',
+          'vue.config.js 中设置 publicPath （baseUrl vuecli3.3弃用）',
+          '',
+          'vite: ',
+          'vite.config.js 中设置 base'
         ]
     },
     {
