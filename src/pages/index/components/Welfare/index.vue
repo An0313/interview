@@ -29,15 +29,15 @@ let isEnded: boolean = false;
 const list: iListItem[] = [
   {
     id: 1,
-    name: "2022年最新版Vue3全套教程",
+    name: "最新版vue3+TypeScript前端开发教程",
     cover: IMGS.VUE_COVER,
-    avid: "897124656",
+    avid: "664961797",
   },
   {
     id: 2,
-    name: "React入门到实战(2022全网最新",
+    name: "React入门到项目实战",
     cover: IMGS.REACT_COVER,
-    avid: "979795771",
+    avid: "656900578",
   },
   {
     id: 3,
@@ -47,13 +47,13 @@ const list: iListItem[] = [
   },
   {
     id: 4,
-    name: "2022版Webpack5入门到原理",
+    name: "Webpack5入门到原理",
     cover: IMGS.WEBPACK_COVER,
     avid: "939218689",
   },
   {
     id: 5,
-    name: "2022最新版！Pinia基础入门教程",
+    name: "Pinia基础入门教程",
     cover: IMGS.PINIA_COVER,
     avid: "555256420",
   },
