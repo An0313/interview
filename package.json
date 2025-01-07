@@ -1,6 +1,6 @@
 {
   "name": "interview-app",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "scripts": {
     "start": "node script/build-problem.js && node script/build-router.js",
     "dev:app": "yarn start && uni -p app",
