@@ -1,10 +1,10 @@
 <template>
   <DetailLayout
-    :list="list"
-    :collectList="collectList"
-    :index="currentIndex"
-    type="problem"
-    @change="changeIndex"
+      :collectList="collectList"
+      :index="currentIndex"
+      :list="list"
+      type="problem"
+      @change="changeIndex"
   >
     <view class="content">
       <view class="title">{{ problem?.title }}</view>
@@ -16,11 +16,12 @@
       // #endif
       <view class="answer">
         <text
-          class="row"
-          user-select
-          v-for="(item, index) in problem?.answer.split('\n')"
-          :key="index"
-          >{{ item }}</text
+            v-for="(item, index) in problem?.answer.split('\n')"
+            :key="index"
+            class="row"
+            user-select
+        >{{ item }}
+        </text
         >
       </view>
     </view>
@@ -28,13 +29,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watchEffect, computed } from "vue";
-import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
+import {ref, watchEffect, computed} from "vue";
+import {onLoad, onShareAppMessage, onShareTimeline} from "@dcloudio/uni-app";
 import DetailLayout from '@/components/DetailLayout/DetailLayout.vue'
 import Page from "@/const/pages";
-import {useCounterStore} from '@/stores/problem'
+import {useGlobalStore} from '@/stores/problem'
 
-const store = useCounterStore();
+const store = useGlobalStore();
 
 const {problemListPageData, problemTagMenu, problem: allProblem} = store
 // 面试题列表
@@ -47,7 +48,7 @@ const currentIndex = ref<number>(0);
 // 当前面试题的标签
 const tags = ref<string>("");
 
-onLoad(({ id, index }) => {
+onLoad(({id, index}) => {
   // 分享
   if (id) {
     const _id = Number(id);
@@ -63,8 +64,8 @@ onLoad(({ id, index }) => {
 const changeIndex = (val: number) => {
   currentIndex.value = val;
   tags.value = list.value[val].tags
-    .map((item) => problemTagMenu[item])
-    .join(" ・ ");
+      .map((item) => problemTagMenu[item])
+      .join(" ・ ");
 };
 
 watchEffect(() => {

@@ -30,12 +30,12 @@
 import {computed} from 'vue'
 import {onLoad} from "@dcloudio/uni-app";
 import SearchBar from "./components/SearchBar/index.vue";
-import {useCounterStore} from '@/stores/problem';
+import {useGlobalStore} from '@/stores/problem';
 import Page from "@/const/pages";
 import {isDev} from "@/const/env";
 
 
-const store = useCounterStore();
+const store = useGlobalStore();
 
 const indexList = computed<IProblem.homeMenuItem[]>(() => store.homeMenu)
 // 打开分类列表页面

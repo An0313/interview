@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
 import {computed, ref} from "vue";
-import {useCounterStore} from '@/stores/problem'
+import {useGlobalStore} from '@/stores/problem'
 import MORE_IMG from "@/static/img/more";
 
 interface PropsType {
@@ -40,22 +40,28 @@ interface PropsType {
   index: number;
 }
 
-const store = useCounterStore()
+const store = useGlobalStore()
 const answer = computed(() => store.answerList)
 
 const props = withDefaults(defineProps<PropsType>(), {});
 
 const $emit = defineEmits(["change"]);
 
+// 是否显示弹窗
 const showPopup = ref<boolean>(false);
-
+// 显示弹窗
 const handleShowPopup = () => (showPopup.value = true);
+// 隐藏弹窗
 const handleHidePopup = () => (showPopup.value = false);
+
+
+// 点击选择题号
 const handleChangeIndex = (e: any) => {
   const { index } = e.target.dataset;
 
   if (index !== undefined && index !== props.index) $emit("change", index);
 };
+
 
 defineExpose({ handleShowPopup });
 </script>

@@ -21,7 +21,7 @@ interface IState {
     answerListPageData: IProblem.answerList,
 }
 
-export const useCounterStore = defineStore('problem', {
+export const useGlobalStore = defineStore('problem', {
     state: (): IState => {
         return {
             // 面试题 列表

@@ -20,13 +20,9 @@
 </template>
 
 <script lang="ts" setup>
-export interface iTabBarItem {
-  key: string;
-  name: string;
-  icon: string;
-  selectedIcon: string;
-  title: string;
-}
+
+import {iTabBarItem} from "./index";
+
 interface iPropsType {
   selectIndex: number;
   tabBar: iTabBarItem[];

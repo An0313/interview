@@ -17,18 +17,18 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { iProblemItem } from "@/const/problem";
 import { debounce, toast } from "@/utils";
 
 interface iProps {
-  list: iProblemItem[];
+  list: IProblem.item[];
 }
 
 const props = defineProps<iProps>();
 const $emit = defineEmits(["search"]);
 
-const result = ref<iProblemItem[]>(props.list);
+const result = ref<IProblem.item[]>(props.list);
 
+// 搜索
 const search = debounce((e: any) => {
   const v = (e.detail.value || "").trim();
   result.value = props.list.filter((item) => item.title.includes(v));

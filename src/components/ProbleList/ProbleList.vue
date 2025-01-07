@@ -16,10 +16,8 @@
 </template>
 
 <script lang="ts" setup>
-import { iProblemItem } from "@/const/problem";
-
 interface iProps {
-  list: iProblemItem[];
+  list: IProblem.item[];
 }
 
 const prosp = withDefaults(defineProps<iProps>(), {});

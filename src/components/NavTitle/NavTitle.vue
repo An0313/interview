@@ -2,28 +2,30 @@
   <view
     class="navTitle"
     :style="{
-      height: `${navHeight}px`,
-      paddingTop: `${statusBarHeight}px`
+      height: `${navInfo.navHeight}px`,
+      paddingTop: `${navInfo.statusBarHeight}px`
     }"
   >
     <view
       class="titleBar"
       :style="{
-        height: `${titleHeight}px`,
-        lineHeight: `${titleHeight}px`,
+        height: `${navInfo.titleHeight}px`,
+        lineHeight: `${navInfo.titleHeight}px`,
       }"
     >
+      <!--返回按钮-->
       <view
         class="backBtn"
-        v-if="currentPagePath !== Page.home && currentPagePath !== Page.user"
+        v-if="isShowNav"
         @click="handelBack"
       >
         <image
           class="backImg"
-          :src="pagesLength === 1 ? homeIcon : LeftArrowIcon"
           mode="heightFix"
+          :src="pagesLength === 1 ? homeIcon : LeftArrowIcon"
         />
       </view>
+      <!--页面标题-->
       <view class="title">{{ props.title }}</view>
     </view>
   </view>
@@ -43,11 +45,15 @@ const props = withDefaults(defineProps<PropsType>(), {
   title: appName,
 });
 
+// 获取当前页面信息
 const pages = getCurrentPages();
-const pagesLength = pages.length;
-const currentPagePath = `/${pages[pagesLength - 1].route}`;
 
-const { statusBarHeight, navHeight, titleHeight } = navInfo;
+// 当前是第几个页面
+const pagesLength = pages.length;
+
+// 是否显示导航栏
+const isShowNav =  `/${pages[pagesLength - 1].route}` !== Page.home
+
 
 // 返回上一页
 const handelBack = () => {

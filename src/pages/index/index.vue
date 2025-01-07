@@ -28,7 +28,7 @@ import { ref } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import { appName, defaultShare } from "@/const";
 import TabBar from "./components/TabBar/index.vue";
-import type {iTabBarItem} from './components/TabBar/index.vue'
+import type {iTabBarItem} from './components/TabBar/index'
 import Home from "./components/home/index.vue";
 import WrittenExamination from "./components/writtenExamination/index.vue";
 import Welfare from "./components/Welfare/index.vue";
@@ -77,7 +77,7 @@ const tabBar: iTabBarItem[] = [
   },
 ];
 
-onLoad(({ sKey }: {sKey?: TabBarKey}) => {
+onLoad(({ sKey } = {}) => {
   if (sKey && TabBarKey[sKey]) {
     selectIndex.value = Number(TabBarKey[sKey]);
   }

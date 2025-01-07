@@ -1,4 +1,6 @@
-// 本地缓存 key
+/**
+ *  本地缓存 key
+ */
 
 // 收藏的面试题
 export const collectStorageKey = 'collectList'

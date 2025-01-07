@@ -44,8 +44,8 @@
 </template>
 
 <script lang="ts" setup>
-import {ref, watchEffect, computed} from "vue";
-import {useCounterStore} from "@/stores/problem";
+import {ref, watchEffect} from "vue";
+import {useGlobalStore} from "@/stores/problem";
 
 enum defaultType {
   problem = "problem",
@@ -65,7 +65,7 @@ const props = withDefaults(defineProps<PropsType>(), {
 
 const $emit = defineEmits(["change"]);
 
-const store = useCounterStore();
+const store = useGlobalStore();
 
 
 // 当前查看的面试题是否收藏

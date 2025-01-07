@@ -10,11 +10,11 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 import {onLoad, onShareAppMessage, onShareTimeline} from "@dcloudio/uni-app";
-import {useCounterStore} from '@/stores/problem';
+import {useGlobalStore} from '@/stores/problem';
 import Page from "@/const/pages";
 import {defaultShare} from "@/const";
 
-const store = useCounterStore();
+const store = useGlobalStore();
 
 // 题目列表
 const {problemListPageData} = store;

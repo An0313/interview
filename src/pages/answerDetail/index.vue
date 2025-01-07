@@ -47,7 +47,6 @@
           cols="300"
           rows="100"
           maxlength="10000"
-          @input="log"
         ></textarea>
       </view>
 
@@ -65,7 +64,7 @@
 import { ref, computed, watchEffect } from "vue";
 import { onLoad, onShareAppMessage, onShareTimeline } from "@dcloudio/uni-app";
 import TitleList from "./components/TitleList/index.vue";
-import { useCounterStore } from "@/stores/problem";
+import { useGlobalStore } from "@/stores/problem";
 import Pages from "@/const/pages";
 import { isDev } from "@/const/env";
 import { toast } from "@/utils";
@@ -78,7 +77,7 @@ import {
 
 type iUserValue = number | undefined;
 
-const store = useCounterStore();
+const store = useGlobalStore();
 // 全部笔试题列表
 const answer = computed(() => store.answerList)
 // 当前页面的题目列表
@@ -111,6 +110,7 @@ onLoad(({ index, id }) => {
   }
 });
 
+// 处理用户选择的答案
 const handleSelectAnswer = (index: number): void => {
   const i = currentIndex.value;
   if (userValue.value[i] === undefined) {
@@ -145,9 +145,6 @@ const changeIndex = (index: number) => {
   // 触发 watchEffect
 };
 
-const log = (e) => {
-  console.log(JSON.stringify(e.detail.value.replace(/   */g, " ")));
-};
 
 watchEffect(() => {
   const i = currentIndex.value;

@@ -24,10 +24,10 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import { useCounterStore } from '@/stores/problem';
+import { useGlobalStore } from '@/stores/problem';
 import Pages from "@/const/pages";
 
-const store = useCounterStore();
+const store = useGlobalStore();
 const collectList = computed(() => store.collectList);
 
 const handleViewCollect = () => {

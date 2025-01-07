@@ -1,21 +1,26 @@
 /**
+ * 常用工具函数
+ */
+
+/**
  * 防抖函数
  * @param {fn} fn 外部传入的函数
  * @param {number} delay 延迟的时间
  * @returns
  */
-export const debounce = function (fn, delay) {
+export const debounce = function (fn: Function, delay: number) {
   // 定义一个定时器， 保存上一次的定时器
-  let timer: null | number = null;
+  let timer: NodeJS.Timeout | null = null;
 
-  return function (...args) {
+  return function (...args: any[]) {
     if (timer) {
-      clearTimeout(timer);
+      clearTimeout(timer as  NodeJS.Timeout);
       timer = null
     }
     timer = setTimeout(() => {
+      // @ts-ignore
       fn.apply(this, args);
-    }, delay)
+    }, delay) as NodeJS.Timeout;
   }
 }
 
@@ -25,11 +30,12 @@ export const debounce = function (fn, delay) {
  * @param {number} interval 间隔的时间
  * @returns
  */
-export const throttle = function (fn, interval = 2000) {
+export const throttle = function (fn: Function, interval = 2000) {
   let lastTime = Date.now();
-  return function (...args) {
+  return function (...args: any[]) {
     const nowTime = Date.now()
     if (nowTime - lastTime >= interval) {
+      // @ts-ignore
       fn.apply(this, args);
       lastTime = nowTime;
     }
@@ -54,6 +60,8 @@ export interface getTerminalRes {
   quickappWebviewUnion: boolean
   quickappWebviewHuawei: boolean
 }
+
+// 获取终端信息
 export const getTerminal = (): getTerminalRes => {
   const terminal = {
     /**App*/
@@ -168,6 +176,7 @@ export interface getNavInfoRes {
   titleHeight: number
 }
 
+// 获取导航栏信息
 export const getNavInfo = (): getNavInfoRes => {
 
   const navData = {
@@ -190,13 +199,13 @@ export const getNavInfo = (): getNavInfoRes => {
   return navData
 }
 
-
-export const getCurrentinstance = () => {
-  const pages = getCurrentPages()
-  pages[0]
-  return pages[pages.length - 1] as any
+// 获取当前页面栈实例
+export const getCurrentinstance = (): Page.PageInstance<AnyObject, {}> => {
+  const pages: (Page.PageInstance<AnyObject, {}> & {})[] = getCurrentPages()
+  return pages[pages.length - 1]
 }
 
+// toast 提示
 export const toast = (title: string, fn?: () => void) => {
   const duration: number = 1500
   uni.showToast({

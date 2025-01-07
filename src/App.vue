@@ -2,13 +2,12 @@
 import {onLaunch, onShow, onHide} from "@dcloudio/uni-app";
 import {wxCloudEnvId} from "@/const/env";
 import {getProblem} from './servers/problem'
-import {useCounterStore} from '@/stores/problem'
+import {useGlobalStore} from '@/stores/problem'
 
-const store = useCounterStore()
+const store = useGlobalStore()
 
 // 获取面试题、笔试题数据
 const initData = async () => {
-  // console.log('papi', getProblem)
   getProblem().then(res => {
     const {answerList, problem, problemSort, problemTag, problemTagMenu, homeMenu} = res.data || {}
 

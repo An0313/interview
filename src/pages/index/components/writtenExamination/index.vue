@@ -21,7 +21,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import Pages from "@/const/pages";
-import { useCounterStore } from '@/stores/problem';
+import { useGlobalStore } from '@/stores/problem';
 import { toast } from "@/utils";
 import {
   getRecord,
@@ -43,7 +43,7 @@ interface iAnswerBtnItem {
   sub?: string;
 }
 
-const store = useCounterStore();
+const store = useGlobalStore();
 
 const answer = computed<IProblem.answerList>(() => store.answerList)
 
