@@ -182,7 +182,7 @@ export const problem: IProblem.item[] = [
       1001,
       1003
     ],
-    "answer": "webpack: vue.config.js 中设置 outputDir \n\nvite: vite.config.js 中设置 base\n"
+    "answer": "vuecli2：\nconfig/index.js 中设置 assetsPublicPath \n\nvuecl3+：\nvue.config.js 中设置 publicPath （baseUrl vuecli3.3弃用）\n\nvite: \nvite.config.js 中设置 base\n"
   },
   {
     "id": 23,

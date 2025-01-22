@@ -29,9 +29,9 @@ onLaunch(() => {
   console.log("App Launch");
 
   // #ifdef MP-WEIXIN
-  (uni as any).cloud.init({env: wxCloudEnvId}).then(() => {
-    console.log('初始化成功')
-  });
+  // (uni as any).cloud.init({env: wxCloudEnvId}).then(() => {
+  //   console.log('初始化成功')
+  // });
   // #endif
 
   // initData()

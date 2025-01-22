@@ -14,6 +14,7 @@
 
 <script lang="ts" setup>
 import { onLoad } from "@dcloudio/uni-app";
+import {AdId} from "@/const";
 import * as IMGS from "./imgs";
 
 interface iListItem {
@@ -78,7 +79,7 @@ onLoad(() => {
   // 在页面onLoad回调事件中创建激励视频广告实例
   if (uni.createRewardedVideoAd) {
     videoAd = uni.createRewardedVideoAd({
-      adUnitId: "adunit-8b2a8ebfdc5d298c",
+      adUnitId: AdId.welfare_interstitial,
     });
     videoAd.onLoad(() => {});
     videoAd.onError(() => {});

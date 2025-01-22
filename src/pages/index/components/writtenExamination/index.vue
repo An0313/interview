@@ -1,8 +1,6 @@
 <template>
   <view class="writtenExamination">
-    // #ifdef MP-WEIXIN
-    <ad unit-id="adunit-01645eb392428bf4"></ad>
-    // #endif
+    <AdBanner :ad_id="AdId.writtenExamination_top_banner" />
     <view class="answer">
       <view
         class="startBtn"
@@ -21,6 +19,8 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import Pages from "@/const/pages";
+import {AdId} from "@/const";
+import AdBanner from "@/components/AdBanner/index.vue";
 import { useGlobalStore } from '@/stores/problem';
 import { toast } from "@/utils";
 import {

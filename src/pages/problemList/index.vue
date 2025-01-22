@@ -1,8 +1,6 @@
 <template>
   <Layout :title="pageTitle">
-    // #ifdef MP-WEIXIN
-    <ad unit-id="adunit-5b18f0c9b3f1ad52"></ad>
-    // #endif
+    <AdBanner :ad_id="AdId.problemList_top_banner" />
     <ProbleList :list="problemListPageData" @clickItem="handleOpenDetail"/>
   </Layout>
 </template>
@@ -12,7 +10,8 @@ import {ref} from "vue";
 import {onLoad, onShareAppMessage, onShareTimeline} from "@dcloudio/uni-app";
 import {useGlobalStore} from '@/stores/problem';
 import Page from "@/const/pages";
-import {defaultShare} from "@/const";
+import {defaultShare, AdId} from "@/const";
+import AdBanner from '@/components/AdBanner/index.vue'
 
 const store = useGlobalStore();
 
@@ -21,8 +20,8 @@ const {problemListPageData} = store;
 // 页面标题
 const pageTitle = ref<string>("");
 
-onLoad(({name}) => {
-  pageTitle.value = name || "";
+onLoad((options: undefined | {name?: string}) => {
+  pageTitle.value = options?.name || "";
 });
 
 /**

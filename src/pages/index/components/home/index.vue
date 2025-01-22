@@ -1,20 +1,18 @@
 <template>
   <view class="home">
     <SearchBar :list="store.problem" @search="search"/>
-    // #ifdef MP-WEIXIN
-    <ad unit-id="adunit-c05ae012df7980d9"></ad>
-    // #endif
+    <AdBanner :ad_id="AdId.home_top_banner"></AdBanner>
     <view class="indexList">
       <template v-for="(item, index) in indexList" :key="index">
         <view class="title">{{ item.title }}</view>
         <view class="sub">
           <view
-              class="subItem"
               v-for="(subItem, subIndex) in item.sub"
               :key="subIndex"
+              class="subItem"
               @click="handleClickItem(subItem)"
           >
-            <image class="icon" :src="subItem.icon"/>
+            <image :src="subItem.icon" class="icon"/>
             <view class="info">
               <view class="name">{{ subItem.name }}</view>
               <view class="total">共{{ subItem.total }}条</view>
@@ -26,12 +24,14 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {computed} from 'vue'
 import {onLoad} from "@dcloudio/uni-app";
 import SearchBar from "./components/SearchBar/index.vue";
+import AdBanner from "@/components/AdBanner/index.vue"
 import {useGlobalStore} from '@/stores/problem';
 import Page from "@/const/pages";
+import {AdId} from "@/const";
 import {isDev} from "@/const/env";
 
 
@@ -58,8 +58,6 @@ const search = (value: IProblem.item[]) => {
 };
 
 
-
-
 // #ifdef MP-WEIXIN
 // 插屏广告
 let interstitialAd: UniApp.InterstitialAdContext | null = null;
@@ -67,9 +65,7 @@ let showInterstitialAdNumber: number = 0;
 
 onLoad(() => {
   if (uni.createInterstitialAd && !isDev) {
-    interstitialAd = uni.createInterstitialAd({
-      adUnitId: "adunit-5d354663ce6b74b9",
-    });
+    interstitialAd = uni.createInterstitialAd({adUnitId: AdId.home_interstitial});
     interstitialAd.onLoad(() => {
       // 插屏广告只显示一次
       if (showInterstitialAdNumber === 0) {

@@ -11,9 +11,7 @@
       <view class="tags">
         {{ tags }}
       </view>
-      // #ifdef MP-WEIXIN
-      <ad unit-id="adunit-9babcb790cec62f4"></ad>
-      // #endif
+      <AdBanner :ad_id="AdId.problemDetail_top_banner"/>
       <view class="answer">
         <text
             v-for="(item, index) in problem?.answer.split('\n')"
@@ -32,7 +30,9 @@
 import {ref, watchEffect, computed} from "vue";
 import {onLoad, onShareAppMessage, onShareTimeline} from "@dcloudio/uni-app";
 import DetailLayout from '@/components/DetailLayout/DetailLayout.vue'
+import AdBanner from '@/components/AdBanner/index.vue'
 import Page from "@/const/pages";
+import {AdId} from "@/const";
 import {useGlobalStore} from '@/stores/problem'
 
 const store = useGlobalStore();
@@ -48,7 +48,7 @@ const currentIndex = ref<number>(0);
 // 当前面试题的标签
 const tags = ref<string>("");
 
-onLoad(({id, index}) => {
+onLoad(({id, index}: {id?: string, index?: string} = {}) => {
   // 分享
   if (id) {
     const _id = Number(id);
