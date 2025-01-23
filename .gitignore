@@ -11,5 +11,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-./src/const/pages.ts
-./src/const/problem.ts
+
+/src/const/pages.ts
+/src/const/problem.ts
