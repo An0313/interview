@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import {defineProps, ref} from 'vue'
+import {ref} from 'vue'
 import {onLoad} from "@dcloudio/uni-app";
 
 interface IProps {

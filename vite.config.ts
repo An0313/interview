@@ -8,6 +8,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        // https://sass-lang.com/documentation/breaking-changes/legacy-js-api/
         silenceDeprecations: ['legacy-js-api']
       }
     }
